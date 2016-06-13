@@ -1,1 +1,1 @@
-var regApp = angular.module('regexperts', []);
+angular.module('regexpert',[]);
