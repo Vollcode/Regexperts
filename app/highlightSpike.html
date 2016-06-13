@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="regexperts">
+  <head>
+    <meta charset="utf-8">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/highlightSpikeCtrl.js"></script>
+    <title>Regexperts</title>
+    <style> .highlightedText { background: yellow }</style>
+  </head>
+  <body>
+   <h1>Regexperts: the ultimate regExperience</h1>
+
+   <div class="container" ng-controller="GameController as ctrl">
+     <input type="text" placeholder="insert RegEx here" ng-model="text">
+
+     <ul ng-bind-html="highlight('Nic is cool and smart', text)">
+       {{ctrl.string}}
+     </ul>
+   </div>
+ </body>
+</html>
