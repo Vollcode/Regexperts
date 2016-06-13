@@ -17,13 +17,13 @@ describe('GameController', function(){
     expect(game.expectation).toEqual(expectation);
   });
 
-  describe('#isWon',function(){
+  describe('#isMatch',function(){
     it('when input matches expectation returns true',function(){
-      expect(game.isWon('\\b[HPF]')).toEqual(true);
+      expect(game.isMatch('\\b[HPF]')).toEqual(true);
     });
 
     it('when input doesnt amtch expectation returnf false',function(){
-      expect(game.isWon('bad input')).toEqual(false);
+      expect(game.isMatch('bad input')).toEqual(false);
     });
   });
 
