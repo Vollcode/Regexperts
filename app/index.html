@@ -4,9 +4,20 @@
     <meta charset="utf-8">
     <script src="bower_components/angular/angular.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/RegexpertsController.js"></script>
+    <script src="js/RegexpertsFactory.js"></script>
     <title>Regexperts</title>
+    <style> .highlightedText { background: yellow }</style>
   </head>
   <body>
-    Hello world
-  </body>
+   <h1>Regexperts: the ultimate regExperience</h1>
+
+   <div class="container" ng-controller="GameController as ctrl">
+     <input type="text" placeholder="insert RegEx here" ng-model="text">
+
+     <!-- <ul ng-bind-html="highlight('Nic is cool and smart', 'and')"> -->
+       {{ctrl.string}}
+     </ul>
+   </div>
+ </body>
 </html>
