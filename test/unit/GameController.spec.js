@@ -10,11 +10,11 @@ describe('GameController', function(){
   }));
 
   it('has level text', function() {
-    expect(game.level.text).toEqual(levelText);
+    expect(game.currentLevel.text).toEqual(levelText);
   });
 
   it('has an expectation', function() {
-    expect(game.level.expectation).toEqual(expectation);
+    expect(game.currentLevel.expectation).toEqual(expectation);
   });
 
   describe('#isMatch',function(){
