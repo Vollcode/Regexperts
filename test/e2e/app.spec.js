@@ -8,12 +8,17 @@ describe("regexpert", function(){
     expectation = 'HPF';
   });
 
-  it('a game can be won', function(){
-    expect($('span#win-message').getText()).not.toMatch('WINNER');
+  it('a valid match produces winner message', function(){
+    expect($('section#level-number').getText()).toEqual("Level: 1");
     expect($('p#level-text').getText()).toEqual(levelText);
     expect($('p#expectation').getText()).toEqual(expectation);
     $('input#user-input').sendKeys("\\b[HPF]");
     expect($('span#win-message').getText()).toEqual('WINNER');
+  });
+
+  it('a valid match loads up a new level',function(){
+    $('input#user-input').sendKeys("\\b[HPF]");
+    expect($('section#level-number').getText()).toEqual("Level: 2");
   });
 
 

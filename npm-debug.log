@@ -1,17 +1,17 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/Cellar/node/6.2.0/bin/node',
+1 verbose cli [ '/usr/local/bin/node',
 1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'run',
 1 verbose cli   'test-features' ]
-2 info using npm@3.8.9
-3 info using node@v6.2.0
+2 info using npm@3.9.3
+3 info using node@v6.2.1
 4 verbose run-script [ 'pretest-features', 'test-features', 'posttest-features' ]
 5 info lifecycle regexperts-frontend@1.0.0~pretest-features: regexperts-frontend@1.0.0
 6 silly lifecycle regexperts-frontend@1.0.0~pretest-features: no script for pretest-features, continuing
 7 info lifecycle regexperts-frontend@1.0.0~test-features: regexperts-frontend@1.0.0
 8 verbose lifecycle regexperts-frontend@1.0.0~test-features: unsafe-perm in lifecycle true
-9 verbose lifecycle regexperts-frontend@1.0.0~test-features: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/emmettwalsh/Projects/regexperts/node_modules/.bin:/usr/local/Cellar/node/6.2.0/bin:/Users/emmettwalsh/.rvm/gems/ruby-2.1.5/bin:/Users/emmettwalsh/.rvm/gems/ruby-2.1.5@global/bin:/Users/emmettwalsh/.rvm/rubies/ruby-2.1.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/emmettwalsh/.rvm/bin
-10 verbose lifecycle regexperts-frontend@1.0.0~test-features: CWD: /Users/emmettwalsh/Projects/regexperts
+9 verbose lifecycle regexperts-frontend@1.0.0~test-features: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/fergyo/Projects/regexperts-frontend/node_modules/.bin:/usr/local/bin:/Users/fergyo/.rvm/gems/ruby-2.3.0/bin:/Users/fergyo/.rvm/gems/ruby-2.3.0@global/bin:/Users/fergyo/.rvm/rubies/ruby-2.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/fergyo/.rvm/gems/ruby-2.3.0/bin:/Users/fergyo/.rvm/gems/ruby-2.3.0@global/bin:/Users/fergyo/.rvm/rubies/ruby-2.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/fergyo/.rvm/bin
+10 verbose lifecycle regexperts-frontend@1.0.0~test-features: CWD: /Users/fergyo/Projects/regexperts-frontend
 11 silly lifecycle regexperts-frontend@1.0.0~test-features: Args: [ '-c',
 11 silly lifecycle   './node_modules/protractor/bin/protractor test/protractor.conf.js' ]
 12 silly lifecycle regexperts-frontend@1.0.0~test-features: Returned: code: 1  signal: null
@@ -24,14 +24,14 @@
 14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at ChildProcess.emit (events.js:191:7)
-14 verbose stack     at maybeClose (internal/child_process.js:850:16)
+14 verbose stack     at maybeClose (internal/child_process.js:852:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid regexperts-frontend@1.0.0
-16 verbose cwd /Users/emmettwalsh/Projects/regexperts
-17 error Darwin 14.5.0
-18 error argv "/usr/local/Cellar/node/6.2.0/bin/node" "/usr/local/bin/npm" "run" "test-features"
-19 error node v6.2.0
-20 error npm  v3.8.9
+16 verbose cwd /Users/fergyo/Projects/regexperts-frontend
+17 error Darwin 15.4.0
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "test-features"
+19 error node v6.2.1
+20 error npm  v3.9.3
 21 error code ELIFECYCLE
 22 error regexperts-frontend@1.0.0 test-features: `./node_modules/protractor/bin/protractor test/protractor.conf.js`
 22 error Exit status 1
