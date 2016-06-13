@@ -1,0 +1,27 @@
+{
+  "name": "regexperts-frontend",
+  "version": "1.0.0",
+  "description": "regexp game",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd app && ../node_modules/http-server/bin/http-server",
+    "update-selenium": "./node_modules/protractor/bin/webdriver-manager update",
+    "start-selenium": "./node_modules/protractor/bin/webdriver-manager start",
+    "test-features": "./node_modules/protractor/bin/protractor test/protractor.conf.js",
+    "test-units": "./node_modules/karma-cli/bin/karma start test/karma.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.9.0",
+    "protractor": "^3.3.0"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "jasmine-spec-reporter": "^2.5.0",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-spec-reporter": "0.0.26"
+  }
+}
