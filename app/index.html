@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="regexperts">
+<html ng-app="regexpert">
   <head>
     <meta charset="utf-8">
     <script src="bower_components/angular/angular.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/controllers/GameController.js"></script>
     <title>Regexperts</title>
   </head>
-  <body>
-    Hello world
+  <body ng-controller="GameController as game">
+    <h1>Best game ever</h1>
+    <input id="user-input" type="text" ng-model="input">
+    <span id="win-message">{{game.isWon(input) ? "WINNER" : ""}}</span>
   </body>
 </html>
