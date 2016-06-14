@@ -10,7 +10,7 @@ describe("regexpert", function(){
 
   it('highlights text based on input', function(){
     $('input#user-input').sendKeys("brHee");
-    expect($('p#level-text').$('span.highlightedText').getText()).toEqual('brHee');
+    expect($('p#level-text').$('span.highlighted').getText()).toEqual('brHee');
   });
 
   it('a game can be won', function(){
