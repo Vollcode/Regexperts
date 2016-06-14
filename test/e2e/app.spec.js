@@ -8,6 +8,7 @@ describe("regexpert", function(){
     expectation = 'HPF';
   });
 
+
   it('highlights text based on input', function(){
     $('input#user-input').sendKeys("brHee");
     expect($('p#level-text').$('span.highlighted').getText()).toEqual('brHee');

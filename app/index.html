@@ -5,16 +5,16 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/GameController.js"></script>
+    <script src="js/services/HighlightService.js"></script>
     <link rel="stylesheet" href="/css/stylesheet.css">
     <title>Regexperts</title>
   </head>
   <body ng-controller="GameController as game">
     <h1>Best game ever</h1>
+    <section id="level-number">Level: {{game.currentLevel.value}}</section>
     <input id="user-input" type="text" ng-model="input">
-    <p id="level-text" ng-bind-html="game.highlight(game.levelText, input)">
-    </p>
-    <p id="expectation">
-      {{game.expectation}}
+    <p id="expectation">{{game.currentLevel.expectation}}</p>
+    <p id="level-text" ng-bind-html="game.highlight(game.currentLevel.text, input)">
     </p>
     <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
   </body>
