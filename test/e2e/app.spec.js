@@ -20,6 +20,4 @@ describe("regexpert", function(){
     $('input#user-input').sendKeys("\\b[HPF]");
     expect($('span#win-message').getText()).toEqual('WINNER');
   });
-
-
 });

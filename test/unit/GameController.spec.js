@@ -28,21 +28,5 @@ describe('GameController', function(){
     });
   });
 
-  describe('#highlight', function(){
-    beforeEach(function(){
-      text = "Fe";
-    });
-
-    it('creats spans for all matches', function(){
-      regex = "F";
-      output = sce.trustAsHtml("<span class='highlighted'>F</span>e");
-      expect(game.highlight(text, regex).toString()).toEqual(output.toString());
-    });
-
-    it('returns text if not match', function(){
-      regex = "z";
-      output = sce.trustAsHtml('Fe');
-      expect(game.highlight(text, regex).toString()).toEqual(output.toString());
-    });
-  });
+  
 });
