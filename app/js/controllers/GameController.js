@@ -14,17 +14,21 @@ angular.module('regexpert')
     return matches.join('') === vm.expectation;
   }
 
-  function highlight(text, regex) {
-    if (regex){
-      return $sce.trustAsHtml(text.replace(_makeRegexp(regex), function(match){
+  function highlight(text, searchString) {
+    if (searchString){
+      return _convertToHtml(text.replace(_makeRegexp(searchString), function(match){
         return "<span class='highlighted'>" + match + "</span>";
       }));
     }
-    return $sce.trustAsHtml(text);
+    return _convertToHtml(text);
   }
 
   function _makeRegexp(input) {
     return new RegExp(input, 'g');
+  }
+
+  function _convertToHtml(text) {
+    return $sce.trustAsHtml(text);
   }
 
 }]);
