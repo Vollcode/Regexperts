@@ -36,15 +36,13 @@ describe('GameController', function(){
     it('creats spans for all matches', function(){
       regex = "F";
       output = sce.trustAsHtml("<span class='highlighted'>F</span>e");
-      expect(game.highlight(text, regex)).toEqual(output);
+      expect(game.highlight(text, regex).toString()).toEqual(output.toString());
     });
 
     it('returns text if not match', function(){
       regex = "z";
       output = sce.trustAsHtml('Fe');
-      window.output = output;
-      window.returnValue = game.highlight(text, regex);
-      expect(game.highlight(text, regex)).toBe(output);
+      expect(game.highlight(text, regex).toString()).toEqual(output.toString());
     });
   });
 });
