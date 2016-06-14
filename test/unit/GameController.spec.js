@@ -42,8 +42,6 @@ describe('GameController', function(){
     it('returns text if not match', function(){
       regex = "z";
       output = sce.trustAsHtml('Fe');
-      window.output = output;
-      window.returnValue = game.highlight(text, regex);
       expect(game.highlight(text, regex)).toBe(output);
     });
   });
