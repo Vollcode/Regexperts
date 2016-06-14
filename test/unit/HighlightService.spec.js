@@ -60,7 +60,7 @@ describe('HighlightService', function() {
         {text: 'c', type: 'n'},
         {text: 'b', type: 't'}
       ];
-      expect(HighlightService.splitIntoComponents(text, target, 't')).toEqual(output);
+      expect(HighlightService.getLetterMatchType(text, target, 't')).toEqual(output);
     });
 
     it('highlight type decided at input', function(){
@@ -70,7 +70,7 @@ describe('HighlightService', function() {
         {text: 'c', type: 'n'},
         {text: 'b', type: 'p'}
       ];
-      expect(HighlightService.splitIntoComponents(text, target, 'p')).toEqual(output);
+      expect(HighlightService.getLetterMatchType(text, target, 'p')).toEqual(output);
     });
   });
 
@@ -79,20 +79,50 @@ describe('HighlightService', function() {
       text = "abcb";
       targetOne = "b";
       targetTwo = "cb";
-      s = HighlightService.splitIntoComponents(text, targetOne, 's');
-      t = HighlightService.splitIntoComponents(text, targetTwo, 't');
-      var zipped = compareLetterMatchType(s,t);
+      s = HighlightService.getLetterMatchType(text, targetOne, 's');
+      t = HighlightService.getLetterMatchType(text, targetTwo, 't');
     });
 
     it('if both types n then n', function(){
-      expect(zipped[0].type).toEqaul('n');
+      var zipped = HighlightService.compareLetterMatchType(s,t);
+      expect(zipped[0].type).toEqual('n');
     });
     it('if n and something else then something else', function(){
-      expect(zipped[1].type).toEqaul('s');
+      var zipped = HighlightService.compareLetterMatchType(s,t);
+      expect(zipped[1].type).toEqual('s');
     });
     it('if both something else then show both', function(){
-      expect(zipped[3].type).toEqaul('st');
+      var zipped = HighlightService.compareLetterMatchType(s,t);
+      expect(zipped[3].type).toEqual('s t');
+    });
+  });
+
+  describe("#createHighlight", function(){
+    beforeEach(function(){
+      text = "abcb";
+      targetRegex = "b";
+      searchRegex = "cb";
+      t = HighlightService.getLetterMatchType(text, targetRegex, 't');
+      s = HighlightService.getLetterMatchType(text, searchRegex, 's');
     });
 
+    it('expect highlight both target and match', function(){
+      zipped = HighlightService.compareLetterMatchType(s,t);
+      output = "<span class='n'>a</span><span class='t'>b</span><span class='s'>c</span><span class='s t'>b</span>";
+      expect(HighlightService.createHighlight(zipped).toString()).toEqual(output);
+    });
+  });
+
+  describe("#multiHighlight", function(){
+    beforeEach(function(){
+      text = "abcb";
+      target = "b";
+      search = "cb";
+    });
+
+    it('expect highlight both target and match', function(){
+      output = "<span class='n'>a</span><span class='t'>b</span><span class='s'>c</span><span class='t s'>b</span>";
+      expect(HighlightService.multiHighlight(text, target, search).toString()).toEqual(output);
+    });
   });
 });

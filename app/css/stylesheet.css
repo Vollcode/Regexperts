@@ -1,3 +1,14 @@
 .highlighted {
-  background: yellow
+  background: yellow;
+ }
+
+.s {
+  background: yellow;
+ }
+
+.t {
+  background: grey;
+ }
+.t.s {
+  background: green;
  }

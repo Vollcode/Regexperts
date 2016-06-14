@@ -13,9 +13,9 @@
     <h1>Best game ever</h1>
     <section id="level-number">Level: {{game.currentLevel.value}}</section>
     <input id="user-input" type="text" ng-model="input">
-    <p id="expectation">{{game.currentLevel.expectation}}</p>
-    <p id="level-text" ng-bind-html="game.highlight(game.currentLevel.text, input)">
+    <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.expectation, input)">
     </p>
     <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
+    <p id="expectation">{{game.currentLevel.expectation}}</p>
   </body>
 </html>
