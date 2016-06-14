@@ -8,6 +8,11 @@ describe("regexpert", function(){
     expectation = 'HPF';
   });
 
+  it('highlights text based on input', function(){
+    $('input#user-input').sendKeys("brHee");
+    expect($('p#level-text').$('span.highlighted').getText()).toEqual('brHee');
+  });
+
   it('a game can be won', function(){
     expect($('span#win-message').getText()).not.toMatch('WINNER');
     expect($('p#level-text').getText()).toEqual(levelText);
