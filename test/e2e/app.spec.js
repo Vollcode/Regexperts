@@ -22,7 +22,9 @@ describe("regexpert", function(){
     expect($('span#win-message').getText()).toEqual('WINNER');
   });
 
-
-
+  it('a next level button appears when the game is won', function(){
+    $('input#user-input').sendKeys("\\b[HPF]");
+    expect($('button#next-level').isPresent()).toBe(true);
+  });
 
 });
