@@ -1,7 +1,7 @@
 describe('HighlightService', function() {
   beforeEach(module('regexpert'));
 
-  var sce, HighlightService, text, target, output;
+  var sce, HighlightService, text, target, search, output;
 
   beforeEach(inject(function($sce, _HighlightService_){
     sce = $sce;
@@ -18,31 +18,31 @@ describe('HighlightService', function() {
     it('assigns each letter to an object which has a highlight match type', function(){
       output = [
         {text: 'a', type: 'plain'},
-        {text: 'b', type: 't'},
+        {text: 'b', type: 'highlight'},
         {text: 'c', type: 'plain'},
-        {text: 'b', type: 't'}
+        {text: 'b', type: 'highlight'}
       ];
-      expect(HighlightService.getLetterMatchType(text, target, 't')).toEqual(output);
+      expect(HighlightService.getLetterMatchType(text, target, 'highlight')).toEqual(output);
     });
 
-    it('highlight type decided at input', function(){
+    it('can choose different highlight types', function(){
       output = [
         {text: 'a', type: 'plain'},
-        {text: 'b', type: 'p'},
+        {text: 'b', type: 'different'},
         {text: 'c', type: 'plain'},
-        {text: 'b', type: 'p'}
+        {text: 'b', type: 'different'}
       ];
-      expect(HighlightService.getLetterMatchType(text, target, 'p')).toEqual(output);
+      expect(HighlightService.getLetterMatchType(text, target, 'different')).toEqual(output);
     });
   });
 
   describe('#compareLetterMatchType',function(){
     beforeEach(function(){
       text = "abcb";
-      targetOne = "b";
-      targetTwo = "cb";
-      s = HighlightService.getLetterMatchType(text, targetOne, 's');
-      t = HighlightService.getLetterMatchType(text, targetTwo, 't');
+      search = "b";
+      target = "cb";
+      s = HighlightService.getLetterMatchType(text, search, 's');
+      t = HighlightService.getLetterMatchType(text, target, 't');
     });
 
     it('if both types n then n', function(){

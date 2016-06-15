@@ -1,6 +1,6 @@
 describe("regexpert", function(){
 
-  var levelText, expectation;
+  var levelText, target;
 
   beforeEach(function(){
     browser.get('/');
