@@ -1,52 +1,52 @@
 { "levels":[
   {
-    "levelnumber": 1,
+    "number": 1,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 2,
+    "number": 2,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 3,
+    "number": 3,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 4,
+    "number": 4,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 5,
+    "number": 5,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 6,
+    "number": 6,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 7,
+    "number": 7,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 8,
+    "number": 8,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 9,
+    "number": 9,
     "text": "",
-    "expectation": ""
+    "target": ""
   },
   {
-    "levelnumber": 10,
+    "number": 10,
     "text": "",
-    "expectation": ""
+    "target": ""
   }
 ]}
