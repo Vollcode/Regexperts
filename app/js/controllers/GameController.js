@@ -1,5 +1,5 @@
 angular.module('regexpert')
-       .controller('GameController',['HighlightService', 'LevelService','LevelFactory', function(HighlightService, LevelService, LevelFactory){
+       .controller('GameController',['HighlightService', 'LevelService', function(HighlightService, LevelService){
 
   var vm = this;
 
