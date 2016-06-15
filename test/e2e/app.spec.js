@@ -9,10 +9,10 @@ describe("regexpert", function(){
 
   it('highlights text based on input', function(){
     $('input#user-input').sendKeys("[a-p]");
-    expect($('p#level-text').$$('span.n').first().getText()).toEqual('H');
-    expect($('p#level-text').$$('span.s').first().getText()).toEqual('o');
-    expect($('p#level-text').$$('span.t').first().getText()).toEqual('i');
-    expect($('p#level-text').$$('span.t.s').first().getText()).toEqual('i');
+    expect($('p#level-text').$$('span.plain').first().getText()).toEqual('H');
+    expect($('p#level-text').$$('span.search').first().getText()).toEqual('o');
+    expect($('p#level-text').$$('span.target').first().getText()).toEqual('i');
+    expect($('p#level-text').$$('span.target.search').first().getText()).toEqual('i');
   });
 
   it('a game can be won', function(){
