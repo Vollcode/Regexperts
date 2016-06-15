@@ -27,9 +27,4 @@ describe("regexpert", function(){
     expect($('button#next-level').isPresent()).toBe(false);
   });
 
-  it('starts on level 1', function() {
-    expect($('p#level-text').getText()).toEqual(levelText);
-  });
-
-
 });
