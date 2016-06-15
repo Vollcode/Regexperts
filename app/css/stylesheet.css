@@ -2,15 +2,15 @@ p {
   font-family: 'Fira Sans', sans-serif;
 }
 
-.s {
+.search {
   background: #FF803A;
  }
 
-.t {
+.target {
   background: #1A72CC;
   color: white;
  }
-.t.s {
+.target.search {
   background: #B0FF9D;
   color: black;
  }

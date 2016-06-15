@@ -1,25 +1,14 @@
 angular.module('regexpert')
        .service('HighlightService', ['$sce', function($sce) {
 
-  this.highlight = highlight;
   this.getLetterMatchType = getLetterMatchType;
   this.compareLetterMatchType = compareLetterMatchType;
   this.createHighlight = createHighlight;
   this.multiHighlight = multiHighlight;
 
-
-  function highlight(text, searchString) {
-    if (searchString){
-      return _convertToHtml(text.replace(_makeRegexp(searchString), function(match){
-        return "<span class='highlighted'>" + match + "</span>";
-      }));
-    }
-    return _convertToHtml(text);
-  }
-
   function multiHighlight(text, target, search){
-    var targetObj = getLetterMatchType(text, target, 't');
-    var searchObj = getLetterMatchType(text, search, 's');
+    var targetObj = getLetterMatchType(text, target, 'target');
+    var searchObj = getLetterMatchType(text, search, 'search');
     return createHighlight(compareLetterMatchType(targetObj, searchObj));
   }
 
@@ -43,7 +32,7 @@ angular.module('regexpert')
         });
       }else{
         section.split('').forEach(function(el){
-          resultArray.push({type: 'n',text: el});
+          resultArray.push({type: 'plain',text: el});
         });
       }
     });
@@ -57,9 +46,9 @@ angular.module('regexpert')
         var objTwoElType = objTwo[index].type;
         if(objOneElType === objTwoElType){
           finalArray.push({text: value.text, type: objOneElType});
-        }else if (objOneElType === "n" & objTwoElType !== "n") {
+        }else if (objOneElType === "plain" & objTwoElType !== "plain") {
           finalArray.push({text: value.text, type: objTwoElType});
-        }else if (objOneElType !== "n" & objTwoElType === "n") {
+        }else if (objOneElType !== "plain" & objTwoElType === "plain") {
           finalArray.push({text: value.text, type: objOneElType});
         }else {
           finalArray.push({text: value.text, type: objOneElType + ' ' + objTwoElType});
