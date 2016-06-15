@@ -20,15 +20,15 @@ angular.module('regexpert')
     return _convertToHtml(finalStr);
   }
 
-  function getLetterMatchType(text, target, type) {
-    var regex = _makeRegexp(target);
+  function getLetterMatchType(text, captureGroup, matchType) {
+    var regex = _makeRegexp(captureGroup);
     var resultArray = [];
     var matches = text.match(regex);
 
     _splitAroundMatches(text,regex).forEach(function(section){
       if(matches.includes(section)){
         section.split('').forEach(function(el){
-          resultArray.push({ type: type, text: el});
+          resultArray.push({ type: matchType, text: el});
         });
       }else{
         section.split('').forEach(function(el){

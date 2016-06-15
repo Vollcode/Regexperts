@@ -41,21 +41,21 @@ describe('HighlightService', function() {
       text = "abcb";
       search = "b";
       target = "cb";
-      s = HighlightService.getLetterMatchType(text, search, 's');
-      t = HighlightService.getLetterMatchType(text, target, 't');
+      s = HighlightService.getLetterMatchType(text, search, 'search');
+      t = HighlightService.getLetterMatchType(text, target, 'target');
     });
 
-    it('if both types n then n', function(){
+    it('if both types are plain then choose plain', function(){
       var zipped = HighlightService.compareLetterMatchType(s,t);
       expect(zipped[0].type).toEqual('plain');
     });
-    it('if n and something else then something else', function(){
+    it('if one type is plain and the other is not then choose the other', function(){
       var zipped = HighlightService.compareLetterMatchType(s,t);
-      expect(zipped[1].type).toEqual('s');
+      expect(zipped[1].type).toEqual('search');
     });
-    it('if both something else then show both', function(){
+    it('if neither types are plain then show both types', function(){
       var zipped = HighlightService.compareLetterMatchType(s,t);
-      expect(zipped[3].type).toEqual('s t');
+      expect(zipped[3].type).toEqual('search target');
     });
   });
 
