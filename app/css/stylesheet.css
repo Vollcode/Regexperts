@@ -1,3 +1,16 @@
-.highlighted {
-  background: yellow
+p {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.search {
+  background: #FF803A;
+ }
+
+.target {
+  background: #1A72CC;
+  color: white;
+ }
+.target.search {
+  background: #B0FF9D;
+  color: black;
  }
