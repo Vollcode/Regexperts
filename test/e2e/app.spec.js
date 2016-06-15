@@ -23,20 +23,16 @@ describe("regexpert", function(){
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     expect($('span#win-message').getText()).toEqual('WINNER');
   });
-<<<<<<< HEAD
 
   it('a next level button appears when the game is won', function(){
-    $('input#user-input').sendKeys("\\b[HPF]");
+    $('input#user-input').sendKeys("\\b[a-z]..\\b");
     expect($('button#next-level').isPresent()).toBe(true);
   });
 
   it('loads level 2', function() {
-    $('input#user-input').sendKeys("\\b[HPF]");
+    $('input#user-input').sendKeys("\\b[a-z]..\\b");
     $('button#next-level').click();
     expect($('section#level-number').getText()).toEqual('Level: 2');
     expect($('p#level-text').getText()).toEqual(levelText2);
   });
-
-=======
->>>>>>> 318ebfe8a400ce9b95c35cff0648e32ee783f38b
 });

@@ -4,7 +4,7 @@ describe('LevelFactory', function(){
   var level;
 
   beforeEach(inject(function(LevelFactory) {
-    level = new LevelFactory(1, 'Hello World', 'Hello');
+    level = new LevelFactory({number: 1, text:"Hiya there buddy", target: "ya"});
   }));
 
     it('has the correct level number', function(){
@@ -12,10 +12,10 @@ describe('LevelFactory', function(){
     });
 
     it('has the correct level text', function(){
-      expect(level.text).toEqual('Hello World');
+      expect(level.text).toEqual('Hiya there buddy');
     });
 
     it('has the correct level text', function(){
-      expect(level.target).toEqual('Hello');
+      expect(level.target).toEqual('ya');
     });
 });
