@@ -1,14 +1,16 @@
-.highlighted {
-  background: yellow;
- }
+p {
+  font-family: 'Fira Sans', sans-serif;
+}
 
 .s {
-  background: yellow;
+  background: #FF803A;
  }
 
 .t {
-  background: grey;
+  background: #1A72CC;
+  color: white;
  }
 .t.s {
-  background: green;
+  background: #B0FF9D;
+  color: black;
  }
