@@ -20,12 +20,10 @@ angular.module('regexpert')
     return convertToHtml(finalStr);
   }
 
-
-
   function getLetterMatchType(text, captureGroup, matchType) {
     var regex = makeRegexp(captureGroup);
     var resultArray = [];
-    var matches = text.match(regex);
+    var matches = text.match(regex) || "";
 
     splitAroundMatches(text,regex).forEach(function(section){
       if(matches.includes(section)){
