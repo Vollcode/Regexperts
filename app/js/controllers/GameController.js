@@ -25,6 +25,7 @@ angular.module('regexpert')
 
   function nextLevel() {
     vm.currentLevel.value = 2;
+    vm.currentLevel.text = 'Holder text for now. We rule!'
   }
 
   function _makeRegexp(input) {
