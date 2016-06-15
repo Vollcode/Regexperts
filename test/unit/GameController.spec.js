@@ -14,6 +14,17 @@ describe('GameController', function(){
     expect(game.currentLevel.text).toEqual(levelText);
   });
 
+  it('has a level number', function() {
+    expect(game.currentLevel.value).toEqual(1);
+  });
+
+  describe('#nextLevel', function() {
+    it('can change to level 2', function () {
+      game.nextLevel();
+      expect(game.currentLevel.value).toEqual(2);
+    });
+  });
+
   it('has an expectation', function() {
     expect(game.currentLevel.expectation).toEqual(expectation);
   });

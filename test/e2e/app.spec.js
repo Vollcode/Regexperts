@@ -5,6 +5,7 @@ describe("regexpert", function(){
   beforeEach(function(){
     browser.get('/');
     levelText = 'Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.';
+    levelText2 = 'Holder text for now. We rule!'
     expectation = 'HPF';
   });
 
@@ -25,6 +26,13 @@ describe("regexpert", function(){
   it('a next level button appears when the game is won', function(){
     $('input#user-input').sendKeys("\\b[HPF]");
     expect($('button#next-level').isPresent()).toBe(true);
+  });
+
+  it('loads level 2', function() {
+    $('input#user-input').sendKeys("\\b[HPF]");
+    $('button#next-level').click();
+    expect($('section#level-number').getText()).toEqual('Level: 2');
+    expect($('p#level-text').getText()).toEqual(levelText2);
   });
 
 });

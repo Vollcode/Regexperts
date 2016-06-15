@@ -16,6 +16,6 @@
     <p id="level-text" ng-bind-html="game.highlight(game.currentLevel.text, input)">
     </p>
     <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
-    <button id="next-level" value="Next level" ng-if="game.isMatch(input)">
+    <button id="next-level" ng-if="game.isMatch(input)" ng-click="game.nextLevel()">Next level</button>
   </body>
 </html>
