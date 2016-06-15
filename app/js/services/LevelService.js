@@ -3,10 +3,10 @@ angular.module('regexpert')
 
   this.getLevel = getLevel;
 
-  function getLevel(leverlNumber){
+  function getLevel(levelNumber){
     return $http.get("/levels/levels.json").then(function(response){
-      // return response.data.levels[leverlNumber-1];
-      return new LevelFactory(response.data.levels[leverlNumber-1]);
+      // return response.data.levels[levelNumber-1];
+      return new LevelFactory(response.data.levels[levelNumber-1]);
     });
 
   }

@@ -2,7 +2,7 @@ describe('LevelService', function(){
 
   beforeEach(module('regexpert'));
 
-  var LevelService, httpBackend, url, response;
+  var LevelService, LevelFactory, httpBackend, url, response;
 
   url = '/levels/levels.json';
   response = {
