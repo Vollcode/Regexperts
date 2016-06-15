@@ -20,6 +20,8 @@ angular.module('regexpert')
     return _convertToHtml(finalStr);
   }
 
+
+
   function getLetterMatchType(text, captureGroup, matchType) {
     var regex = _makeRegexp(captureGroup);
     var resultArray = [];
@@ -27,13 +29,9 @@ angular.module('regexpert')
 
     _splitAroundMatches(text,regex).forEach(function(section){
       if(matches.includes(section)){
-        section.split('').forEach(function(el){
-          resultArray.push({ type: matchType, text: el});
-        });
+        _convertToObjectsWithType(section, matchType, resultArray);
       }else{
-        section.split('').forEach(function(el){
-          resultArray.push({type: 'plain',text: el});
-        });
+        _convertToObjectsWithType(section, 'plain', resultArray);
       }
     });
     return resultArray;
@@ -65,10 +63,15 @@ angular.module('regexpert')
     return $sce.trustAsHtml(text);
   }
 
+  function _convertToObjectsWithType(textSection,matchType, resultArray){
+    textSection.split('').forEach(function(el){
+      resultArray.push({ type: matchType, text: el});
+    });
+  }
+
   function _splitAroundMatches(text,regex){
     return text.replace(regex,function(match){
       return '∞' + match + '∞';
     }).split('∞');
   }
-
 }]);
