@@ -17,21 +17,21 @@ angular.module('regexpert')
     zipped.forEach(function(element){
       finalStr = finalStr + "<span class='" + element.type + "'>" +element.text + "</span>";
     });
-    return _convertToHtml(finalStr);
+    return convertToHtml(finalStr);
   }
 
 
 
   function getLetterMatchType(text, captureGroup, matchType) {
-    var regex = _makeRegexp(captureGroup);
+    var regex = makeRegexp(captureGroup);
     var resultArray = [];
     var matches = text.match(regex);
 
-    _splitAroundMatches(text,regex).forEach(function(section){
+    splitAroundMatches(text,regex).forEach(function(section){
       if(matches.includes(section)){
-        _convertToObjectsWithType(section, matchType, resultArray);
+        convertToObjectsWithType(section, matchType, resultArray);
       }else{
-        _convertToObjectsWithType(section, 'plain', resultArray);
+        convertToObjectsWithType(section, 'plain', resultArray);
       }
     });
     return resultArray;
@@ -55,21 +55,21 @@ angular.module('regexpert')
     return finalArray;
   }
 
-  function _makeRegexp(input) {
+  function makeRegexp(input) {
     return new RegExp(input, 'g');
   }
 
-  function _convertToHtml(text) {
+  function convertToHtml(text) {
     return $sce.trustAsHtml(text);
   }
 
-  function _convertToObjectsWithType(textSection,matchType, resultArray){
+  function convertToObjectsWithType(textSection,matchType, resultArray){
     textSection.split('').forEach(function(el){
       resultArray.push({ type: matchType, text: el});
     });
   }
 
-  function _splitAroundMatches(text,regex){
+  function splitAroundMatches(text,regex){
     return text.replace(regex,function(match){
       return '∞' + match + '∞';
     }).split('∞');
