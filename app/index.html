@@ -15,13 +15,14 @@
   <body ng-controller="GameController as game" ng-init="game.nextLevel(0)">
     <h1>Best game ever</h1>
     <section id="level-number">Level: {{game.currentLevel.number}}</section>
-    <input id="user-input" type="text" ng-model="input">
+    <input id="user-input" type="text" data-ng-model="input">
+    <a ng-click="input = ''">X</a>
     <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)">
     </p>
 
     <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
 
-    <button id="next-level" ng-if="game.isMatch(input)" ng-click="game.nextLevel(game.currentLevel.number)">Next level</button>
+    <button id="next-level" ng-show="game.isMatch(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number)">Next level</button>
 
     <p id="target">{{game.currentLevel.target}}</p>
 
