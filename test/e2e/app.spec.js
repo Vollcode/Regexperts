@@ -18,14 +18,9 @@ describe("regexpert", function(){
 
   it('a level can be beaten', function(){
     expect($('p#points').isDisplayed()).toBe(true);
-    expect($('span#win-message').getText()).not.toMatch('WINNER');
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
-    expect($('span#win-message').getText()).toEqual('WINNER');
-    expect($('button#next-level').isDisplayed()).toBe(true);
     $('button#next-level').click();
-    expect($('p#points').getText()).toEqual('Points: 10');
     expect($('section#level-number').getText()).toEqual('Level: 2');
-    expect($('p#level-text').getText()).toEqual(levelText2);
     expect($('button#next-level').isDisplayed()).toBe(false);
   });
 

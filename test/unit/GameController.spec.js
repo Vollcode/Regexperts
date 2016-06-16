@@ -44,9 +44,6 @@ describe('GameController', function(){
     });
 
     it('increments points by 10 when level is beaten', function() {
-      httpBackend.expectGET("/levels/levels.json").respond(apiResponse);
-      game.nextLevel(1);
-      httpBackend.flush();
       game.incrementScore();
       expect(game.currentPoints).toEqual(10);
     });
@@ -60,8 +57,5 @@ describe('GameController', function(){
     it('when input doesnt match target returns false',function(){
       expect(game.isMatch('bad input')).toEqual(false);
     });
-
   });
-
-
 });
