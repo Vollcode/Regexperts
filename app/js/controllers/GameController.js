@@ -6,6 +6,7 @@ angular.module('regexpert')
   vm.isMatch = isMatch;
   vm.nextLevel = nextLevel;
   vm.multiHighlight = HighlightService.multiHighlight;
+  vm.currentPoints = 0;
 
   function isMatch(input) {
     var matches = vm.currentLevel.text.match(_makeRegexp(input));

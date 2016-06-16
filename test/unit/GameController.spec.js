@@ -37,6 +37,9 @@ describe('GameController', function(){
       expect(game.currentLevel.number).toEqual(2);
     });
 
+    it('starts with zero points', function(){
+      expect(game.currentPoints).toEqual(0);
+    });
   });
 
   describe('#isMatch',function(){
@@ -47,6 +50,7 @@ describe('GameController', function(){
     it('when input doesnt match target returns false',function(){
       expect(game.isMatch('bad input')).toEqual(false);
     });
+
   });
 
 
