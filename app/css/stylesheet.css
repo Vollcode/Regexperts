@@ -14,3 +14,7 @@ body{
   background: #B0FF9D;
   color: black;
  }
+ #nav-mobile {
+     right: 0;
+     left: inherit;
+ }
