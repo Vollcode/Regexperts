@@ -20,11 +20,11 @@ describe("regexpert", function(){
     expect($('span#win-message').getText()).not.toMatch('WINNER');
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     expect($('span#win-message').getText()).toEqual('WINNER');
-    expect($('button#next-level').isPresent()).toBe(true);
+    expect($('button#next-level').isDisplayed()).toBe(true);
     $('button#next-level').click();
     expect($('section#level-number').getText()).toEqual('Level: 2');
     expect($('p#level-text').getText()).toEqual(levelText2);
-    expect($('button#next-level').isPresent()).toBe(false);
+    expect($('button#next-level').isDisplayed()).toBe(false);
   });
 
 });
