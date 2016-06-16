@@ -17,23 +17,19 @@ angular.module('regexpert')
     zipped.forEach(function(element){
       finalStr = finalStr + "<span class='" + element.type + "'>" +element.text + "</span>";
     });
-    return _convertToHtml(finalStr);
+    return convertToHtml(finalStr);
   }
 
   function getLetterMatchType(text, captureGroup, matchType) {
-    var regex = _makeRegexp(captureGroup);
+    var regex = makeRegexp(captureGroup);
     var resultArray = [];
-    var matches = text.match(regex);
+    var matches = text.match(regex) || "";
 
-    _splitAroundMatches(text,regex).forEach(function(section){
+    splitAroundMatches(text,regex).forEach(function(section){
       if(matches.includes(section)){
-        section.split('').forEach(function(el){
-          resultArray.push({ type: matchType, text: el});
-        });
+        convertToObjectsWithType(section, matchType, resultArray);
       }else{
-        section.split('').forEach(function(el){
-          resultArray.push({type: 'plain',text: el});
-        });
+        convertToObjectsWithType(section, 'plain', resultArray);
       }
     });
     return resultArray;
@@ -57,18 +53,23 @@ angular.module('regexpert')
     return finalArray;
   }
 
-  function _makeRegexp(input) {
+  function makeRegexp(input) {
     return new RegExp(input, 'g');
   }
 
-  function _convertToHtml(text) {
+  function convertToHtml(text) {
     return $sce.trustAsHtml(text);
   }
 
-  function _splitAroundMatches(text,regex){
+  function convertToObjectsWithType(textSection,matchType, resultArray){
+    textSection.split('').forEach(function(el){
+      resultArray.push({ type: matchType, text: el});
+    });
+  }
+
+  function splitAroundMatches(text,regex){
     return text.replace(regex,function(match){
       return '∞' + match + '∞';
     }).split('∞');
   }
-
 }]);

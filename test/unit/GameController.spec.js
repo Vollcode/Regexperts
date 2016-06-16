@@ -26,14 +26,14 @@ describe('GameController', function(){
   beforeEach(function(){
     httpBackend.expectGET("/levels/levels.json").respond(apiResponse);
     game.nextLevel(0);
-    httpBackend.flush()
-  })
+    httpBackend.flush();
+  });
 
   describe('#nextLevel', function() {
     it('can change to level 2', function () {
       httpBackend.expectGET("/levels/levels.json").respond(apiResponse);
       game.nextLevel(1);
-      httpBackend.flush()
+      httpBackend.flush();
       expect(game.currentLevel.number).toEqual(2);
     });
 

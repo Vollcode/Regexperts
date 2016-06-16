@@ -34,6 +34,17 @@ describe('HighlightService', function() {
       ];
       expect(HighlightService.getLetterMatchType(text, target, 'different')).toEqual(output);
     });
+
+    it('if no matches all text are marked as plain',function(){
+        target = "\\d";
+        output = [
+          {text: 'a', type: 'plain'},
+          {text: 'b', type: 'plain'},
+          {text: 'c', type: 'plain'},
+          {text: 'b', type: 'plain'}
+        ];
+        expect(HighlightService.getLetterMatchType(text, target, 'different')).toEqual(output);
+    });
   });
 
   describe('#compareLetterMatchType',function(){
