@@ -20,6 +20,7 @@ describe("regexpert", function(){
     expect($('p#points').isDisplayed()).toBe(true);
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
+    expect($('p#points').getText()).toEqual('Points: 10');
     expect($('section#level-number').getText()).toEqual('Level: 2');
     expect($('button#next-level').isDisplayed()).toBe(false);
   });
