@@ -36,9 +36,19 @@ describe('GameController', function(){
       httpBackend.flush();
       expect(game.currentLevel.number).toEqual(2);
     });
+  });
 
+  describe('#incrementScore', function() {
     it('starts with zero points', function(){
       expect(game.currentPoints).toEqual(0);
+    });
+
+    it('increments points by 10 when level is beaten', function() {
+      httpBackend.expectGET("/levels/levels.json").respond(apiResponse);
+      game.nextLevel(1);
+      httpBackend.flush();
+      game.incrementScore();
+      expect(game.currentPoints).toEqual(10);
     });
   });
 

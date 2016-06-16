@@ -22,7 +22,7 @@
 
     <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
 
-    <button id="next-level" ng-show="game.isMatch(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number)">Next level</button>
+    <button id="next-level" ng-show="game.isMatch(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number); game.incrementScore();">Next level</button>
 
     <p id="target">{{game.currentLevel.target}}</p>
 

@@ -5,6 +5,7 @@ angular.module('regexpert')
 
   vm.isMatch = isMatch;
   vm.nextLevel = nextLevel;
+  vm.incrementScore = incrementScore;
   vm.multiHighlight = HighlightService.multiHighlight;
   vm.currentPoints = 0;
 
@@ -19,6 +20,10 @@ angular.module('regexpert')
     LevelService.getLevel(currentLevelNumber + 1).then(function(response) {
       vm.currentLevel = response;
     });
+  }
+
+  function incrementScore() {
+    return vm.currentPoints += 10;
   }
 
   function _makeRegexp(input) {
