@@ -15,8 +15,7 @@
   <body ng-controller="GameController as game" ng-init="game.nextLevel(0)">
     <h1>Best game ever</h1>
     <section id="level-number">Level: {{game.currentLevel.number}}</section>
-    <input id="user-input" type="text" data-ng-model="input">
-    <a ng-click="input = ''">X</a>
+    <input id="user-input" type="text" ng-model="input">
     <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)">
     </p>
 
