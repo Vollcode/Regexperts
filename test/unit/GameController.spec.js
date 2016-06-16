@@ -36,7 +36,17 @@ describe('GameController', function(){
       httpBackend.flush();
       expect(game.currentLevel.number).toEqual(2);
     });
+  });
 
+  describe('#incrementScore', function() {
+    it('starts with zero points', function(){
+      expect(game.currentPoints).toEqual(0);
+    });
+
+    it('increments points by 10 when level is beaten', function() {
+      game.incrementScore();
+      expect(game.currentPoints).toEqual(10);
+    });
   });
 
   describe('#isMatch',function(){
@@ -48,6 +58,4 @@ describe('GameController', function(){
       expect(game.isMatch('bad input')).toEqual(false);
     });
   });
-
-
 });
