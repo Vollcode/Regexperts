@@ -9,22 +9,27 @@
     <script src="js/services/LevelService.js"></script>
     <script src="js/factories/LevelFactory.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans:500italic,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <link rel="stylesheet" href="/css/stylesheet.css">
     <title>Regexperts</title>
   </head>
   <body ng-controller="GameController as game" ng-init="game.nextLevel(0)">
-    <h1>Best game ever</h1>
-    <p id="points">Points: {{game.currentPoints}}</p>
-    <section id="level-number">Level: {{game.currentLevel.number}}</section>
-    <input id="user-input" type="text" ng-model="input">
-    <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)">
-    </p>
+    <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    <div class="container">
+      <h1>Best game ever</h1>
+      <p id="points">Points: {{game.currentPoints}}</p>
+      <section id="level-number">Level: {{game.currentLevel.number}}</section>
+      <input id="user-input" type="text" ng-model="input">
+      <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)">
+      </p>
 
-    <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
+      <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
 
-    <button id="next-level" ng-show="game.isMatch(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number); game.incrementScore();">Next level</button>
+      <button id="next-level" ng-show="game.isMatch(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number)">Next level</button>
 
-    <p id="target">{{game.currentLevel.target}}</p>
-
+      <p id="target">{{game.currentLevel.target}}</p>
+    </div>
   </body>
 </html>
