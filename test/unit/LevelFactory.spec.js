@@ -4,7 +4,7 @@ describe('LevelFactory', function(){
   var level;
 
   beforeEach(inject(function(LevelFactory) {
-    level = new LevelFactory({id: 1, text:"Hiya there buddy 33", target: "\\d.", mission: "This is your mission"});
+    level = new LevelFactory({id: 1, number: 1, text:"Hiya there buddy 33", target: "\\d.", mission: "This is your mission"});
   }));
 
   it('has the correct level number', function(){
