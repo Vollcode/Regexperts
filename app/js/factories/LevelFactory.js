@@ -6,6 +6,7 @@ angular.module('regexpert')
      this.text = levelProperties.text;
      this.target = levelProperties.target;
      this.mission = levelProperties.mission;
+     this.keyStrokeLimit = levelProperties.keyStrokeLimit;
    };
 
    Level.prototype.isComplete = function (search) {

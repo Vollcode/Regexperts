@@ -24,7 +24,7 @@
         <p id="points">Points: {{game.GameService.getScore()}}</p>
         <section id="level-number">Mission: {{game.currentLevel.number}}</section>
         <p id="mission-text">{{game.currentLevel.mission}}</p>
-        <section id="key-strokes">{{game.keyStrokeLog}}</section>
+        <section id="keystrokes-remaining">{{game.currentLevel.keyStrokeLimit - game.keyStrokeLog}}</section>
         <input id="user-input" type="text" ng-model="input" ng-keypress="game.incrementKeyStrokes($event.code)">
         <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)"></p>
         <span id="win-message">{{game.currentLevel.isComplete(input) ? "WINNER" : ""}}</span>
