@@ -6,13 +6,17 @@ describe('GameController', function(){
 
   var apiResponse = {
         id:     1,
+        number: 1,
         text:   "Hiya there buddy",
-        target: "ya"
+        target: "ya",
+        keyStrokeLimit: 50
       };
   var apiResponse2 = {
         id:     2,
+        number: 2,
         text:   "Hiya there buddy",
-        target: "ya"
+        target: "ya",
+        keyStrokeLimit: 45
       };
 
   beforeEach(inject(function($controller, $sce, $httpBackend){
