@@ -6,8 +6,10 @@ angular.module('regexpert')
   vm.isMatch = isMatch;
   vm.nextLevel = nextLevel;
   vm.incrementScore = incrementScore;
+  vm.incrementKeyStrokes = incrementKeyStrokes;
   vm.multiHighlight = HighlightService.multiHighlight;
   vm.currentPoints = 0;
+  vm.keyStrokeLog = 0;
 
   function isMatch(input) {
     var matches = vm.currentLevel.text.match(_makeRegexp(input));
@@ -24,6 +26,10 @@ angular.module('regexpert')
 
   function incrementScore() {
     return vm.currentPoints += 10;
+  }
+
+  function incrementKeyStrokes(input) {
+    if(input !== 'Enter'){return vm.keyStrokeLog += 1;}
   }
 
   function _makeRegexp(input) {
