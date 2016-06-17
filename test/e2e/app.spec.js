@@ -33,7 +33,6 @@ describe("regexpert", function(){
 
   it('a level can be beaten', function(){
     expect($('p#points').isDisplayed()).toBe(true);
-    expect($('p#mission-text').isDisplayed()).toBe(true);
     expect($('p#mission-text').getText()).toEqual('This is your mission');
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
