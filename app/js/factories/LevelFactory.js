@@ -2,7 +2,7 @@ angular.module('regexpert')
        .factory('LevelFactory', function() {
 
    var Level = function(levelProperties) {
-     this.number = levelProperties.id;
+     this.number = levelProperties.number;
      this.text = levelProperties.text;
      this.target = levelProperties.target;
      this.mission = levelProperties.mission;
