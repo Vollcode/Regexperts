@@ -4,7 +4,11 @@ describe('LevelFactory', function(){
   var level;
 
   beforeEach(inject(function(LevelFactory) {
+<<<<<<< HEAD
     level = new LevelFactory({id: 1, text:"Hi there buddy 33", target: "\\d."});
+=======
+    level = new LevelFactory({id: 1, text:"Hiya there buddy", target: "ya", mission: "This is your mission"});
+>>>>>>> 10f05c571895c086db1633f0ef1ad58c34f1eec9
   }));
 
   it('has the correct level number', function(){
@@ -31,6 +35,13 @@ describe('LevelFactory', function(){
     it('returns false when target creates no matches', function(){
       expect(level.isComplete("21")).toEqual(false);
     });
+<<<<<<< HEAD
   });
 
+=======
+
+    it('has the correct mission text', function() {
+      expect(level.mission).toEqual('This is your mission');
+    });
+>>>>>>> 10f05c571895c086db1633f0ef1ad58c34f1eec9
 });

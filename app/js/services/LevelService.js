@@ -8,7 +8,6 @@ angular.module('regexpert')
     return $http.get(url + levelNumber).then(function(response){
       return new LevelFactory(response.data);
     });
-
   }
 
 }]);

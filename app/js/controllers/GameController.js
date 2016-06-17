@@ -17,7 +17,7 @@ angular.module('regexpert')
   }
 
   function incrementKeyStrokes(input) {
-    if(input !== 'Enter'){return vm.keyStrokeLog += 1;}
+    if(input !== 'Enter'){vm.keyStrokeLog += 1;}
   }
 
   function _makeRegexp(input) {
