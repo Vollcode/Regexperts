@@ -21,6 +21,7 @@ angular.module('regexpert')
   function nextLevel(currentLevelNumber) {
     LevelService.getLevel(currentLevelNumber + 1).then(function(response) {
       vm.currentLevel = response;
+      vm.keyStrokeLog = 0;
     });
   }
 
