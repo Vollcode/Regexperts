@@ -5,6 +5,7 @@ angular.module('regexpert')
            this.number = levelProperties.id;
            this.text = levelProperties.text;
            this.target = levelProperties.target;
+           this.mission = levelProperties.mission;
          };
          return level;
 });
