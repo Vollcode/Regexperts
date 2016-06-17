@@ -4,7 +4,7 @@ describe('LevelService', function(){
 
   var LevelService, LevelFactory, httpBackend, url, response;
 
-  url = 'https://regexperts-back.herokuapp.com/levels/1'
+  url = 'https://regexperts-back.herokuapp.com/levels/1';
   response = {
         id:     1,
         text:   "Hiya there buddy",

@@ -12,55 +12,27 @@
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans:500italic,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <link rel="stylesheet" href="/css/stylesheet.css">
     <title>Regexperts</title>
   </head>
   <body ng-controller="GameController as game" ng-init="game.nextLevel(0)">
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <div class="row">
-      <div class="col s9">
-        <h3>Best game ever</h3>
-        <p id="points">Points: {{game.GameService.getScore()}}</p>
-        <section id="level-number">Mission: {{game.currentLevel.number}}</section>
-        <p id="mission-text">{{game.currentLevel.mission}}</p>
-        <section id="key-strokes">{{game.keyStrokeLog}}</section>
-        <input id="user-input" type="text" ng-model="input" ng-keypress="game.incrementKeyStrokes($event.code)">
-        <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)"></p>
-        <span id="win-message">{{game.currentLevel.isComplete(input) ? "WINNER" : ""}}</span>
-        <button id="next-level" ng-show="game.currentLevel.isComplete(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number); game.GameService.updateScore(10);">Next level</button>
-        <p id="target">{{game.currentLevel.target}}</p>
+      <div class="row">
+        <div class="col s9">
+          <h3>Best game ever</h3>
+          <p id="points">Points: {{game.GameService.getScore()}}</p>
+          <section id="level-number">Mission: {{game.currentLevel.number}}</section>
+          <p id="mission-text">{{game.currentLevel.mission}}</p>
+          <section id="key-strokes">{{game.keyStrokeLog}}</section>
+          <input id="user-input" type="text" ng-model="input" ng-keypress="game.incrementKeyStrokes($event.code)">
+          <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)"></p>
+          <span id="win-message">{{game.currentLevel.isComplete(input) ? "WINNER" : ""}}</span>
+          <button id="next-level" ng-show="game.currentLevel.isComplete(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number); game.GameService.updateScore(10);">Next level</button>
+          <p id="target">{{game.currentLevel.target}}</p>
+        </div>
       </div>
       <div class="col s3">
-        <table id="nav-mobile" class="highlight side-nav fixed">
-          <thead>
-            <tr>
-              <th>Regex</th>
-              <th>Effect</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>\d</td>
-              <td>Selects numeric chararcters</td>
-            </tr>
-            <tr>
-              <td>\s</td>
-              <td>Selects only white spaces</td>
-            </tr>
-            <tr>
-              <td>^</td>
-              <td>Start of string, or start of line in multi-line pattern</td>
-            </tr>
-            <tr>
-              <td>\Z</td>
-              <td>End of string</td>
-            </tr>
-            <tr>
-              <td>\b</td>
-              <td>Word boundary</td>
-          </tbody>
-        </table>
+        <div ng-include="'partials/cheatsheet.html'">
+        </div>
       </div>
     </div>
   </body>
