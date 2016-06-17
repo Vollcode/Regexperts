@@ -13,6 +13,10 @@ angular.module('regexpert')
      return findOutput(this.text, this.target) === findOutput(this.text, search);
    };
 
+   Level.prototype.reduceKeyLimit = function (input) {
+     if(input !== 'Enter'){this.keyStrokeLimit --;}
+   };
+
    return Level;
 
    function makeRegexp(input) {
