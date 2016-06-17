@@ -5,9 +5,10 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/GameController.js"></script>
-    <script src="js/services/HighlightService.js"></script>
-    <script src="js/services/LevelService.js"></script>
     <script src="js/factories/LevelFactory.js"></script>
+    <script src="js/services/GameService.js"></script>
+    <script src="js/services/LevelService.js"></script>
+    <script src="js/services/HighlightService.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans:500italic,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
@@ -20,14 +21,14 @@
     <div class="row">
       <div class="col s9">
         <h3>Best game ever</h3>
-        <p id="points">Points: {{game.currentPoints}}</p>
+        <p id="points">Points: {{game.GameService.getScore()}}</p>
         <section id="level-number">Mission: {{game.currentLevel.number}}</section>
         <p id="mission-text">{{game.currentLevel.mission}}</p>
         <section id="key-strokes">{{game.keyStrokeLog}}</section>
         <input id="user-input" type="text" ng-model="input" ng-keypress="game.incrementKeyStrokes($event.code)">
         <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)"></p>
-        <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
-        <button id="next-level" ng-show="game.isMatch(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number); game.incrementScore();">Next level</button>
+        <span id="win-message">{{game.currentLevel.isComplete(input) ? "WINNER" : ""}}</span>
+        <button id="next-level" ng-show="game.currentLevel.isComplete(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number); game.GameService.updateScore(10);">Next level</button>
         <p id="target">{{game.currentLevel.target}}</p>
       </div>
       <div class="col s3">

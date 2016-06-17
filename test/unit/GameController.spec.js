@@ -43,27 +43,6 @@ describe('GameController', function(){
     });
   });
 
-  describe('#incrementScore', function() {
-    it('starts with zero points', function(){
-      expect(game.currentPoints).toEqual(0);
-    });
-
-    it('increments points by 10 when level is beaten', function() {
-      game.incrementScore();
-      expect(game.currentPoints).toEqual(10);
-    });
-  });
-
-  describe('#isMatch',function(){
-    it('when input matches target returns true',function(){
-      expect(game.isMatch('ya')).toEqual(true);
-    });
-
-    it('when input doesnt match target returns false',function(){
-      expect(game.isMatch('bad input')).toEqual(false);
-    });
-  });
-
   describe('#incrementKeyStrokes', function(){
     it('increases the keyStrokeLog by 1', function(){
       game.incrementKeyStrokes('Anything');
