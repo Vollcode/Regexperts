@@ -22,7 +22,8 @@
         <h3>Best game ever</h3>
         <p id="points">Points: {{game.currentPoints}}</p>
         <section id="level-number">Level: {{game.currentLevel.number}}</section>
-        <input id="user-input" type="text" ng-model="input">
+        <section id="key-strokes">{{game.keyStrokeLog}}</section>
+        <input id="user-input" type="text" ng-model="input" ng-keypress="game.incrementKeyStrokes($event.code)">
         <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)"></p>
         <span id="win-message">{{game.isMatch(input) ? "WINNER" : ""}}</span>
         <button id="next-level" ng-show="game.isMatch(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number); game.incrementScore();">Next level</button>
