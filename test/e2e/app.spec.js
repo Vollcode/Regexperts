@@ -42,4 +42,12 @@ describe("regexpert", function(){
     expect($('button#next-level').isDisplayed()).toBe(false);
   });
 
+
+  it('keystrokes used are logged', function(){
+    $('input#user-input').sendKeys('abc');
+    expect($('section#key-strokes').getText()).toEqual('3');
+    $('input#user-input').sendKeys('def');
+    expect($('section#key-strokes').getText()).toEqual('6');
+  });
+
 });
