@@ -2,20 +2,17 @@ describe('GameController', function(){
   beforeEach(module('regexpert'));
 
   var game, sce, level2, httpBackend;
+  var url = 'https://regexperts-back.herokuapp.com/levels/'
   var apiResponse = {
-      levels:[
-        {
-          number:   1,
-          text:     "Hiya there buddy",
-          target:   "ya"
-        },
-        {
-          number:   2,
-          text:     "Sorry there buddy can't do that",
-          target:   "buddy"
-        }
-      ]
-    };
+        id:     1,
+        text:   "Hiya there buddy",
+        target: "ya"
+      };
+  var apiResponse2 = {
+        id:     2,
+        text:   "Hiya there buddy",
+        target: "ya"
+      };
 
   beforeEach(inject(function($controller, $sce, $httpBackend){
     game = $controller('GameController');
@@ -24,14 +21,14 @@ describe('GameController', function(){
   }));
 
   beforeEach(function(){
-    httpBackend.expectGET("/levels/levels.json").respond(apiResponse);
+    httpBackend.expectGET(url + '1').respond(apiResponse);
     game.nextLevel(0);
     httpBackend.flush();
   });
 
   describe('#nextLevel', function() {
     it('can change to level 2', function () {
-      httpBackend.expectGET("/levels/levels.json").respond(apiResponse);
+      httpBackend.expectGET(url + '2').respond(apiResponse2);
       game.nextLevel(1);
       httpBackend.flush();
       expect(game.currentLevel.number).toEqual(2);

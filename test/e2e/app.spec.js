@@ -2,11 +2,26 @@ describe("regexpert", function(){
 
   var levelText, target;
 
-  beforeEach(function(){
+  var mock = require('protractor-http-mock');
+
+  beforeEach(function() {
+    mock([{request: {
+        path: 'https://regexperts-back.herokuapp.com/levels/1',
+        method: 'GET'
+      },
+      response: {
+        data:{id: 1, text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b"}
+      }
+    }]);
+  });
+
+  beforeEach(function() {
     browser.get('/');
-    levelText = 'Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.';
-    levelText2 = 'Some kind of nonsense';
-    });
+  });
+
+  afterEach(function() {
+    mock.teardown();
+  });
 
   it('highlights text based on input', function(){
     $('input#user-input').sendKeys("[a-p]");
@@ -20,6 +35,7 @@ describe("regexpert", function(){
     expect($('p#points').isDisplayed()).toBe(true);
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
+    expect($('p#points').getText()).toEqual('Points: 10');
     expect($('section#level-number').getText()).toEqual('Level: 2');
     expect($('button#next-level').isDisplayed()).toBe(false);
   });
