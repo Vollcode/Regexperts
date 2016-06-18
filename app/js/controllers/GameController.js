@@ -7,6 +7,14 @@ angular.module('regexpert')
   vm.multiHighlight = HighlightService.multiHighlight;
   vm.GameService = GameService;
 
+  activate();
+
+  function activate(){
+    LevelService.getLevel(1).then(function(response) {
+      vm.currentLevel = response;
+    });
+  }
+
   function nextLevel(currentLevelNumber) {
     LevelService.getLevel(currentLevelNumber + 1).then(function(response) {
       vm.currentLevel = response;
