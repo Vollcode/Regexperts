@@ -4,6 +4,7 @@ describe('GameController', function(){
   var game, sce, level2, httpBackend;
   var url = 'https://regexperts-back.herokuapp.com/levels/';
 
+
   var apiResponse = {
         id:     1,
         number: 1,
@@ -25,7 +26,9 @@ describe('GameController', function(){
     httpBackend = $httpBackend;
   }));
 
+
   beforeEach(function(){
+    httpBackend.whenGET(/partials.*/).respond(200, '');
     httpBackend.expectGET(url + '1').respond(apiResponse);
     httpBackend.flush();
   });
