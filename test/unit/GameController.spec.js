@@ -10,14 +10,14 @@ describe('GameController', function(){
         number: 1,
         text:   "Hiya there buddy",
         target: "ya",
-        keyStrokeLimit: 50
+        keystrokelimit: 50
       };
   var apiResponse2 = {
         id:     2,
         number: 2,
         text:   "Hiya there buddy",
         target: "ya",
-        keyStrokeLimit: 45
+        keystrokelimit: 45
       };
 
   beforeEach(inject(function($controller, $sce, $httpBackend){
@@ -36,6 +36,15 @@ describe('GameController', function(){
   describe('#activate', function(){
     it('starts a new game on initialisation', function(){
       expect(game.currentLevel.number).toEqual(1);
+    });
+  });
+
+  describe('', function(){
+    it('', function(){
+      for(var i = 0; i < 50; i++){
+        game.currentLevel.reduceKeyLimit();
+      }
+      expect(game.currentLevel.isLost()).toEqual(true);
     });
   });
 

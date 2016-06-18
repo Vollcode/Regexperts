@@ -11,7 +11,7 @@ describe("regexpert", function(){
         method: 'GET'
         },
         response: {
-          data:{id: 1, number: 1, mission: "This is your mission", text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b", keyStrokeLimit: 50}
+          data:{id: 1, number: 1, mission: "This is your mission", text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b", keystrokelimit: 50}
         }
       },
         {request: {
@@ -19,7 +19,7 @@ describe("regexpert", function(){
           method: 'GET'
         },
         response: {
-          data:{id: 2, number: 2, mission: "This is your mission", text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b", keyStrokeLimit: 45}
+          data:{id: 2, number: 2, mission: "This is your mission", text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b", keystrokelimit: 5}
         }
       }
     ]);
@@ -49,6 +49,14 @@ describe("regexpert", function(){
     expect($('section#points').getText()).toMatch('10');
     expect($('section#level-number').getText()).toMatch('2');
     expect($('button#next-level').isDisplayed()).toBe(false);
+  });
+
+  it('when keylimit reaches 0 restart at first level', function(){
+    $('input#user-input').sendKeys('\\b[a-z]..\\b');
+    $('button#next-level').click();
+    $('input#user-input').sendKeys('abcde');
+    expect(browser.getLocationAbsUrl()).toEqual('/gameOver');
+
   });
 
 

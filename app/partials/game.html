@@ -3,7 +3,7 @@
     <h3>Best game ever</h3>
     <section id="points">Points: {{game.GameService.getScore()}}</section>
     <section id="level-number">Mission: {{game.currentLevel.number}}</section>
-    <section id="keystrokes-remaining">Keystrokes remaining: {{game.currentLevel.keyStrokeLimit}}</section>
+    <section id="keystrokes-remaining">Keystrokes remaining: {{game.currentLevel.keystrokelimit}}</section>
     <p id="mission-text">{{game.currentLevel.mission}}</p>
     <input id="user-input" type="text" ng-model="input" ng-keypress="game.currentLevel.reduceKeyLimit($event.code)">
     <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)"></p>
