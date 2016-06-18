@@ -7,9 +7,9 @@ function GameController(HighlightService, LevelService, GameService){
 
   var vm = this;
 
+  vm.GameService = GameService;
   vm.nextLevel = nextLevel;
   vm.multiHighlight = HighlightService.multiHighlight;
-  vm.GameService = GameService;
 
   activate();
 

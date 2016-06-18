@@ -8,7 +8,7 @@ function LevelFactory() {
     this.text = levelProperties.text;
     this.target = levelProperties.target;
     this.mission = levelProperties.mission;
-    this.keyStrokeLimit = levelProperties.keyStrokeLimit;
+    this.keyStrokeLimit = levelProperties.keystrokelimit;
   };
 
   Level.prototype.isComplete = function (search) {
