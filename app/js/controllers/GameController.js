@@ -1,5 +1,9 @@
 angular.module('regexpert')
-       .controller('GameController',['HighlightService', 'LevelService', 'GameService', function(HighlightService, LevelService, GameService){
+       .controller('GameController',GameController);
+
+GameController.$inject = ['HighlightService', 'LevelService', 'GameService'];
+
+function GameController(HighlightService, LevelService, GameService){
 
   var vm = this;
 
@@ -20,8 +24,4 @@ angular.module('regexpert')
       vm.currentLevel = response;
     });
   }
-
-  function _makeRegexp(input) {
-    return new RegExp(input, 'g');
-  }
-}]);
+}
