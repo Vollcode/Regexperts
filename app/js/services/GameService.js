@@ -1,9 +1,10 @@
-angular.module('regexpert').service('GameService', function(){
+angular.module('regexpert').service('GameService', GameService);
+
+function GameService(){
 
   this.score = 0;
   this.getScore = getScore;
   this.updateScore = updateScore;
-
 
   function getScore() {
     return this.score;
@@ -12,5 +13,4 @@ angular.module('regexpert').service('GameService', function(){
   function updateScore(amount){
     this.score += amount;
   }
-
-});
+}
