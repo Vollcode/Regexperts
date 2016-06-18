@@ -27,6 +27,18 @@ describe('LevelFactory', function(){
     expect(level.keyStrokeLimit).toEqual(50);
   });
 
+  describe('#reduceKeyLimit', function(){
+    it('reduces the keyStroke limit by 1', function(){
+      level.reduceKeyLimit('something');
+      expect(level.keyStrokeLimit).toEqual(49);
+    });
+
+    it('does not reduce if keystroke is "enter"',function(){
+      level.reduceKeyLimit('Enter');
+      expect(level.keyStrokeLimit).toEqual(50);
+    });
+  });
+
 
   describe('#isComplete', function(){
     it('returns true when input matches the target', function(){
