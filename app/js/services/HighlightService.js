@@ -1,5 +1,9 @@
 angular.module('regexpert')
-       .service('HighlightService', ['$sce', function($sce) {
+       .service('HighlightService', HighlightService);
+
+HighlightService.$inject = ['$sce'];
+
+function HighlightService($sce) {
 
   this.getLetterMatchType = getLetterMatchType;
   this.compareLetterMatchType = compareLetterMatchType;
@@ -72,4 +76,4 @@ angular.module('regexpert')
       return '∞' + match + '∞';
     }).split('∞');
   }
-}]);
+}

@@ -1,7 +1,12 @@
 angular.module('regexpert')
-       .service('LevelService', ['LevelFactory', '$http', function(LevelFactory, $http){
+       .service('LevelService', LevelService);
+
+LevelService.$inject = ['LevelFactory', '$http'];
+
+function LevelService(LevelFactory, $http){
 
   var url = 'https://regexperts-back.herokuapp.com/levels/';
+
   this.getLevel = getLevel;
 
   function getLevel(levelNumber){
@@ -9,5 +14,4 @@ angular.module('regexpert')
       return new LevelFactory(response.data);
     });
   }
-
-}]);
+}

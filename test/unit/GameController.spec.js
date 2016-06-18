@@ -27,8 +27,13 @@ describe('GameController', function(){
 
   beforeEach(function(){
     httpBackend.expectGET(url + '1').respond(apiResponse);
-    game.nextLevel(0);
     httpBackend.flush();
+  });
+
+  describe('#activate', function(){
+    it('starts a new game on initialisation', function(){
+      expect(game.currentLevel.number).toEqual(1);
+    });
   });
 
   describe('#nextLevel', function() {

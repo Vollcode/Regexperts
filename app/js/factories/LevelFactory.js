@@ -1,31 +1,32 @@
 angular.module('regexpert')
-       .factory('LevelFactory', function() {
+       .factory('LevelFactory', LevelFactory);
 
-   var Level = function(levelProperties) {
-     this.number = levelProperties.number;
-     this.text = levelProperties.text;
-     this.target = levelProperties.target;
-     this.mission = levelProperties.mission;
-     this.keyStrokeLimit = levelProperties.keyStrokeLimit;
-   };
+function LevelFactory() {
 
-   Level.prototype.isComplete = function (search) {
-     return findOutput(this.text, this.target) === findOutput(this.text, search);
-   };
+  var Level = function(levelProperties) {
+    this.number = levelProperties.number;
+    this.text = levelProperties.text;
+    this.target = levelProperties.target;
+    this.mission = levelProperties.mission;
+    this.keyStrokeLimit = levelProperties.keystrokelimit;
+  };
 
-   Level.prototype.reduceKeyLimit = function (input) {
-     if(input !== 'Enter'){this.keyStrokeLimit --;}
-   };
+  Level.prototype.isComplete = function (search) {
+    return findOutput(this.text, this.target) === findOutput(this.text, search);
+  };
 
-   return Level;
+  Level.prototype.reduceKeyLimit = function (input) {
+    if(input !== 'Enter'){this.keyStrokeLimit --;}
+  };
 
-   function makeRegexp(input) {
-     return new RegExp(input, 'g');
-   }
+  return Level;
 
-   function findOutput(text, input){
-     var output = text.match(makeRegexp(input)) || [];
-     return output.join('');
-   }
+  function makeRegexp(input) {
+    return new RegExp(input, 'g');
+  }
 
-});
+  function findOutput(text, input){
+    var output = text.match(makeRegexp(input)) || [];
+    return output.join('');
+  }
+}
