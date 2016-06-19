@@ -1,18 +1,19 @@
 <div class="row">
-  <div class="col s9">
+  <div class="col s9 left">
     <h3>Best game ever</h3>
     <section id="points">Points: {{game.GameService.getScore()}}</section>
-    <section id="level-number">Mission: {{game.currentLevel.number}}</section>
-    <section id="keystrokes-remaining">Keystrokes remaining: {{game.currentLevel.keystrokelimit}}</section>
-    <p id="mission-text">{{game.currentLevel.mission}}</p>
-    <input id="user-input" type="text" ng-model="input" ng-keypress="game.currentLevel.reduceKeyLimit($event.code)">
-    <p id="level-text" ng-bind-html="game.multiHighlight(game.currentLevel.text, game.currentLevel.target, input)"></p>
-    <span id="win-message">{{game.currentLevel.isComplete(input) ? "WINNER" : ""}}</span>
-    <button id="next-level" ng-show="game.currentLevel.isComplete(input)" ng-click="input = ''; game.nextLevel(game.currentLevel.number); game.GameService.updateScore(10);">Next level</button>
-    <p id="target">{{game.currentLevel.target}}</p>
+    <section id="level-number">Mission: {{game.level.number}}</section>
+    <section id="keystrokes-remaining">Keystrokes remaining: {{game.level.keystrokelimit}}</section>
+    <p id="mission-text">{{game.level.mission}}</p>
+    <input id="user-input" type="text" ng-model="input" ng-keypress="game.level.reduceKeyLimit($event.code)" ng-change="game.evaluate()">
+    <p id="level-text" ng-bind-html="game.multiHighlight(game.level.text, game.level.target, input)"></p>
+    <span id="win-message">{{game.level.isComplete(input) ? "WINNER" : ""}}</span>
+    <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.nextLevel()" >Next Level</button>
+    <p id="target">{{game.level.target}}</p>
+
   </div>
-  <div class="col s3">
-    <div ng-include="'partials/cheatsheet.html'">
-    </div>
+  <div class="col s3 right">
+    <!-- <div ng-include="'partials/cheatsheet.html'">
+    </div> -->
   </div>
 </div>
