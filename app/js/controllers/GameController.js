@@ -1,9 +1,9 @@
 angular.module('regexpert')
        .controller('GameController',GameController);
 
-GameController.$inject = ['HighlightService', 'LevelService', 'GameService'];
+GameController.$inject = ['HighlightService', 'LevelService', 'GameService', '$state'];
 
-function GameController(HighlightService, LevelService, GameService){
+function GameController(HighlightService, LevelService, GameService, $state){
 
   var vm = this;
 
@@ -15,24 +15,20 @@ function GameController(HighlightService, LevelService, GameService){
   activate();
 
   function activate(){
-    startGame();
+    LevelService.getLevel(1).then(setLevel);
   }
 
   function evaluate() {
     if (vm.level.isLost()) {
-      startGame();
+      $state.go('gameOver');
     }
   }
 
   function nextLevel() {
-    LevelService.getLevel(vm.level.number + 1).then(function(response) {
-      vm.level = response;
-    });
+    LevelService.getLevel(vm.level.number + 1).then(setLevel);
   }
 
-  function startGame() {
-    LevelService.getLevel(1).then(function(response) {
-      vm.level = response;
-    });
+  function setLevel(response) {
+    vm.level = response;
   }
 }

@@ -8,7 +8,7 @@
     <input id="user-input" type="text" ng-model="input" ng-keypress="game.level.reduceKeyLimit($event.code)" ng-change="game.evaluate()">
     <p id="level-text" ng-bind-html="game.multiHighlight(game.level.text, game.level.target, input)"></p>
     <span id="win-message">{{game.level.isComplete(input) ? "WINNER" : ""}}</span>
-    <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.nextLevel()" >Next Level</button>
+    <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.nextLevel(); game.GameService.updateScore(10)">Next Level</button>
     <p id="target">{{game.level.target}}</p>
 
   </div>

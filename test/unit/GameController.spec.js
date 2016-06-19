@@ -1,7 +1,7 @@
 describe('GameController', function(){
   beforeEach(module('regexpert'));
 
-  var game, httpBackend;
+  var game, httpBackend, state;
   var url = 'https://regexperts-back.herokuapp.com/levels/';
 
 
@@ -17,13 +17,13 @@ describe('GameController', function(){
         number: 2,
         text:   "Hiya there buddy",
         target: "ya",
-        keystrokelimit: 15
+        keystrokelimit: 50
       };
 
-  beforeEach(inject(function($controller, $sce, $httpBackend){
+  beforeEach(inject(function($controller, $httpBackend, $state){
     game = $controller('GameController');
-    sce = $sce;
     httpBackend = $httpBackend;
+    state = $state;
   }));
 
 
@@ -41,20 +41,13 @@ describe('GameController', function(){
 
   describe('#evaluate', function(){
 
-    beforeEach(function(){
-      game.nextLevel();
-      httpBackend.expectGET(url + '2').respond(level2);
-      httpBackend.flush();
-    });
-
-    it('restarts the game if the keystroke limit reaches 0', function(){
-      for(var i = 0; i < 15; i++){
+    it('changes to gameover screen if key stroke limit reaches 0', function(){
+      for(var i = 0; i < 50; i++){
         game.level.reduceKeyLimit();
       }
-      httpBackend.expectGET(url + '1').respond(level1);
       game.evaluate();
       httpBackend.flush();
-      expect(game.level.number).toEqual(1);
+      expect(state.current.name).toEqual('gameOver');
     });
   });
 

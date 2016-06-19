@@ -56,7 +56,7 @@ describe("regexpert", function(){
     $('button#next-level').click();
     $('input#user-input').sendKeys('abcde');
     expect(browser.getLocationAbsUrl()).toEqual('/gameOver');
-
+    expect($('h3#game-over').getText()).toMatch('You Lose');
   });
 
 
