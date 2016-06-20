@@ -7,26 +7,19 @@ function GameService(){
   this.score = 0;
   this.getScore = getScore;
   this.updateScore = updateScore;
-
-  // function getScore() {
-  //   return this.score;
-  // }
+  this.setScore = setScore;
 
   function updateScore(amount) {
     this.score += amount;
-    self.set(this.score);
+    self.setScore(this.score);
   }
-
-  self.set = function(score) {
-    localStorage.setItem('curentScore', JSON.stringify(score));
-  };
 
   function getScore() {
     return JSON.parse(localStorage.getItem('curentScore'));
   };
 
-  // self.getScore = function() {
-  //   return JSON.parse(localStorage.getItem('curentScore'));
-  // };
+  function setScore(score) {
+    localStorage.setItem('curentScore', JSON.stringify(score));
+  };
 
 }
