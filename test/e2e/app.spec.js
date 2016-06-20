@@ -42,12 +42,12 @@ describe("regexpert", function(){
   });
 
   it('a level can be beaten', function(){
-    expect($('section#points').isDisplayed()).toBe(true);
+    expect($('a#points').isDisplayed()).toBe(true);
     expect($('p#mission-text').getText()).toMatch('This is your mission');
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
-    expect($('section#points').getText()).toMatch('10');
-    expect($('section#level-number').getText()).toMatch('2');
+    expect($('a#points').getText()).toMatch('10');
+    expect($('a#level-number').getText()).toMatch('2');
     expect($('button#next-level').isDisplayed()).toBe(false);
   });
 
@@ -60,11 +60,11 @@ describe("regexpert", function(){
 
 
   it('keystrokes remaining are logged', function(){
-    expect($('section#keystrokes-remaining').isDisplayed()).toBe(true);
+    expect($('a#keystrokes-remaining').isDisplayed()).toBe(true);
     $('input#user-input').sendKeys('abc');
-    expect($('section#keystrokes-remaining').getText()).toMatch('47');
+    expect($('a#keystrokes-remaining').getText()).toMatch('47');
     $('input#user-input').sendKeys('def');
-    expect($('section#keystrokes-remaining').getText()).toMatch('44');
+    expect($('a#keystrokes-remaining').getText()).toMatch('44');
   });
 
 });

@@ -1,15 +1,17 @@
-<div class="row">
-  <div class="col s6 left">
-    <h3>The Snowden Files</h3>
-    <section id="points">Points: {{game.GameService.getScore()}}</section>
-    <section id="level-number">Mission: {{game.level.number}}</section>
-    <section id="keystrokes-remaining">Keystrokes remaining: {{game.level.keystrokelimit}}</section>
-    <p id="mission-text">{{game.level.mission}}</p>
-    <input id="user-input" type="text" ng-model="input" ng-keypress="game.level.reduceKeyLimit($event.code)" ng-change="game.evaluate()">
-    <p id="level-text" ng-bind-html="game.multiHighlight(game.level.text, game.level.target, input)"></p>
-    <span id="win-message">{{game.level.isComplete(input) ? "WINNER" : ""}}</span>
-    <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.nextLevel(); game.GameService.updateScore(10)">Next Level</button>
-    <p id="target">{{game.level.target}}</p>
-
+<nav class="grey darken-4">
+  <div class="nav-wrapper fixed grey darken-2">
+    <ul id="nav-mobile" class="left">
+      <li><a id="level-number">Mission: {{game.level.number}}</a></li>
+      <li><a id="keystrokes-remaining">Keystrokes remaining: {{game.level.keystrokelimit}}</a></li>
+      <li><a id="points">Points: {{game.GameService.getScore()}}</a></li>
+    </ul>
   </div>
+</nav>
+<div class="col s6 left">
+  <p id="mission-text">{{game.level.mission}}</p>
+  <input id="user-input" type="text" ng-model="input" ng-keypress="game.level.reduceKeyLimit($event.code)" ng-change="game.evaluate()">
+  <p id="level-text" ng-bind-html="game.multiHighlight(game.level.text, game.level.target, input)"></p>
+  <span id="win-message">{{game.level.isComplete(input) ? "WINNER" : ""}}</span>
+  <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.nextLevel(); game.GameService.updateScore(10)">Next Level</button>
+  <p id="target">{{game.level.target}}</p>
 </div>
