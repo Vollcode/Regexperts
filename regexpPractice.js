@@ -16,15 +16,12 @@ function labelMatches(array, matches, type){
 }
 
 function splitToLetter(array){
-  return array.reduce(function(arr, section){
-    return section.value.split('').reduce(function(arr, letter){
+  console.log(array);
+  return array.reduce(function(arr,section){
+    return arr.concat(section.value.split('').reduce(function(arr,letter){
       return arr.concat({value: letter, type: section.type});
-      // console.log({value: letter, type: section.type});
-      // console.log(arr.push(letter));
-      // console.log(letter);
-      // arr.push({value: letter, type: section.type});
-    },[]);
-  });
+    },[]));
+  },[]);
 }
 
 function splitAroundMatches(text,regex){
@@ -34,6 +31,8 @@ function splitAroundMatches(text,regex){
 }
 
 
-var matches = str.match(regexp1);
+var matches = str.match(regexp2);
 
-console.log(splitToLetter(labelMatches(splitAroundMatches(str,regexp1),matches,"search")));
+// console.log(labelMatches(splitAroundMatches(str,regexp1),matches,"search"));
+// console.log(splitToLetter(labelMatches(splitAroundMatches(str,regexp1),matches,"search")));
+console.log(splitToLetter(labelMatches(splitAroundMatches(str,regexp2),matches,"target")));
