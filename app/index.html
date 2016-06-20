@@ -11,13 +11,37 @@
     <script src="js/services/GameService.js"></script>
     <script src="js/services/LevelService.js"></script>
     <script src="js/services/HighlightService.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans:500italic,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="/css/stylesheet.css">
     <title>Regexperts</title>
   </head>
   <body ng-controller="GameController as game">
-    <div ui-view></div>
+    <nav class="grey darken-4">
+      <div class="nav-wrapper fixed grey darken-4">
+        <a class="brand-logo left">The Snowden Files</a>
+      </div>
+    </nav>
+    <div class="row">
+        <div ui-view></div>
+
+    </div>
+    <img id="snowden" src="public/snowden-face.png" alt="snows" />
+    <img id="left-hand" src="public/milo-left-bw.png" alt="left" />
+    <img id="right-hand" src="public/milo-right-bw.png" alt="right" />
+    <div class="bottom-bar">
+      <a class="modal-trigger" href="#modal1">browse wiki leaks</a>
+    </div>
+
+    <div id="modal1" class="modal bottom-sheet">
+      <div class="modal-content grey darken-4">
+        <div ng-include src="'partials/_cheatsheet.html'">
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
