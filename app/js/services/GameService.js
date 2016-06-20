@@ -15,11 +15,11 @@ function GameService(){
   }
 
   function getScore() {
-    return JSON.parse(localStorage.getItem('curentScore'));
-  };
+    return JSON.parse(localStorage.getItem('currentScore'));
+  }
 
   function setScore(score) {
-    localStorage.setItem('curentScore', JSON.stringify(score));
-  };
+    localStorage.setItem('currentScore', JSON.stringify(score));
+  }
 
 }

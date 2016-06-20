@@ -5,7 +5,7 @@ describe('GameService', function(){
 
   beforeEach(inject(function(_GameService_){
     GameService = _GameService_;
-    localStorage.setItem('curentScore', JSON.stringify(0));
+    localStorage.setItem('currentScore', JSON.stringify(0));
   }));
 
   it('keeps track of the score',function(){
