@@ -46,7 +46,7 @@ describe("regexpert", function(){
     expect($('p#mission-text').getText()).toMatch('This is your mission');
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
-    expect($('a#points').getText()).toMatch('10');
+    expect($('a#points').getText()).toMatch('39');
     expect($('a#level-number').getText()).toMatch('2');
     expect($('button#next-level').isDisplayed()).toBe(false);
   });

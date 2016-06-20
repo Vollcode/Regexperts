@@ -7,9 +7,9 @@ function GameController(HighlightService, LevelService, GameService, $state){
 
   var vm = this;
 
+  vm.completeLevel = completeLevel;
   vm.GameService = GameService;
   vm.evaluate = evaluate;
-  vm.nextLevel = nextLevel;
   vm.multiHighlight = HighlightService.multiHighlight;
 
   activate();
@@ -24,8 +24,11 @@ function GameController(HighlightService, LevelService, GameService, $state){
     }
   }
 
-  function nextLevel() {
-    LevelService.getLevel(vm.level.number + 1).then(setLevel);
+  function completeLevel() {
+    LevelService.getLevel(vm.level.number + 1)
+      .then(setLevel)
+      .then(GameService.updateScore(vm.level.keystrokelimit));
+      // .then(Materialize.toast("+" + vm.level.keystrokelimit + "pts", 2000));
   }
 
   function setLevel(response) {

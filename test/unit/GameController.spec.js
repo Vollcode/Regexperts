@@ -51,12 +51,19 @@ describe('GameController', function(){
     });
   });
 
-  describe('#nextLevel', function() {
-    it('gets the next level', function () {
+  describe('#completeLevel', function() {
+    beforeEach(function(){
       httpBackend.expectGET(url + '2').respond(level2);
-      game.nextLevel();
+      game.completeLevel();
       httpBackend.flush();
+    });
+
+    it('gets the next level', function() {
       expect(game.level.number).toEqual(2);
+    });
+
+    it('updates the score', function() {
+      expect(game.GameService.score).toEqual(50);
     });
   });
 });
