@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col s9 left">
-    <h3>Best game ever</h3>
+  <div class="col s6 left">
+    <h3>The Snowden Files</h3>
     <section id="points">Points: {{game.GameService.getScore()}}</section>
     <section id="level-number">Mission: {{game.level.number}}</section>
     <section id="keystrokes-remaining">Keystrokes remaining: {{game.level.keystrokelimit}}</section>
@@ -11,9 +11,5 @@
     <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.nextLevel(); game.GameService.updateScore(10)">Next Level</button>
     <p id="target">{{game.level.target}}</p>
 
-  </div>
-  <div class="col s3 right">
-    <!-- <div ng-include="'partials/cheatsheet.html'">
-    </div> -->
   </div>
 </div>

@@ -10,11 +10,39 @@ body{
   background: #1A72CC;
   color: white;
  }
+
 .target.search {
   background: #B0FF9D;
   color: black;
  }
+
+ .bottom-bar{
+   position :absolute;
+   width: 100%;
+   height: 12%;
+   bottom: -10%;
+   background-color: black;
+ }
+
  #nav-mobile {
      right: 0;
      left: inherit;
  }
+ #snowden {
+    height: 100%;
+    position:absolute;
+    top:0%;
+    left:50%;
+}
+#left-hand {
+    height: 50%;
+    position:absolute;
+    bottom: -10%;
+    left:45%;
+}
+#right-hand {
+    height: 48%;
+    position:absolute;
+    bottom: -10%;
+    left:82%;
+}

@@ -11,13 +11,28 @@
     <script src="js/services/GameService.js"></script>
     <script src="js/services/LevelService.js"></script>
     <script src="js/services/HighlightService.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans:500italic,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="/css/stylesheet.css">
     <title>Regexperts</title>
   </head>
   <body ng-controller="GameController as game">
-    <div ui-view></div>
+    <div class="row">
+      <div class="cols s9">
+        <div ui-view></div>
+
+      </div>
+      <div class="cols s3">
+
+        <img id="snowden" src="public/snowden-face.jpg" alt="snows" />
+        <img id="left-hand" src="public/milo-left.png" alt="left" />
+        <img id="right-hand" src="public/milo-right.png" alt="right" />
+        <div class="bottom-bar">
+      </div>
+
+    </div>
   </body>
 </html>
