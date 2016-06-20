@@ -35,7 +35,7 @@ describe("regexpert", function(){
 
   it('highlights text based on input', function(){
     $('input#user-input').sendKeys("[a-p]");
-    expect($('p#level-text').$$('span.plain').first().getText()).toEqual('H');
+    expect($('p#level-text').$$('span.null').first().getText()).toEqual('H');
     expect($('p#level-text').$$('span.search').first().getText()).toEqual('o');
     expect($('p#level-text').$$('span.target').first().getText()).toEqual('i');
     expect($('p#level-text').$$('span.target.search').first().getText()).toEqual('i');
