@@ -11,16 +11,18 @@ table, h4 {
 }
 
 .search {
-  background: #FF803A;
+  background: rgb(196,208,226);
+  color: black;
  }
 
 .target {
-  background: #1A72CC;
+  background: black;
   color: white;
  }
 
 .target.search {
-  background: #B0FF9D;
+  /*background: #86ff69;*/
+  background: #ec8e04;
   color: black;
  }
 
