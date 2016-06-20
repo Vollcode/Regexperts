@@ -20,19 +20,17 @@
     <title>Regexperts</title>
   </head>
   <body ng-controller="GameController as game">
-    <div class="row">
-      <div class="cols s9">
-        <div ui-view></div>
-
+    <div ui-view></div>
+    <img id="snowden" src="public/snowden-face.jpg" alt="snows" />
+    <img id="left-hand" src="public/milo-left.png" alt="left" />
+    <img id="right-hand" src="public/milo-right.png" alt="right" />
+    <div class="bottom-bar"></div>
+    <a class="modal-trigger" href="#modal1">wiki leaks</a>
+    <div id="modal1" class="modal bottom-sheet">
+      <div class="modal-content grey darken-4">
+        <div ng-include src="'partials/_cheatsheet.html'">
+        </div>
       </div>
-      <div class="cols s3">
-
-        <img id="snowden" src="public/snowden-face.jpg" alt="snows" />
-        <img id="left-hand" src="public/milo-left.png" alt="left" />
-        <img id="right-hand" src="public/milo-right.png" alt="right" />
-        <div class="bottom-bar">
-      </div>
-
     </div>
   </body>
 </html>

@@ -2,6 +2,16 @@ body{
   font-family: 'Fira Sans', sans-serif;
 }
 
+table {
+  color: white;
+}
+
+
+
+table, h4 {
+  color: white;
+}
+
 .search {
   background: #FF803A;
  }
