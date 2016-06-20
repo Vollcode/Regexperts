@@ -31,4 +31,5 @@ function GameController(HighlightService, LevelService, GameService, $state){
   function setLevel(response) {
     vm.level = response;
   }
+
 }
