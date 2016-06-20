@@ -8,7 +8,7 @@ function LevelFactory() {
     this.text = levelProperties.text;
     this.target = levelProperties.target;
     this.mission = levelProperties.mission;
-    this.keyStrokeLimit = levelProperties.keystrokelimit;
+    this.keystrokelimit = levelProperties.keystrokelimit;
   };
 
   Level.prototype.isComplete = function (search) {
@@ -16,7 +16,11 @@ function LevelFactory() {
   };
 
   Level.prototype.reduceKeyLimit = function (input) {
-    if(input !== 'Enter'){this.keyStrokeLimit --;}
+    if(input !== 'Enter'){this.keystrokelimit --;}
+  };
+
+  Level.prototype.isLost = function () {
+    return this.keystrokelimit <= 0;
   };
 
   return Level;

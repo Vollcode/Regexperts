@@ -24,18 +24,18 @@ describe('LevelFactory', function(){
   });
 
   it('has the correct keystroke limit', function() {
-    expect(level.keyStrokeLimit).toEqual(50);
+    expect(level.keystrokelimit).toEqual(50);
   });
 
   describe('#reduceKeyLimit', function(){
     it('reduces the keyStroke limit by 1', function(){
       level.reduceKeyLimit('something');
-      expect(level.keyStrokeLimit).toEqual(49);
+      expect(level.keystrokelimit).toEqual(49);
     });
 
     it('does not reduce if keystroke is "enter"',function(){
       level.reduceKeyLimit('Enter');
-      expect(level.keyStrokeLimit).toEqual(50);
+      expect(level.keystrokelimit).toEqual(50);
     });
   });
 
@@ -51,6 +51,22 @@ describe('LevelFactory', function(){
 
     it('returns false when target creates no matches', function(){
       expect(level.isComplete("21")).toEqual(false);
+    });
+  });
+
+  describe('#isLost', function (){
+    it('returns true when keystroke limit reaches zero', function() {
+      while( level.keystrokelimit > 0){
+        level.reduceKeyLimit();
+      }
+      expect(level.isLost()).toEqual(true);
+    });
+
+    it('returns false if keystroke limit is greater than zero', function() {
+      while( level.keystrokelimit > 1){
+        level.reduceKeyLimit();
+      }
+      expect(level.isLost()).toEqual(false);
     });
   });
 

@@ -17,6 +17,10 @@ describe('LevelService', function(){
     httpBackend = $httpBackend;
   }));
 
+  beforeEach(function(){
+    httpBackend.whenGET(/partials.*/).respond(200, '');
+  });
+
   describe('#getLevel', function(){
     it('returns the content of the desired level', function(){
       httpBackend.expectGET(url).respond(response);

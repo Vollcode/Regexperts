@@ -1,1 +1,1 @@
-angular.module('regexpert',[]);
+angular.module('regexpert', ['ui.router']);
