@@ -8,10 +8,10 @@ function config($stateProvider, $urlRouterProvider){
   $stateProvider
     .state('game', {
       url: "/",
-      templateUrl: "partials/game.html"
+      templateUrl: "partials/game.html",
     })
     .state('gameOver', {
       url: "/gameOver",
-      templateUrl: "partials/gameOver.html"
+      templateUrl: "partials/gameOver.html",
     });
 }
