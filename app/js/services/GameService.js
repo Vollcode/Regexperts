@@ -1,47 +1,82 @@
-angular.module('regexpert').service('GameService', GameService);
+angular.module('regexpert')
+       .service('GameService', GameService);
 
-function GameService(){
+GameService.$inject = ['GameStateFactory', 'LevelService'];
 
-  var self = this;
+function GameService(GameStateFactory, LevelService){
 
-  this.score = 0;
-  this.getScore = getScore;
-  this.setScore = setScore;
-  this.resetScore = resetScore;
-  this.getCheckpoint = getCheckpoint;
-  this.setCheckpoint = setCheckpoint;
-  this.resetCheckpoint = resetCheckpoint;
+  var defaultState = {level: 1, score: 0, checkpoint: 1, checkpointScore: 0};
 
-  function setScore(amount) {
-    this.score += amount;
-    saveToStorage('currentScore', this.score);
+  var game = this;
+
+  game.getGameState = getGameState;
+  game.showGameState = showGameState;
+  game.saveGameState = saveGameState;
+  // game.setLevel = setLevel;
+
+  function getGameState() {
+    var state = JSON.parse(localStorage.getItem('gameState'));
+    createGameState(state || defaultState);
   }
 
-  function getScore() {
-    return this.score;
+  function saveGameState() {
+    localStorage.setItem('gameState', JSON.stringify(game.currentState));
   }
 
-  function getCheckpoint() {
-    return JSON.parse(localStorage.getItem('checkpoint'));
+  function showGameState() {
+    return game.currentState;
   }
 
-  function setCheckpoint(levelNumber) {
-    if (levelNumber % 3 === 0) {
-      saveToStorage('checkpoint',{level: levelNumber, score: this.score});
-    }
-  }
+  // function setLevel() {
+  //   LevelService.getLevel(game.currentState.level)
+  //               .then(function(response){
+  //     game.level = response;
+  //   });
+  // }
 
-  function resetScore() {
-    this.score = 0;
-    saveToStorage('currentScore', 0);
+  function createGameState(state) {
+    game.currentState = new GameStateFactory(state);
   }
-
-  function resetCheckpoint() {
-    saveToStorage('checkpoint',1);
-
-  }
-
-  function saveToStorage(item,value) {
-    localStorage.setItem(item, JSON.stringify(value));
-  }
+  // var self = this;
+  //
+  // this.score = 0;
+  // this.getScore = getScore;
+  // this.setScore = setScore;
+  // this.resetScore = resetScore;
+  // this.getCheckpoint = getCheckpoint;
+  // this.setCheckpoint = setCheckpoint;
+  // this.resetCheckpoint = resetCheckpoint;
+  //
+  // function setScore(amount) {
+  //   this.score += amount;
+  //   saveToStorage('currentScore', this.score);
+  // }
+  //
+  // function getScore() {
+  //   return this.score;
+  // }
+  //
+  // function getCheckpoint() {
+  //   return JSON.parse(localStorage.getItem('checkpoint'));
+  // }
+  //
+  // function setCheckpoint(levelNumber) {
+  //   if (levelNumber % 3 === 0) {
+  //     saveToStorage('checkpoint',{level: levelNumber, score: this.score});
+  //   }
+  // }
+  //
+  // function resetScore() {
+  //   this.score = 0;
+  //   saveToStorage('currentScore', 0);
+  // }
+  //
+  // function resetCheckpoint() {
+  //   saveToStorage('checkpoint',1);
+  //
+  // }
+  //
+  // function saveToStorage(item,value) {
+  //   localStorage.setItem(item, JSON.stringify(value));
+  // }
 }

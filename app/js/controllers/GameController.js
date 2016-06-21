@@ -8,7 +8,6 @@ function GameController(HighlightService, LevelService, GameService, $state){
   var vm = this;
 
   vm.completeLevel = completeLevel;
-  vm.GameService = GameService;
   vm.evaluate = evaluate;
   vm.multiHighlight = HighlightService.multiHighlight;
 
