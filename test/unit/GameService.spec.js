@@ -6,7 +6,7 @@ describe('GameService', function(){
   beforeEach(inject(function(_GameService_){
     GameService = _GameService_;
     localStorage.setItem('currentScore', JSON.stringify(0));
-    localStorage.setItem('checkpoint', JSON.stringify(1));
+    localStorage.setItem('checkpoint', JSON.stringify({level: 1, score: 0}));
   }));
 
   it('keeps track of the score',function(){
@@ -29,20 +29,24 @@ describe('GameService', function(){
   });
 
   describe('#getCheckpoint', function() {
-    it('starts at level 1', function() {
-      expect(GameService.getCheckpoint()).toEqual(1);
+    it('starts at level 1, zero points', function() {
+      checkpoint = {level: 1, score: 0};
+      expect(GameService.getCheckpoint()).toEqual(checkpoint);
     });
   });
 
   describe('#setCheckpoint', function() {
-    it('if level number is divisible by 3', function() {
+    it('save level number abd points if level number is divisible by 3', function() {
+      checkpoint = {level: 3, score: 10};
+      GameService.setScore(10);
       GameService.setCheckpoint(3);
-      expect(GameService.getCheckpoint()).toEqual(3);
+      expect(GameService.getCheckpoint()).toEqual(checkpoint);
     });
 
     it('does not change if not divisible by 3', function() {
+      checkpoint = {level: 1, score: 0};
       GameService.setCheckpoint(2);
-      expect(GameService.getCheckpoint()).toEqual(1);
+      expect(GameService.getCheckpoint()).toEqual(checkpoint);
     });
   });
 

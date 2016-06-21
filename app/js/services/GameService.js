@@ -18,7 +18,7 @@ function GameService(){
   }
 
   function getScore() {
-    return JSON.parse(localStorage.getItem('currentScore'));
+    return this.score;
   }
 
   function getCheckpoint() {
@@ -27,7 +27,7 @@ function GameService(){
 
   function setCheckpoint(levelNumber) {
     if (levelNumber % 3 === 0) {
-      saveToStorage('checkpoint',levelNumber);
+      saveToStorage('checkpoint',{level: levelNumber, score: this.score});
     }
   }
 
