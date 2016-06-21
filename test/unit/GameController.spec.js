@@ -65,7 +65,6 @@ describe('GameController', function(){
       httpBackend.flush();
       game.completeLevel();
       httpBackend.flush();
-      console.log(game.level.number);
       expect(state.current.name).toEqual('winner');
     });
   });
