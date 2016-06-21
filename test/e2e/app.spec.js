@@ -51,7 +51,6 @@ describe("regexpert", function(){
   });
 
   it('keystrokes remaining are logged', function(){
-    expect($('a#keystrokes-remaining').isDisplayed()).toBe(true);
     $('input#user-input').sendKeys('abc');
     expect($('a#keystrokes-remaining').getText()).toMatch('47');
     $('input#user-input').sendKeys('def');
