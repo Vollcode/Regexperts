@@ -5,7 +5,6 @@ function GameService(){
   var self = this;
 
   this.score = 0;
-  this.checkpoint =1;
   this.getScore = getScore;
   this.setScore = setScore;
   this.resetScore = resetScore;
@@ -28,8 +27,7 @@ function GameService(){
 
   function setCheckpoint(levelNumber) {
     if (levelNumber % 3 === 0) {
-      this.checkpoint = levelNumber;
-      saveToStorage('checkpoint',this.checkpoint);
+      saveToStorage('checkpoint',levelNumber);
     }
   }
 
@@ -39,7 +37,6 @@ function GameService(){
   }
 
   function resetCheckpoint() {
-    this.checkpoint = 1;
     saveToStorage('checkpoint',1);
 
   }
