@@ -31,6 +31,7 @@ describe("regexpert", function(){
 
   afterEach(function() {
     mock.teardown();
+    browser.executeScript("window.localStorage.clear();");
   });
 
   it('highlights text based on input', function(){
@@ -59,9 +60,6 @@ describe("regexpert", function(){
     $('button#restart').click();
     expect(browser.getLocationAbsUrl()).toEqual('/');
   });
-
-
-
 
   it('keystrokes remaining are logged', function(){
     expect($('a#keystrokes-remaining').isDisplayed()).toBe(true);

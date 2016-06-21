@@ -19,6 +19,7 @@ describe('LevelService', function(){
 
   beforeEach(function(){
     httpBackend.whenGET(/partials.*/).respond(200, '');
+    localStorage.removeItem('currentLevel');
   });
 
   describe('#getLevel', function(){
