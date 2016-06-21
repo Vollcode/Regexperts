@@ -1,5 +1,6 @@
 body{
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Courier';
+  background-color: black;
 }
 
 table {
@@ -8,6 +9,14 @@ table {
 
 table, h4 {
   color: white;
+}
+
+p {
+  color: lime;
+}
+
+input {
+  color: lime;
 }
 
 .search {
