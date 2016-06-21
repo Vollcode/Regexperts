@@ -19,6 +19,16 @@ input {
   color: lime;
 }
 
+button {
+  position: absolute;
+  left: 0%;
+  font-size: 1.25rem;
+}
+
+i {
+  font-size: 2.rem;
+}
+
 .search {
   background: rgb(196,208,226);
   color: black;
@@ -43,6 +53,15 @@ input {
    background-color: black;
  }
 
+ .btn {
+   padding: 0 14px;
+   animation: blink 2s infinite;
+ }
+
+ .btn i {
+   font-size: 1.75rem;
+ }
+
  #nav-mobile {
      right: 0;
      left: inherit;
@@ -64,4 +83,10 @@ input {
     position:absolute;
     bottom: -10%;
     left:82%;
+}
+
+@keyframes blink {
+  to {
+    opacity: .25;
+  }
 }
