@@ -8,10 +8,21 @@ function LevelService(LevelFactory, $http){
   var url = 'https://regexperts-back.herokuapp.com/levels/';
 
   this.getLevel = getLevel;
+  this.storeLevelNumber = storeLevelNumber;
+  this.fetchLevelNumber = fetchLevelNumber;
 
   function getLevel(levelNumber){
     return $http.get(url + levelNumber).then(function(response){
       return new LevelFactory(response.data);
     });
   }
+
+  function storeLevelNumber(levelNumber) {
+    localStorage.setItem('currentLevel', JSON.stringify(levelNumber));
+  }
+
+  function fetchLevelNumber() {
+    return JSON.parse(localStorage.getItem('currentLevel'));
+  }
+
 }

@@ -15,7 +15,13 @@ function GameController(HighlightService, LevelService, GameService, $state){
   activate();
 
   function activate(){
-    LevelService.getLevel(1).then(setLevel);
+    var storedLevel = localStorage.getItem('currentLevel')
+    console.log(storedLevel);
+    if (storedLevel === null) {
+      LevelService.getLevel(1).then(setLevel);
+    } else {
+    LevelService.getLevel(storedLevel).then(setLevel);
+    }
   }
 
   function evaluate() {
@@ -33,5 +39,6 @@ function GameController(HighlightService, LevelService, GameService, $state){
 
   function setLevel(response) {
     vm.level = response;
+    LevelService.storeLevelNumber(vm.level.number);
   }
 }

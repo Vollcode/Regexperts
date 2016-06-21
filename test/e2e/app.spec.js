@@ -31,6 +31,7 @@ describe("regexpert", function(){
 
   afterEach(function() {
     mock.teardown();
+    browser.executeScript("window.localStorage.clear();");
   });
 
   it('highlights text based on input', function(){
@@ -52,6 +53,7 @@ describe("regexpert", function(){
   });
 
   it('when keylimit reaches 0 go to game over screen with restart button', function(){
+    expect($('p#mission-text').getText()).toMatch('This is your mission');
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
     $('input#user-input').sendKeys('abcde');
@@ -59,9 +61,6 @@ describe("regexpert", function(){
     $('button#restart').click();
     expect(browser.getLocationAbsUrl()).toEqual('/');
   });
-
-
-
 
   it('keystrokes remaining are logged', function(){
     expect($('a#keystrokes-remaining').isDisplayed()).toBe(true);
