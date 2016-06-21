@@ -30,7 +30,7 @@ function GameController(HighlightService, LevelService, GameService, $state){
     }else{
       LevelService.getLevel(vm.level.number + 1)
       .then(setLevel)
-      .then(GameService.updateScore(vm.level.keystrokelimit));
+      .then(GameService.setScore(vm.level.keystrokelimit));
       // .then(Materialize.toast("+" + vm.level.keystrokelimit + "pts", 2000));
     }
   }
