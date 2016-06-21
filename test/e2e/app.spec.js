@@ -53,7 +53,6 @@ describe("regexpert", function(){
   });
 
   it('when keylimit reaches 0 go to game over screen with restart button', function(){
-    expect($('p#mission-text').getText()).toMatch('This is your mission');
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
     $('input#user-input').sendKeys('abcde');

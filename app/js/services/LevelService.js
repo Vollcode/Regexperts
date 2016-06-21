@@ -9,7 +9,6 @@ function LevelService(LevelFactory, $http){
 
   this.getLevel = getLevel;
   this.storeLevelNumber = storeLevelNumber;
-  this.fetchLevelNumber = fetchLevelNumber;
 
   function getLevel(levelNumber){
     return $http.get(url + levelNumber).then(function(response){
@@ -19,10 +18,6 @@ function LevelService(LevelFactory, $http){
 
   function storeLevelNumber(levelNumber) {
     localStorage.setItem('currentLevel', JSON.stringify(levelNumber));
-  }
-
-  function fetchLevelNumber() {
-    return JSON.parse(localStorage.getItem('currentLevel'));
   }
 
 }
