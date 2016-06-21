@@ -26,7 +26,11 @@ function LevelFactory() {
   return Level;
 
   function makeRegexp(input) {
-    return new RegExp(input, 'g');
+    try{
+      return new RegExp(input, 'g');
+    }catch(err){
+      return new RegExp("", 'g');
+    }
   }
 
   function findOutput(text, input){

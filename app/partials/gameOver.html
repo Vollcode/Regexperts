@@ -1,1 +1,4 @@
-<h3 id="game-over">You Lose</h3>
+<div ng-controller="GameOverController as gameOver">
+  <h3 id="game-over">You Lose</h3>
+  <button id="restart" ng-click="gameOver.restart()">RESTART</button>
+</div>

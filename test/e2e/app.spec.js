@@ -35,7 +35,7 @@ describe("regexpert", function(){
 
   it('highlights text based on input', function(){
     $('input#user-input').sendKeys("[a-p]");
-    expect($('p#level-text').$$('span.plain').first().getText()).toEqual('H');
+    expect($('p#level-text').$$('span.null').first().getText()).toEqual('H');
     expect($('p#level-text').$$('span.search').first().getText()).toEqual('o');
     expect($('p#level-text').$$('span.target').first().getText()).toEqual('i');
     expect($('p#level-text').$$('span.target.search').first().getText()).toEqual('i');
@@ -51,12 +51,16 @@ describe("regexpert", function(){
     expect($('button#next-level').isDisplayed()).toBe(false);
   });
 
-  it('when keylimit reaches 0 restart at first level', function(){
+  it('when keylimit reaches 0 go to game over screen with restart button', function(){
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
     $('input#user-input').sendKeys('abcde');
     expect(browser.getLocationAbsUrl()).toEqual('/gameOver');
+    $('button#restart').click();
+    expect(browser.getLocationAbsUrl()).toEqual('/');
   });
+
+
 
 
   it('keystrokes remaining are logged', function(){
