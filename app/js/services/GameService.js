@@ -15,6 +15,7 @@ function GameService(GameStateFactory, LevelService){
   game.nextLevel = nextLevel;
   game.setLevel = setLevel;
   game.updateScore = updateScore;
+  game.checkPointState = checkPointState;
 
   function getGameState() {
     var state = JSON.parse(localStorage.getItem('gameState'));
@@ -48,5 +49,14 @@ function GameService(GameStateFactory, LevelService){
 
   function createGameState(state) {
     game.currentState = new GameStateFactory(state);
+  }
+
+  function checkPointState() {
+    return new GameStateFactory({
+      level: game.currentState.checkpoint,
+      score: game.currentState.checkpointScore,
+      checkpoint: game.currentState.checkpoint,
+      checkpointScore: game.currentState.checkpointScore
+    });
   }
 }

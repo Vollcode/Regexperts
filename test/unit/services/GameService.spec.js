@@ -19,6 +19,8 @@ describe('GameService', function(){
     LevelFactory = _LevelFactory_;
     httpBackend = $httpBackend;
     gameState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
+    someState = new GameStateFactory({level: 5, score: 50, checkpoint: 3, checkpointScore: 30});
+    checkpointState = new GameStateFactory({level: 3, score: 30, checkpoint: 3, checkpointScore: 30});
     httpBackend.whenGET(/partials.*/).respond(200, '');
     GameService.getGameState();
   }));
@@ -57,6 +59,14 @@ describe('GameService', function(){
     it('updates current gameState score', function(){
       GameService.updateScore(10);
       expect(GameService.showGameState().score).toEqual(10);
+    });
+  });
+
+  describe('#checkPointState', function(){
+    it('returns the state of the last checkpoint',function(){
+      GameService.saveGameState(someState);
+      GameService.getGameState();
+      expect(GameService.checkPointState()).toEqual(checkpointState);
     });
   });
 });
