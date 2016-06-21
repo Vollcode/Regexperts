@@ -54,6 +54,7 @@ i {
  }
 
  .btn {
+   color: lime;
    padding: 0 14px;
    animation: blink 2s infinite;
  }
