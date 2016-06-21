@@ -10,13 +10,18 @@ function GameController(HighlightService, LevelService, GameService, $state){
   vm.completeLevel = completeLevel;
   vm.evaluate = evaluate;
   vm.multiHighlight = HighlightService.multiHighlight;
-  vm.level = GameService.level;
+  vm.restart = restart;
 
   activate();
 
   function activate(){
     GameService.getGameState();
     GameService.setLevel();
+  }
+
+  function restart(){
+    GameService.saveGameState(null);
+    activate();
   }
 
   function evaluate() {

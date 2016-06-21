@@ -37,7 +37,7 @@ describe('GameService', function(){
     it('saves the current state to local storage', function(){
       gameState = new GameStateFactory({level: 1, score: 10, checkpoint: 1, checkpointScore: 0});
       GameService.currentState.updateScore(10);
-      GameService.saveGameState();
+      GameService.saveGameState(GameService.showGameState());
       GameService.getGameState();
       expect(GameService.showGameState()).toEqual(gameState);
     });

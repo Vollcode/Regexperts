@@ -21,8 +21,8 @@ function GameService(GameStateFactory, LevelService){
     createGameState(state || defaultState);
   }
 
-  function saveGameState() {
-    localStorage.setItem('gameState', JSON.stringify(game.currentState));
+  function saveGameState(state) {
+    localStorage.setItem('gameState', JSON.stringify(state));
   }
 
   function showGameState() {
@@ -31,7 +31,7 @@ function GameService(GameStateFactory, LevelService){
 
   function nextLevel(){
     game.currentState.level += 1;
-    game.saveGameState();
+    game.saveGameState(game.currentState);
     setLevel();
   }
 
