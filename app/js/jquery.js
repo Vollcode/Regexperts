@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  setInterval(moveSnowden, 100);
+  setInterval(moveSnowden, 10);
   var keys = {};
   var switcher;
 
@@ -18,12 +18,12 @@ $(document).ready(function(){
   function moveSnowden() {
     for (var key in keys) {
       if(keys[key] && switcher){
-        $("#left-hand").animate({top: "-=50"}, 0);
-        $("#right-hand").animate({top: "+=50"}, 0);
+        $("#left-hand").animate({top: "-=50"}, 100);
+        $("#right-hand").animate({top: "+=50"}, 100);
         switcher = false;
       } else {
-        $("#left-hand").animate({top: "+=50"}, 0);
-        $("#right-hand").animate({top: "-=50"}, 0);
+        $("#left-hand").animate({top: "+=50"}, 100);
+        $("#right-hand").animate({top: "-=50"}, 100);
         switcher = true;
       }
     }
