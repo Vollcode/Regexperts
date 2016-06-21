@@ -40,6 +40,36 @@ describe('GameStateFactory', function(){
     });
   });
 
+  describe('#updateCheckpoint', function(){
+    describe('when level is a multiple of three', function(){
+      beforeEach(function(){
+        gameState.updateScore(10);
+        gameState.setLevel(3);
+        gameState.updateCheckpoint();
+      });
 
+      it('updates checkpoint level', function(){
+        expect(gameState.checkpoint).toEqual(3);
+      });
 
+      it('updates checkpoint score', function(){
+        expect(gameState.checkpointScore).toEqual(10);
+      });
+    });
+    describe('when level is not a multiple of three', function(){
+      beforeEach(function(){
+        gameState.updateScore(10);
+        gameState.setLevel(2);
+        gameState.updateCheckpoint();
+      });
+
+      it('updates checkpoint level', function(){
+        expect(gameState.checkpoint).toEqual(1);
+      });
+
+      it('updates checkpoint score', function(){
+        expect(gameState.checkpointScore).toEqual(0);
+      });
+    });
+  });
 });

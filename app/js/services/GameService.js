@@ -32,6 +32,7 @@ function GameService(GameStateFactory, LevelService){
 
   function nextLevel(){
     game.currentState.level += 1;
+    game.currentState.updateCheckpoint();
     game.saveGameState(game.currentState);
     setLevel();
   }

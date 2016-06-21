@@ -19,5 +19,12 @@ function GameStateFactory(){
     this.level = level;
   };
 
+  GameState.prototype.updateCheckpoint = function () {
+    if(this.level % 3 === 0){
+      this.checkpoint = this.level;
+      this.checkpointScore = this.score;
+    }
+  };
+
   return GameState;
 }

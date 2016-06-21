@@ -13,6 +13,14 @@ describe('GameService', function(){
         keystrokelimit: 50
       };
 
+  var level3 = {
+        id:     3,
+        number: 3,
+        text:   "Hiya there buddy",
+        target: "ya",
+        keystrokelimit: 50
+      };
+
   beforeEach(inject(function(_GameService_,_GameStateFactory_, _LevelFactory_, $httpBackend){
     GameService = _GameService_;
     GameStateFactory = _GameStateFactory_;
@@ -46,12 +54,23 @@ describe('GameService', function(){
   });
 
   describe('#nextLevel', function(){
-    it('loads the next level', function(){
+    beforeEach(function(){
       gameState2 = new GameStateFactory({level: 2, score: 0, checkpoint: 1, checkpointScore: 0});
       httpBackend.expectGET(url + '2').respond(level2);
       GameService.nextLevel();
       httpBackend.flush();
+    });
+
+    it('loads the next level', function(){
       expect(GameService.showGameState()).toEqual(gameState2);
+    });
+
+    it('updates the checkpoint information', function(){
+      gameState3 = new GameStateFactory({level: 3, score: 0, checkpoint: 3, checkpointScore: 0});
+      httpBackend.expectGET(url + '3').respond(level3);
+      GameService.nextLevel();
+      httpBackend.flush();
+      expect(GameService.showGameState()).toEqual(gameState3);
     });
   });
 
