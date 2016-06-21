@@ -27,10 +27,14 @@ function GameController(HighlightService, LevelService, GameService, $state){
   }
 
   function completeLevel() {
-    LevelService.getLevel(vm.level.number + 1)
+    if(vm.level.number === 10){
+      $state.go('winner');
+    }else{
+      LevelService.getLevel(vm.level.number + 1)
       .then(setLevel)
       .then(GameService.setScore(vm.level.keystrokelimit));
       // .then(Materialize.toast("+" + vm.level.keystrokelimit + "pts", 2000));
+    }
   }
 
   function setLevel(response) {
