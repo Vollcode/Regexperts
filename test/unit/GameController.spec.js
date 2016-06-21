@@ -12,12 +12,21 @@ describe('GameController', function(){
         target: "ya",
         keystrokelimit: 50
       };
+
   var level2 = {
         id:     2,
         number: 2,
         text:   "Hiya there buddy",
         target: "ya",
         keystrokelimit: 50
+      };
+
+  var finalLevel = {
+        id:     2,
+        number: 10,
+        text:   "Hiya there buddy",
+        target: "ya",
+        keystrokelimit: 5
       };
 
   beforeEach(inject(function($controller, $httpBackend, $state){
@@ -48,6 +57,16 @@ describe('GameController', function(){
       game.evaluate();
       httpBackend.flush();
       expect(state.current.name).toEqual('gameOver');
+    });
+
+    it('changes to win screen if level 10 beaten', function(){
+      httpBackend.expectGET(url + '2').respond(finalLevel);
+      game.completeLevel();
+      httpBackend.flush();
+      game.completeLevel();
+      httpBackend.flush();
+      console.log(game.level.number);
+      expect(state.current.name).toEqual('winner');
     });
   });
 

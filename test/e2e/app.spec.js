@@ -19,7 +19,15 @@ describe("regexpert", function(){
           method: 'GET'
         },
         response: {
-          data:{id: 2, number: 2, mission: "This is your mission", text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b", keystrokelimit: 5}
+          data:{id: 2, number: 2, mission: "This is your mission", text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b", keystrokelimit: 15}
+        }
+      },
+        {request: {
+          path: 'https://regexperts-back.herokuapp.com/levels/3',
+          method: 'GET'
+        },
+        response: {
+          data:{id: 3, number: 10, mission: "Final mission", text: "Beat the big bad dad boss.", target: "[bd]ad", keystrokelimit: 7}
         }
       }
     ]);
@@ -41,6 +49,14 @@ describe("regexpert", function(){
     expect($('p#level-text').$$('span.target.search').first().getText()).toEqual('i');
   });
 
+  it('keystrokes remaining are logged', function(){
+    expect($('a#keystrokes-remaining').isDisplayed()).toBe(true);
+    $('input#user-input').sendKeys('abc');
+    expect($('a#keystrokes-remaining').getText()).toMatch('47');
+    $('input#user-input').sendKeys('def');
+    expect($('a#keystrokes-remaining').getText()).toMatch('44');
+  });
+
   it('a level can be beaten', function(){
     expect($('a#points').isDisplayed()).toBe(true);
     expect($('p#mission-text').getText()).toMatch('This is your mission');
@@ -54,21 +70,22 @@ describe("regexpert", function(){
   it('when keylimit reaches 0 go to game over screen with restart button', function(){
     $('input#user-input').sendKeys('\\b[a-z]..\\b');
     $('button#next-level').click();
-    $('input#user-input').sendKeys('abcde');
+    $('input#user-input').sendKeys('bcdefghijklmnop');
     expect(browser.getLocationAbsUrl()).toEqual('/gameOver');
     $('button#restart').click();
     expect(browser.getLocationAbsUrl()).toEqual('/');
   });
 
-
-
-
-  it('keystrokes remaining are logged', function(){
-    expect($('a#keystrokes-remaining').isDisplayed()).toBe(true);
-    $('input#user-input').sendKeys('abc');
-    expect($('a#keystrokes-remaining').getText()).toMatch('47');
-    $('input#user-input').sendKeys('def');
-    expect($('a#keystrokes-remaining').getText()).toMatch('44');
+  it('after finshing level 10 player take to win screen', function() {
+    $('input#user-input').sendKeys('\\b[a-z]..\\b');
+    $('button#next-level').click();
+    $('input#user-input').sendKeys('\\b[a-z]..\\b');
+    $('button#next-level').click();
+    $('input#user-input').sendKeys('[bd]ad');
+    $('button#next-level').click();
+    expect(browser.getLocationAbsUrl()).toEqual('/winner');
   });
+
+
 
 });
