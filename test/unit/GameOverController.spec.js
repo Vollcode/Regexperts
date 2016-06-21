@@ -17,7 +17,6 @@ describe('GameOverController', function(){
     it('starts a new game', function(){
       gameOver.restart();
       httpBackend.flush();
-      console.log(state.current.name);
       expect(state.current.name).toEqual('game');
     });
   });
