@@ -39,6 +39,7 @@ describe("regexpert", function(){
 
   afterEach(function() {
     mock.teardown();
+    browser.executeScript("window.localStorage.clear();");
   });
 
   it('highlights text based on input', function(){
@@ -85,7 +86,5 @@ describe("regexpert", function(){
     $('button#next-level').click();
     expect(browser.getLocationAbsUrl()).toEqual('/winner');
   });
-
-
 
 });

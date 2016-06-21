@@ -35,11 +35,14 @@ describe('GameController', function(){
     state = $state;
   }));
 
-
   beforeEach(function(){
     httpBackend.whenGET(/partials.*/).respond(200, '');
     httpBackend.expectGET(url + '1').respond(level1);
     httpBackend.flush();
+  });
+
+  afterEach(function(){
+    localStorage.removeItem('currentLevel');
   });
 
   describe('#activate', function(){
@@ -74,6 +77,7 @@ describe('GameController', function(){
       httpBackend.expectGET(url + '2').respond(level2);
       game.completeLevel();
       httpBackend.flush();
+      localStorage.removeItem('currentLevel');
     });
 
     it('gets the next level', function() {
