@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  setInterval(moveSnowden, 10);
+  setInterval(moveSnowden, 50);
   var keys = {};
   var switcher;
 
