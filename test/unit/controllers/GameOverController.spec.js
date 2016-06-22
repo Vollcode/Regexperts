@@ -8,8 +8,8 @@ describe('GameOverController', function(){
     state = $state;
     httpBackend = $httpBackend;
     GameService = _GameService_;
-    defaultState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
-    someState = new GameStateFactory({level: 5, score: 50, checkpoint: 5, checkpointScore: 50});
+    defaultState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0, hintDisplayed: false});
+    someState = new GameStateFactory({level: 5, score: 50, checkpoint: 5, checkpointScore: 50, hintDisplayed: false});
   }));
 
   beforeEach(function(){

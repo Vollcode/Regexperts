@@ -4,7 +4,7 @@ describe('LevelFactory', function(){
   var level;
 
   beforeEach(inject(function(LevelFactory) {
-    level = new LevelFactory({id: 1, number: 1, text:"Hiya there buddy 33", target: "\\d.", mission: "This is your mission", keystrokelimit: 50});
+    level = new LevelFactory({id: 1, number: 1, text:"Hiya there buddy 33", target: "\\d.", mission: "This is your mission", keystrokelimit: 50, hint: 'Work harder mate'});
   }));
 
   it('has the correct level number', function(){
@@ -25,6 +25,10 @@ describe('LevelFactory', function(){
 
   it('has the correct keystroke limit', function() {
     expect(level.keystrokelimit).toEqual(50);
+  });
+
+  it('has the correct hint', function(){
+    expect(level.hint).toEqual('Work harder mate');
   });
 
   describe('#reduceKeyLimit', function(){
