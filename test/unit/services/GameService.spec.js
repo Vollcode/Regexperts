@@ -7,14 +7,14 @@ describe('GameService', function(){
     GameService = _GameService_;
     GameStateFactory = _GameStateFactory_;
     defaultState       = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
-    GameService.getGameState();
+    GameService.setGameState();
   }));
 
   afterEach(function(){
     localStorage.removeItem('gameState');
   });
 
-  describe("#getGameState", function(){
+  describe("#setGameState", function(){
     it('if no gamestate in local storage then gets default state', function(){
       expect(GameService.state()).toEqual(defaultState);
     });
@@ -23,7 +23,7 @@ describe('GameService', function(){
   describe("#saveGameState", function(){
     it('saves the current state to local storage', function(){
       newState       = new GameStateFactory({level: 1, score: 10, checkpoint: 1, checkpointScore: 0});
-      GameService.getGameState();
+      GameService.setGameState();
       GameService.currentState.updateScore(10);
       GameService.saveGameState(GameService.state());
       expect(GameService.state()).toEqual(newState);
@@ -34,7 +34,7 @@ describe('GameService', function(){
     beforeEach(function(){
       level2state       = new GameStateFactory({level: 2, score: 10, checkpoint: 1, checkpointScore: 0});
       GameService.saveGameState(level2state);
-      GameService.getGameState();
+      GameService.setGameState();
       nextLevelState = GameService.nextLevelState(GameService.state(),10);
     });
 

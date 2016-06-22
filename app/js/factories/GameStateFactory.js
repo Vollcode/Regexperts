@@ -4,11 +4,11 @@ angular.module('regexpert')
 GameStateFactory.$inject = [];
 
 function GameStateFactory(){
-  var GameState = function(stateObj){
-    this.level = stateObj.level;
-    this.score = stateObj.score;
-    this.checkpoint = stateObj.checkpoint;
-    this.checkpointScore = stateObj.checkpointScore;
+  var GameState = function(gameProperties){
+    this.level = gameProperties.level;
+    this.score = gameProperties.score;
+    this.checkpoint = gameProperties.checkpoint;
+    this.checkpointScore = gameProperties.checkpointScore;
   };
 
   GameState.prototype.updateScore = function (points) {

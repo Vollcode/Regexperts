@@ -10,7 +10,7 @@ function GameService(GameStateFactory, LevelService){
   var game = this;
 
   game.state = state;
-  game.getGameState = getGameState;
+  game.setGameState = setGameState;
   game.saveGameState = saveGameState;
   game.nextLevelState = nextLevelState;
   game.checkPointState = checkPointState;
@@ -19,14 +19,14 @@ function GameService(GameStateFactory, LevelService){
     return game.currentState;
   }
 
-  function getGameState() {
+  function setGameState() {
     var state = JSON.parse(localStorage.getItem('gameState'));
     createGameState(state || defaultState);
   }
 
   function saveGameState(state) {
     localStorage.setItem('gameState', JSON.stringify(state));
-    game.getGameState();
+    game.setGameState();
   }
 
   function nextLevelState(state,score) {

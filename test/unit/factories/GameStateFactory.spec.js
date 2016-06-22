@@ -64,11 +64,11 @@ describe('GameStateFactory', function(){
         gameState.updateCheckpoint();
       });
 
-      it('updates checkpoint level', function(){
+      it(' does not update checkpoint level', function(){
         expect(gameState.checkpoint).toEqual(1);
       });
 
-      it('updates checkpoint score', function(){
+      it('does not update checkpoint score', function(){
         expect(gameState.checkpointScore).toEqual(0);
       });
     });

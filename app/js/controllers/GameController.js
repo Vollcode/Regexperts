@@ -11,13 +11,13 @@ function GameController(HighlightService, LevelService, GameService, $state){
   vm.evaluate = evaluate;
   vm.multiHighlight = HighlightService.multiHighlight;
   vm.restart = restart;
-  vm.GameService = GameService;
+  vm.k = GameService;
 
   activate();
 
   function activate(){
-    GameService.getGameState();
-    getLevel(GameService.state().level);
+    GameService.setGameState();
+    getLevel();
   }
 
   function restart(){
@@ -36,12 +36,12 @@ function GameController(HighlightService, LevelService, GameService, $state){
       $state.go('winner');
     } else {
       GameService.saveGameState(GameService.nextLevelState(GameService.currentState, vm.level.keystrokelimit));
-      getLevel(vm.level.number + 1);
+      getLevel();
     }
   }
 
   function getLevel(level) {
-    LevelService.getLevel(level).then(function(response){
+    LevelService.getLevel(GameService.state().level).then(function(response){
       vm.level = response;
     });
   }
