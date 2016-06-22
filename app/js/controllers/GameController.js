@@ -8,16 +8,21 @@ function GameController(HighlightService, LevelService, GameService, $state){
   var vm = this;
 
   vm.completeLevel = completeLevel;
-  vm.GameService = GameService;
   vm.evaluate = evaluate;
   vm.multiHighlight = HighlightService.multiHighlight;
+  vm.restart = restart;
+  vm.GameService = GameService;
 
   activate();
 
   function activate(){
-    var storedLevel = localStorage.getItem('currentLevel');
-    var startLevel = storedLevel === null ? 1 : storedLevel;
-    LevelService.getLevel(startLevel).then(setLevel);
+    GameService.loadGameState();
+    getLevel();
+  }
+
+  function restart(){
+    GameService.saveGameState(null);
+    activate();
   }
 
   function evaluate() {
@@ -27,18 +32,17 @@ function GameController(HighlightService, LevelService, GameService, $state){
   }
 
   function completeLevel() {
-    if(vm.level.number === 10){
+    if(vm.level.number === 10) {
       $state.go('winner');
-    }else{
-      LevelService.getLevel(vm.level.number + 1)
-      .then(setLevel)
-      .then(GameService.setScore(vm.level.keystrokelimit));
-      // .then(Materialize.toast("+" + vm.level.keystrokelimit + "pts", 2000));
+    } else {
+      GameService.saveGameState(GameService.getNextLevel(GameService.currentState, vm.level.keystrokelimit));
+      getLevel();
     }
   }
 
-  function setLevel(response) {
-    vm.level = response;
-    LevelService.storeLevelNumber(vm.level.number);
+  function getLevel(level) {
+    LevelService.getLevel(GameService.getGameState().level).then(function(response){
+      vm.level = response;
+    });
   }
 }

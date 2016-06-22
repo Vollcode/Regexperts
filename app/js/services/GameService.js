@@ -1,47 +1,52 @@
-angular.module('regexpert').service('GameService', GameService);
+angular.module('regexpert')
+       .service('GameService', GameService);
 
-function GameService(){
+GameService.$inject = ['GameStateFactory'];
 
-  var self = this;
+function GameService(GameStateFactory){
 
-  this.score = 0;
-  this.getScore = getScore;
-  this.setScore = setScore;
-  this.resetScore = resetScore;
-  this.getCheckpoint = getCheckpoint;
-  this.setCheckpoint = setCheckpoint;
-  this.resetCheckpoint = resetCheckpoint;
+  var defaultState = {level: 1, score: 0, checkpoint: 1, checkpointScore: 0};
 
-  function setScore(amount) {
-    this.score += amount;
-    saveToStorage('currentScore', this.score);
+  var game = this;
+
+  game.getGameState = getGameState;
+  game.loadGameState = loadGameState;
+  game.saveGameState = saveGameState;
+  game.getNextLevel = getNextLevel;
+  game.getCheckPoint = getCheckPoint;
+
+  function getGameState() {
+    return game.currentState;
   }
 
-  function getScore() {
-    return JSON.parse(localStorage.getItem('currentScore'));
+  function loadGameState() {
+    var state = JSON.parse(localStorage.getItem('gameState'));
+    setGameState(state || defaultState);
   }
 
-  function getCheckpoint() {
-    return JSON.parse(localStorage.getItem('checkpoint'));
+  function saveGameState(state) {
+    localStorage.setItem('gameState', JSON.stringify(state));
+    game.loadGameState();
   }
 
-  function setCheckpoint(levelNumber) {
-    if (levelNumber % 3 === 0) {
-      saveToStorage('checkpoint',levelNumber);
-    }
+  function getNextLevel(state,score) {
+    nextLevelState =  new GameStateFactory(state);
+    nextLevelState.increaseLevel();
+    nextLevelState.updateScore(score);
+    nextLevelState.updateCheckpoint();
+    return nextLevelState;
   }
 
-  function resetScore() {
-    this.score = 0;
-    saveToStorage('currentScore', 0);
+  function getCheckPoint(state) {
+    return new GameStateFactory({
+      level: state.checkpoint,
+      score: state.checkpointScore,
+      checkpoint: state.checkpoint,
+      checkpointScore: state.checkpointScore
+    });
   }
 
-  function resetCheckpoint() {
-    saveToStorage('checkpoint',1);
-
-  }
-
-  function saveToStorage(item,value) {
-    localStorage.setItem(item, JSON.stringify(value));
+  function setGameState(state) {
+    game.currentState = new GameStateFactory(state);
   }
 }

@@ -19,14 +19,13 @@ describe('LevelService', function(){
 
   beforeEach(function(){
     httpBackend.whenGET(/partials.*/).respond(200, '');
-    localStorage.removeItem('currentLevel');
   });
 
   describe('#getLevel', function(){
     it('returns the content of the desired level', function(){
       httpBackend.expectGET(url).respond(response);
       var level1 = new LevelFactory({id: 1, text:"Hiya there buddy", target: "ya"});
-
+      
       LevelService.getLevel(1).then(function(response){
         expect(response).toEqual(level1);
       });

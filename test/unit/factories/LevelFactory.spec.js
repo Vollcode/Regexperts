@@ -15,7 +15,7 @@ describe('LevelFactory', function(){
     expect(level.text).toEqual('Hiya there buddy 33');
   });
 
-  it('has the correct level text', function(){
+  it('has the correct level target', function(){
     expect(level.target).toEqual('\\d.');
   });
 

@@ -1,21 +1,12 @@
 describe('GameController', function(){
   beforeEach(module('regexpert'));
 
-  var game, httpBackend, state;
+  var game, httpBackend, state, GameService, defaultState;
   var url = 'https://regexperts-back.herokuapp.com/levels/';
-
 
   var level1 = {
         id:     1,
         number: 1,
-        text:   "Hiya there buddy",
-        target: "ya",
-        keystrokelimit: 50
-      };
-
-  var level2 = {
-        id:     2,
-        number: 2,
         text:   "Hiya there buddy",
         target: "ya",
         keystrokelimit: 50
@@ -29,10 +20,12 @@ describe('GameController', function(){
         keystrokelimit: 5
       };
 
-  beforeEach(inject(function($controller, $httpBackend, $state){
+  beforeEach(inject(function($controller, $httpBackend, $state, _GameService_, GameStateFactory){
     game = $controller('GameController');
+    GameService = _GameService_;
     httpBackend = $httpBackend;
     state = $state;
+    defaultState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
   }));
 
   beforeEach(function(){
@@ -42,7 +35,7 @@ describe('GameController', function(){
   });
 
   afterEach(function(){
-    localStorage.removeItem('currentLevel');
+    localStorage.removeItem('gameState');
   });
 
   describe('#activate', function(){
@@ -52,7 +45,6 @@ describe('GameController', function(){
   });
 
   describe('#evaluate', function(){
-
     it('changes to gameover screen if key stroke limit reaches 0', function(){
       for(var i = 0; i < 50; i++){
         game.level.reduceKeyLimit();
@@ -61,31 +53,38 @@ describe('GameController', function(){
       httpBackend.flush();
       expect(state.current.name).toEqual('gameOver');
     });
+  });
 
-    it('changes to win screen if level 10 beaten', function(){
+  describe('after first level', function(){
+    beforeEach(function(){
       httpBackend.expectGET(url + '2').respond(finalLevel);
       game.completeLevel();
       httpBackend.flush();
-      game.completeLevel();
-      httpBackend.flush();
-      expect(state.current.name).toEqual('winner');
-    });
-  });
-
-  describe('#completeLevel', function() {
-    beforeEach(function(){
-      httpBackend.expectGET(url + '2').respond(level2);
-      game.completeLevel();
-      httpBackend.flush();
-      localStorage.removeItem('currentLevel');
     });
 
-    it('gets the next level', function() {
-      expect(game.level.number).toEqual(2);
+    describe('#completeLevel', function() {
+      it('gets the next level', function() {
+        expect(game.level.number).toEqual(10);
+      });
+
+      it('updates the score', function() {
+        expect(GameService.getGameState().score).toEqual(50);
+      });
+
+      it('goes to win screen after level 10', function(){
+        game.completeLevel();
+        httpBackend.flush();
+        expect(state.current.name).toEqual('winner');
+      });
     });
 
-    it('updates the score', function() {
-      expect(game.GameService.score).toEqual(50);
+    describe('#restart', function(){
+      it('sets the game to default state', function(){
+        httpBackend.expectGET(url + '1').respond(level1);
+        game.restart();
+        httpBackend.flush();
+        expect(GameService.getGameState()).toEqual(defaultState);
+      });
     });
   });
 });
