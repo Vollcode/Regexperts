@@ -4,7 +4,7 @@ describe('GameStateFactory', function(){
   var gameState;
 
   beforeEach(inject(function(GameStateFactory){
-    gameState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
+    gameState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0, hintDisplayed: false});
   }));
 
   it('contains current level number',function(){
@@ -71,6 +71,18 @@ describe('GameStateFactory', function(){
       it('does not update checkpoint score', function(){
         expect(gameState.checkpointScore).toEqual(0);
       });
+    });
+  });
+  describe('#displayHint', function(){
+    it('reduces score by ten', function(){
+      gameState.displayHint();
+      expect(gameState.score).toEqual(-10);
+    });
+
+    it('can only be used once per level', function (){
+      gameState.displayHint();
+      gameState.displayHint();
+      expect(gameState.score).toEqual(-10);
     });
   });
 });

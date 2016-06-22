@@ -26,7 +26,7 @@ describe('GameController', function(){
     httpBackend = $httpBackend;
     state = $state;
     defaultState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
-  })); 
+  }));
 
   beforeEach(function(){
     httpBackend.whenGET(/partials.*/).respond(200, '');

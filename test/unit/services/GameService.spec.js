@@ -6,7 +6,7 @@ describe('GameService', function(){
   beforeEach(inject(function(_GameService_,_GameStateFactory_){
     GameService = _GameService_;
     GameStateFactory = _GameStateFactory_;
-    defaultState       = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
+    defaultState       = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0, hintDisplayed: false});
     GameService.loadGameState();
   }));
 
@@ -22,7 +22,7 @@ describe('GameService', function(){
 
   describe("#saveGameState", function(){
     it('saves the current state to local storage', function(){
-      newState       = new GameStateFactory({level: 1, score: 10, checkpoint: 1, checkpointScore: 0});
+      newState       = new GameStateFactory({level: 1, score: 10, checkpoint: 1, checkpointScore: 0, hintDisplayed: false});
       GameService.loadGameState();
       GameService.currentState.updateScore(10);
       GameService.saveGameState(GameService.getGameState());
@@ -57,8 +57,8 @@ describe('GameService', function(){
 
   describe('#getCheckPoint', function(){
     it('returns the state of the last checkpoint',function(){
-      someState       = new GameStateFactory({level: 5, score: 50, checkpoint: 3, checkpointScore: 30});
-      getCheckPoint = new GameStateFactory({level: 3, score: 30, checkpoint: 3, checkpointScore: 30});
+      someState       = new GameStateFactory({level: 5, score: 50, checkpoint: 3, checkpointScore: 30, hintDisplayed: true});
+      getCheckPoint = new GameStateFactory({level: 3, score: 30, checkpoint: 3, checkpointScore: 30, hintDisplayed: false});
       GameService.saveGameState(someState);
       expect(GameService.getCheckPoint(GameService.getGameState())).toEqual(getCheckPoint);
     });
