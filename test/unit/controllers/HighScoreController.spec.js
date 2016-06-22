@@ -3,33 +3,32 @@ describe('HighScoreController', function() {
 
   var highScore, GameService;
 
-  beforeEach(inject(function($controller, _GameService_){
+  var url = 'https://regexperts-back.herokuapp.com/high_scores';
+
+  beforeEach(inject(function($controller, _GameService_, $httpBackend){
    highScores = $controller('HighScoreController');
    GameService = _GameService_;
+   httpBackend = $httpBackend;
   }));
 
+  beforeEach(function() {
+    httpBackend.whenGET(/partials.*/).respond(200,'');
+  });
+
   describe('#show', function() {
-    it('show highscores in descending score order', function() {
-      highScores.add(101);
-      highScores.add(146);
-      expect(highScores.show()[0].score > highScores.show()[1].score).toEqual(true);
+    it('gets highscores from db', function() {
+      // highScores.add(101);
+      // highScores.add(146);
+      // expect(highScores.show()[0].score > highScores.show()[1].score).toEqual(true);
     });
   });
 
   describe('#add', function() {
-    it('adds score', function() {
-      highScores.add(101);
-      expect(highScores.show()[0].score).toEqual(101);
-    });
-
-    it('adds the time score was set', function() {
-      highScores.add(101);
-      expect(highScores.show()[0].time).toEqual(jasmine.any(Date));
-    });
-
-    it('adds the username', function() {
-      highScores.add(101, 'Julian');
-      expect(highScores.show()[0].user).toEqual('Julian');
+    it('posts score to database', function() {
+      highScore1 = {user: 'Julian', score: 101};
+      httpBackend.expectPOST(url, {highScore: highScore1}).respond(201);
+      highScores.add(highScore1.score, highScore1.user);
+      httpBackend.flush();
     });
   });
 

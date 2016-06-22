@@ -1,9 +1,16 @@
 
 
 <div ng-controller="HighScoreController as highScores">
-  <p>
+  <!-- <p>
     <span>Username</span>
     <input type="text" ng-model="username">
+  </p> -->
+  heloo
+  <span>{{highScores.currentScore()}}</span>
+  <p ng-repeat="highScore in highScores.show()">
+    {{highScore.user}}
+    {{highScore.score}}
+    {{highScore.time}}
   </p>
-  <button ng-click="highScores.add(highScores.currentScore, username)"></button>
+  <!-- <button ng-click="highScores.add(highScores.currentScore, username)"></button> -->
 </div>

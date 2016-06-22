@@ -39,6 +39,7 @@
     <img id="right-hand" src="images/milo-right-bw.png" alt="right" />
     <div class="bottom-bar">
       <a class="modal-trigger" href="#modal1">browse wiki leaks</a>
+      <a class="modal-trigger right" href="#modal2">Top scores</a>
     </div>
 
     <div id="modal1" class="modal bottom-sheet">
@@ -47,6 +48,12 @@
         </div>
       </div>
     </div>
-
+    <div id="modal2" class="modal" ng-controller="HighScoreController as highScores">
+      <div class="modal-content">
+        <!-- <p ng-repeat="highScore in highScores.show()">
+        </p> -->
+        <div ng-include src="'partials/_highScores.html'"></div>
+      </div>
+    </div>
   </body>
 </html>

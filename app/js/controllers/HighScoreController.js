@@ -1,9 +1,9 @@
 angular.module('regexpert')
        .controller('HighScoreController', HighScoreController);
 
-HighScoreController.$inject = ['GameService'];
+HighScoreController.$inject = ['GameService', 'HighScoreService'];
 
-function HighScoreController(GameService) {
+function HighScoreController(GameService, HighScoreService) {
 
   var vm = this;
 
@@ -19,12 +19,11 @@ function HighScoreController(GameService) {
   }
 
   function add(score, user) {
-    var highScore = {score: score, time: new Date(), user: user};
-    vm.scores.push(highScore);
+    return HighScoreService.postHighScores({user: user, score: score});
   }
 
   function currentScore() {
-    GameService.loadGameState()
+    GameService.loadGameState();
     return GameService.getGameState().score;
   }
 }
