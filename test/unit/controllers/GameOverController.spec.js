@@ -30,7 +30,7 @@ describe('GameOverController', function(){
     it('sets gamestate to state that its passed', function(){
       gameOver.restart(someState);
       httpBackend.flush();
-      GameService.setGameState();
+      GameService.loadGameState();
       expect(GameService.getGameState()).toEqual(someState);
     });
 
@@ -45,7 +45,7 @@ describe('GameOverController', function(){
       });
 
       it('sets gamestate to default if passed null', function(){
-        GameService.setGameState();
+        GameService.loadGameState();
         expect(GameService.getGameState()).toEqual(defaultState);
       });
     });

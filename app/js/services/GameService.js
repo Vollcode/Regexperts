@@ -10,7 +10,7 @@ function GameService(GameStateFactory){
   var game = this;
 
   game.getGameState = getGameState;
-  game.setGameState = setGameState;
+  game.loadGameState = loadGameState;
   game.saveGameState = saveGameState;
   game.getNextLevel = getNextLevel;
   game.getCheckPoint = getCheckPoint;
@@ -19,14 +19,14 @@ function GameService(GameStateFactory){
     return game.currentState;
   }
 
-  function setGameState() {
+  function loadGameState() {
     var state = JSON.parse(localStorage.getItem('gameState'));
-    createGameState(state || defaultState);
+    setGameState(state || defaultState);
   }
 
   function saveGameState(state) {
     localStorage.setItem('gameState', JSON.stringify(state));
-    game.setGameState();
+    game.loadGameState();
   }
 
   function getNextLevel(state,score) {
@@ -46,7 +46,7 @@ function GameService(GameStateFactory){
     });
   }
 
-  function createGameState(state) {
+  function setGameState(state) {
     game.currentState = new GameStateFactory(state);
   }
 }

@@ -15,7 +15,7 @@ function GameOverController($state, GameService){
   }
 
   function getCheckpoint() {
-    GameService.setGameState();
+    GameService.loadGameState();
     return GameService.getCheckPoint(GameService.getGameState());
   }
 

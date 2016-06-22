@@ -16,7 +16,7 @@ function GameController(HighlightService, LevelService, GameService, $state){
   activate();
 
   function activate(){
-    GameService.setGameState();
+    GameService.loadGameState();
     getLevel();
   }
 
