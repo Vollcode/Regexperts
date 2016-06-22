@@ -37,7 +37,7 @@ describe('HighScoreService', function() {
     it('gets highscores from backend', function() {
       httpBackend.expectGET(url).respond(APIresponse);
       HighScoreService.getHighScores().then(function(response){
-        expect(response).toContain(highScore1);
+        expect(response.highScores).toContain(highScore1);
       });
       httpBackend.flush();
     });

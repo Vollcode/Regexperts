@@ -1,13 +1,12 @@
 <div ng-controller="HighScoreController as highScores">
-  <p>
-    <span>Username</span>
-    <span>{{highScores.currentScore()}}</span>
-    <input type="text" ng-model="username">
-    <button ng-click="highScores.add(highScores.currentScore(), username)">Add</button>
-  </p>
-  <p ng-repeat="highScore in highScores.show()">
-    {{highScore.user}}
-    {{highScore.score}}
-    {{highScore.time}}
-  </p>
+
+      <p>
+        <span>Username</span>
+        <input type="text" ng-model="username">
+        <button ng-click="highScores.add(highScores.currentScore(), username)">Save score</button>
+      </p>
+
+      <div ng-include="'partials/_highscoreTable.html'">
+      </div>
+
 </div>

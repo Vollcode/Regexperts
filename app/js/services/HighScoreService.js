@@ -12,7 +12,7 @@ function HighScoreService($http) {
 
   function getHighScores() {
     return $http.get(url).then(function(response){
-      return response.data.highScores;
+      return response.data;
     });
   }
 

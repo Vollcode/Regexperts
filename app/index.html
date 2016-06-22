@@ -15,6 +15,7 @@
     <script src="js/services/GameService.js"></script>
     <script src="js/services/LevelService.js"></script>
     <script src="js/services/HighlightService.js"></script>
+    <script src="js/services/HighScoreService.js"></script>
     <script src="js/services/MatchService.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans:500italic,500' rel='stylesheet' type='text/css'>
@@ -50,9 +51,7 @@
     </div>
     <div id="modal2" class="modal" ng-controller="HighScoreController as highScores">
       <div class="modal-content">
-        <!-- <p ng-repeat="highScore in highScores.show()">
-        </p> -->
-        <div ng-include src="'partials/_highScores.html'"></div>
+        <div ng-include src="'partials/_highScoreTable.html'"></div>
       </div>
     </div>
   </body>

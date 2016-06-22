@@ -5,7 +5,7 @@ describe('HighScoreController', function() {
 
   var url = 'https://regexperts-back.herokuapp.com/high_scores';
 
-  var response = {highScores: [
+  var apiResponse = [
     {
       user: "Julian",
       score: 146,
@@ -16,7 +16,24 @@ describe('HighScoreController', function() {
       score: 101,
       time: "2016-06-21T12:57:45.998Z",
     }
-  ]};
+  ];
+  var apiResponse2 = [
+    {
+      user: "Julian",
+      score: 146,
+      time: "2016-06-18T14:27:27.053Z",
+    },
+    {
+      user: "Assange",
+      score: 101,
+      time: "2016-06-21T12:57:45.998Z",
+    },
+    {
+      user: "Bob",
+      score: 300,
+      time: "2016-06-21T12:57:45.998Z",
+    }
+  ];
 
   beforeEach(inject(function($controller, _GameService_, $httpBackend){
    highScores = $controller('HighScoreController');
@@ -25,26 +42,44 @@ describe('HighScoreController', function() {
   }));
 
   beforeEach(function() {
+    httpBackend.expectGET(url).respond(apiResponse);
     httpBackend.whenGET(/partials.*/).respond(200,'');
+    httpBackend.flush();
   });
 
-  describe('#show', function() {
+  describe('#getScores', function() {
     it('gets highscores from db', function() {
       highScoreFromDB = {user: "Julian", score: 146, time: "2016-06-18T14:27:27.053Z"};
-      httpBackend.expectGET(url).respond(response);
-      highScores.show().then(function(response){
-        expect(response).toContain(highScoreFromDB);
+      httpBackend.expectGET(url).respond(apiResponse);
+      highScores.getScores().then(function(response){
+        expect(highScores.scores).toContain(highScoreFromDB);
       });
       httpBackend.flush();
     });
   });
 
   describe('#add', function() {
-    it('posts score to database', function() {
-      highScore1 = {user: 'Julian', score: 101};
+    beforeEach(function(){
+      highScore1 = {user: 'Bob', score: 300};
       httpBackend.expectPOST(url, {highScore: highScore1}).respond(201);
+      httpBackend.expectGET(url).respond(apiResponse2);
+    });
+
+    it('posts scores to db', function(){
       highScores.add(highScore1.score, highScore1.user);
       httpBackend.flush();
+    });
+
+    it('updates scores from db', function(){
+      highScores.add(highScore1.score, highScore1.user);
+      httpBackend.flush();
+      expect(highScores.scores.length).toEqual(3);
+    });
+
+    it('can only be used once', function(){
+      highScores.add(highScore1.score, highScore1.user);
+      httpBackend.flush();
+      expect(highScores.add(highScore1.score, highScore1.user)).toEqual(undefined);
     });
   });
 

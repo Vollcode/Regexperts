@@ -1,0 +1,19 @@
+<div>
+  <table>
+    <h4>Best Hacks</h4>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Score</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="highScore in highScores.scores | orderBy:'-score' | limitTo: 5">
+        <td>{{highScore.user}}</td>
+        <td>{{highScore.score}}</td>
+        <td>{{highScore.created_at}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
