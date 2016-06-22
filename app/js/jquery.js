@@ -29,4 +29,10 @@ $(document).ready(function(){
     }
   }
 
+  $(document).keypress(function(event){
+    if(event.keyCode == 13 && $('#next-level').is(':visible')){
+        $("#next-level").click();
+    }
+  });
+
 });
