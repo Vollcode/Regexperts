@@ -14,6 +14,6 @@
     <p id="level-text" ng-bind-html="game.multiHighlight(game.level.text, game.level.target, input)"></p>
     <span id="win-message">{{game.level.isComplete(input) ? "WINNER" : ""}}</span>
     <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.completeLevel()">Next Level</button>
-    <!-- <p id="target">{{game.level.target}}</p> -->
+    <p id="target">{{game.level.target}}</p>
   </div>
 </div>
