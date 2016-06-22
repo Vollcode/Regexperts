@@ -9,11 +9,14 @@
     <script src="js/config.js"></script>
     <script src="js/controllers/GameController.js"></script>
     <script src="js/controllers/GameOverController.js"></script>
+    <script src="js/controllers/HighScoreController.js"></script>
     <script src="js/factories/LevelFactory.js"></script>
     <script src="js/factories/GameStateFactory.js"></script>
+    <script src="js/factories/HighScoreFactory.js"></script>
     <script src="js/services/GameService.js"></script>
     <script src="js/services/LevelService.js"></script>
     <script src="js/services/HighlightService.js"></script>
+    <script src="js/services/HighScoreService.js"></script>
     <script src="js/services/MatchService.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Fira+Sans:500italic,500' rel='stylesheet' type='text/css'>
@@ -24,26 +27,34 @@
     <title>Snowden Files</title>
   </head>
   <body>
+
     <nav class="grey darken-4">
       <div class="nav-wrapper fixed grey darken-4">
         <a class="brand-logo left">The Snowden Files</a>
       </div>
     </nav>
-    <div class="row">
-        <div ui-view></div>
 
-    </div>
+    <div ui-view></div>
+
     <img id="snowden" src="images/snowden-face.png" alt="snows" />
     <img id="left-hand" src="images/milo-left-bw.png" alt="left" />
     <img id="right-hand" src="images/milo-right-bw.png" alt="right" />
+
     <div class="bottom-bar">
       <a class="modal-trigger" href="#modal1">browse wiki leaks</a>
+      <a class="modal-trigger right" href="#modal2">Top scores</a>
     </div>
 
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-content grey darken-4">
         <div ng-include src="'partials/_cheatsheet.html'">
         </div>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal" ng-controller="HighScoreController as highScores">
+      <div class="modal-content grey darken-4">
+        <div ng-include src="'partials/_highScoreTable.html'"></div>
       </div>
     </div>
   </body>

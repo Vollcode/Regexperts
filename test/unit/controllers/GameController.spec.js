@@ -25,7 +25,7 @@ describe('GameController', function(){
     GameService = _GameService_;
     httpBackend = $httpBackend;
     state = $state;
-    defaultState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
+    defaultState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0, hintDisplayed: false});
   }));
 
   beforeEach(function(){
