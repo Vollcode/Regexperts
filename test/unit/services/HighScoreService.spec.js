@@ -5,7 +5,7 @@ describe('HighScoreService', function() {
   var HighScoreService, highScore1, httpBackend, url, response;
 
   url = 'https://regexperts-back.herokuapp.com/high_scores';
-  response = {highScores: [
+  APIresponse = {highScores: [
     {
       user: "Julian",
       score: 146,
@@ -35,7 +35,7 @@ describe('HighScoreService', function() {
 
   describe('#getHighScores', function() {
     it('gets highscores from backend', function() {
-      httpBackend.expectGET(url).respond(response);
+      httpBackend.expectGET(url).respond(APIresponse);
       HighScoreService.getHighScores().then(function(response){
         expect(response).toContain(highScore1);
       });

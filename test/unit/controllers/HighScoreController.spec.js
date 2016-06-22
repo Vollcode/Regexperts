@@ -5,6 +5,19 @@ describe('HighScoreController', function() {
 
   var url = 'https://regexperts-back.herokuapp.com/high_scores';
 
+  var response = {highScores: [
+    {
+      user: "Julian",
+      score: 146,
+      time: "2016-06-18T14:27:27.053Z",
+    },
+    {
+      user: "Assange",
+      score: 101,
+      time: "2016-06-21T12:57:45.998Z",
+    }
+  ]};
+
   beforeEach(inject(function($controller, _GameService_, $httpBackend){
    highScores = $controller('HighScoreController');
    GameService = _GameService_;
@@ -17,9 +30,12 @@ describe('HighScoreController', function() {
 
   describe('#show', function() {
     it('gets highscores from db', function() {
-      // highScores.add(101);
-      // highScores.add(146);
-      // expect(highScores.show()[0].score > highScores.show()[1].score).toEqual(true);
+      highScoreFromDB = {user: "Julian", score: 146, time: "2016-06-18T14:27:27.053Z"};
+      httpBackend.expectGET(url).respond(response);
+      highScores.show().then(function(response){
+        expect(response).toContain(highScoreFromDB);
+      });
+      httpBackend.flush();
     });
   });
 
