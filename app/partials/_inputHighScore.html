@@ -1,0 +1,9 @@
+
+
+<div ng-controller="HighScoreController as highScores">
+  <p>
+    <span>Username</span>
+    <input type="text" ng-model="username">
+  </p>
+  <button ng-click="highScores.add(highScores.currentScore, username)"></button>
+</div>

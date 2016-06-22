@@ -1,10 +1,11 @@
 describe('HighScoreController', function() {
   beforeEach(module('regexpert'));
 
-  var highScore;
+  var highScore, GameService;
 
-  beforeEach(inject(function($controller){
+  beforeEach(inject(function($controller, _GameService_){
    highScores = $controller('HighScoreController');
+   GameService = _GameService_;
   }));
 
   describe('#show', function() {
@@ -29,6 +30,13 @@ describe('HighScoreController', function() {
     it('adds the username', function() {
       highScores.add(101, 'Julian');
       expect(highScores.show()[0].user).toEqual('Julian');
+    });
+  });
+
+  describe('#currentScore', function(){
+    it('gets the current score from GameService', function() {
+      GameService.loadGameState();
+      expect(highScores.currentScore()).toEqual(0);
     });
   });
 });
