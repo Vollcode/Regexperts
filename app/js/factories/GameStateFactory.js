@@ -15,8 +15,8 @@ function GameStateFactory(){
     this.score += points;
   };
 
-  GameState.prototype.setLevel = function (level) {
-    this.level = level;
+  GameState.prototype.increaseLevel = function (level) {
+    this.level ++;
   };
 
   GameState.prototype.updateCheckpoint = function () {

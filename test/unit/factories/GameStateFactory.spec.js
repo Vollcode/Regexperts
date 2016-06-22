@@ -33,10 +33,10 @@ describe('GameStateFactory', function(){
     });
   });
 
-  describe('#setLevel', function(){
+  describe('#increaseLevel', function(){
     it('to desired level',function(){
-      gameState.setLevel(10);
-      expect(gameState.level).toEqual(10);
+      gameState.increaseLevel();
+      expect(gameState.level).toEqual(2);
     });
   });
 
@@ -44,7 +44,8 @@ describe('GameStateFactory', function(){
     describe('when level is a multiple of three', function(){
       beforeEach(function(){
         gameState.updateScore(10);
-        gameState.setLevel(3);
+        gameState.increaseLevel();
+        gameState.increaseLevel();
         gameState.updateCheckpoint();
       });
 
@@ -59,7 +60,7 @@ describe('GameStateFactory', function(){
     describe('when level is not a multiple of three', function(){
       beforeEach(function(){
         gameState.updateScore(10);
-        gameState.setLevel(2);
+        gameState.increaseLevel();
         gameState.updateCheckpoint();
       });
 

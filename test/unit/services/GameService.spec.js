@@ -1,35 +1,12 @@
 describe('GameService', function(){
   beforeEach(module('regexpert'));
 
-  var GameService, GameStateFactory, LevelFactory, httpBackend;
+  var GameService, GameStateFactory;
 
-  var url = 'https://regexperts-back.herokuapp.com/levels/';
-
-  var level2 = {
-        id:     2,
-        number: 2,
-        text:   "Hiya there buddy",
-        target: "ya",
-        keystrokelimit: 50
-      };
-
-  var level3 = {
-        id:     3,
-        number: 3,
-        text:   "Hiya there buddy",
-        target: "ya",
-        keystrokelimit: 50
-      };
-
-  beforeEach(inject(function(_GameService_,_GameStateFactory_, _LevelFactory_, $httpBackend){
+  beforeEach(inject(function(_GameService_,_GameStateFactory_){
     GameService = _GameService_;
     GameStateFactory = _GameStateFactory_;
-    LevelFactory = _LevelFactory_;
-    httpBackend = $httpBackend;
-    gameState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
-    someState = new GameStateFactory({level: 5, score: 50, checkpoint: 3, checkpointScore: 30});
-    checkpointState = new GameStateFactory({level: 3, score: 30, checkpoint: 3, checkpointScore: 30});
-    httpBackend.whenGET(/partials.*/).respond(200, '');
+    defaultState       = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
     GameService.getGameState();
   }));
 
@@ -39,53 +16,51 @@ describe('GameService', function(){
 
   describe("#getGameState", function(){
     it('if no gamestate in local storage then gets default state', function(){
-      expect(GameService.showGameState()).toEqual(gameState);
+      expect(GameService.state()).toEqual(defaultState);
     });
   });
 
   describe("#saveGameState", function(){
     it('saves the current state to local storage', function(){
-      gameState = new GameStateFactory({level: 1, score: 10, checkpoint: 1, checkpointScore: 0});
-      GameService.currentState.updateScore(10);
-      GameService.saveGameState(GameService.showGameState());
+      newState       = new GameStateFactory({level: 1, score: 10, checkpoint: 1, checkpointScore: 0});
       GameService.getGameState();
-      expect(GameService.showGameState()).toEqual(gameState);
+      GameService.currentState.updateScore(10);
+      GameService.saveGameState(GameService.state());
+      expect(GameService.state()).toEqual(newState);
     });
   });
 
-  describe('#nextLevel', function(){
+  describe('#nextLevelState', function(){
     beforeEach(function(){
-      gameState2 = new GameStateFactory({level: 2, score: 0, checkpoint: 1, checkpointScore: 0});
-      httpBackend.expectGET(url + '2').respond(level2);
-      GameService.nextLevel();
-      httpBackend.flush();
+      level2state       = new GameStateFactory({level: 2, score: 10, checkpoint: 1, checkpointScore: 0});
+      GameService.saveGameState(level2state);
+      GameService.getGameState();
+      nextLevelState = GameService.nextLevelState(GameService.state(),10);
     });
 
-    it('loads the next level', function(){
-      expect(GameService.showGameState()).toEqual(gameState2);
+    it('return a state with the level increased by 1', function(){
+      expect(nextLevelState.level).toEqual(3);
     });
 
-    it('updates the checkpoint information', function(){
-      gameState3 = new GameStateFactory({level: 3, score: 0, checkpoint: 3, checkpointScore: 0});
-      httpBackend.expectGET(url + '3').respond(level3);
-      GameService.nextLevel();
-      httpBackend.flush();
-      expect(GameService.showGameState()).toEqual(gameState3);
+    it('return a state with an increased score', function(){
+      expect(nextLevelState.score).toEqual(20);
     });
-  });
 
-  describe('#updateScore', function(){
-    it('updates current gameState score', function(){
-      GameService.updateScore(10);
-      expect(GameService.showGameState().score).toEqual(10);
+    it('return a state with updated checkpoint', function(){
+      expect(nextLevelState.checkpoint).toEqual(3);
+    });
+
+    it('return a state with updated checkpoint score', function(){
+      expect(nextLevelState.checkpointScore).toEqual(20);
     });
   });
 
   describe('#checkPointState', function(){
     it('returns the state of the last checkpoint',function(){
+      someState       = new GameStateFactory({level: 5, score: 50, checkpoint: 3, checkpointScore: 30});
+      checkpointState = new GameStateFactory({level: 3, score: 30, checkpoint: 3, checkpointScore: 30});
       GameService.saveGameState(someState);
-      GameService.getGameState();
-      expect(GameService.checkPointState()).toEqual(checkpointState);
+      expect(GameService.checkPointState(GameService.state())).toEqual(checkpointState);
     });
   });
 });

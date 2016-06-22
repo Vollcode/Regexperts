@@ -9,13 +9,15 @@ function GameService(GameStateFactory, LevelService){
 
   var game = this;
 
+  game.state = state;
   game.getGameState = getGameState;
-  game.showGameState = showGameState;
   game.saveGameState = saveGameState;
-  game.nextLevel = nextLevel;
-  game.setLevel = setLevel;
-  game.updateScore = updateScore;
+  game.nextLevelState = nextLevelState;
   game.checkPointState = checkPointState;
+
+  function state() {
+    return game.currentState;
+  }
 
   function getGameState() {
     var state = JSON.parse(localStorage.getItem('gameState'));
@@ -24,40 +26,27 @@ function GameService(GameStateFactory, LevelService){
 
   function saveGameState(state) {
     localStorage.setItem('gameState', JSON.stringify(state));
+    game.getGameState();
   }
 
-  function showGameState() {
-    return game.currentState;
+  function nextLevelState(state,score) {
+    nextLevel =  new GameStateFactory(state);
+    nextLevel.increaseLevel();
+    nextLevel.updateScore(score);
+    nextLevel.updateCheckpoint();
+    return nextLevel;
   }
 
-  function nextLevel(){
-    game.currentState.level += 1;
-    game.currentState.updateCheckpoint();
-    game.saveGameState(game.currentState);
-    setLevel();
-  }
-
-  function setLevel() {
-    LevelService.getLevel(game.currentState.level)
-                .then(function(response){
-      game.level = response;
+  function checkPointState(state) {
+    return new GameStateFactory({
+      level: state.checkpoint,
+      score: state.checkpointScore,
+      checkpoint: state.checkpoint,
+      checkpointScore: state.checkpointScore
     });
-  }
-
-  function updateScore(points) {
-    game.currentState.score += points;
   }
 
   function createGameState(state) {
     game.currentState = new GameStateFactory(state);
-  }
-
-  function checkPointState() {
-    return new GameStateFactory({
-      level: game.currentState.checkpoint,
-      score: game.currentState.checkpointScore,
-      checkpoint: game.currentState.checkpoint,
-      checkpointScore: game.currentState.checkpointScore
-    });
   }
 }

@@ -40,14 +40,14 @@ describe('GameController', function(){
 
   describe('#activate', function(){
     it('starts a new game on initialisation', function(){
-      expect(GameService.level.number).toEqual(1);
+      expect(game.level.number).toEqual(1);
     });
   });
 
   describe('#evaluate', function(){
     it('changes to gameover screen if key stroke limit reaches 0', function(){
       for(var i = 0; i < 50; i++){
-        GameService.level.reduceKeyLimit();
+        game.level.reduceKeyLimit();
       }
       game.evaluate();
       httpBackend.flush();
@@ -64,11 +64,11 @@ describe('GameController', function(){
 
     describe('#completeLevel', function() {
       it('gets the next level', function() {
-        expect(GameService.level.number).toEqual(10);
+        expect(game.level.number).toEqual(10);
       });
 
       it('updates the score', function() {
-        expect(GameService.showGameState().score).toEqual(50);
+        expect(GameService.state().score).toEqual(50);
       });
 
       it('goes to win screen after level 10', function(){
@@ -83,7 +83,7 @@ describe('GameController', function(){
         httpBackend.expectGET(url + '1').respond(level1);
         game.restart();
         httpBackend.flush();
-        expect(GameService.showGameState()).toEqual(defaultState);
+        expect(GameService.state()).toEqual(defaultState);
       });
     });
   });
