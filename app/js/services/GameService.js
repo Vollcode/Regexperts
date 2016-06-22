@@ -30,11 +30,11 @@ function GameService(GameStateFactory, LevelService){
   }
 
   function getNextLevel(state,score) {
-    nextLevel =  new GameStateFactory(state);
+    nextLevelState =  new GameStateFactory(state);
     nextLevel.increaseLevel();
     nextLevel.updateScore(score);
     nextLevel.updateCheckpoint();
-    return nextLevel;
+    return nextLevelState;
   }
 
   function getCheckPoint(state) {

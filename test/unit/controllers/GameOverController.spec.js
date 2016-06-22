@@ -20,6 +20,12 @@ describe('GameOverController', function(){
     localStorage.removeItem('gameState');
   });
 
+  describe('#getCheckpoint', function(){
+    it('returns the last checkpoint object', function(){
+      expect(gameOver.getCheckpoint()).toEqual(defaultState);
+    });
+  });
+
   describe('#restart', function(){
     it('sets gamestate to state that its passed', function(){
       gameOver.restart(someState);

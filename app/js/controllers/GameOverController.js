@@ -7,10 +7,17 @@ function GameOverController($state, GameService){
 
   var vm = this;
   this.restart = restart;
+  this.getCheckpoint = getCheckpoint;
 
   function restart(state) {
     GameService.saveGameState(state);
     $state.go('game');
   }
+
+  function getCheckpoint() {
+    GameService.setGameState();
+    return GameService.getCheckPoint(GameService.getGameState());
+  }
+
 
 }
