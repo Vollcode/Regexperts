@@ -1,9 +1,9 @@
 angular.module('regexpert')
        .service('GameService', GameService);
 
-GameService.$inject = ['GameStateFactory', 'LevelService'];
+GameService.$inject = ['GameStateFactory'];
 
-function GameService(GameStateFactory, LevelService){
+function GameService(GameStateFactory){
 
   var defaultState = {level: 1, score: 0, checkpoint: 1, checkpointScore: 0};
 
