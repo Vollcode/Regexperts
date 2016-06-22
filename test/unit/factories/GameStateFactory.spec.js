@@ -4,7 +4,7 @@ describe('GameStateFactory', function(){
   var gameState;
 
   beforeEach(inject(function(GameStateFactory){
-    gameState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0});
+    gameState = new GameStateFactory({level: 1, score: 0, checkpoint: 1, checkpointScore: 0, hintDisplayed: false});
   }));
 
   it('contains current level number',function(){

@@ -5,7 +5,7 @@ GameService.$inject = ['GameStateFactory'];
 
 function GameService(GameStateFactory){
 
-  var defaultState = {level: 1, score: 0, checkpoint: 1, checkpointScore: 0};
+  var defaultState = {level: 1, score: 0, checkpoint: 1, checkpointScore: 0, hintDisplayed: false};
 
   var game = this;
 
@@ -42,7 +42,8 @@ function GameService(GameStateFactory){
       level: state.checkpoint,
       score: state.checkpointScore,
       checkpoint: state.checkpoint,
-      checkpointScore: state.checkpointScore
+      checkpointScore: state.checkpointScore,
+      hintDisplayed: state.hintDisplayed
     });
   }
 

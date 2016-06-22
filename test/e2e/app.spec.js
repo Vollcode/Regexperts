@@ -58,9 +58,10 @@ describe("regexpert", function(){
   });
 
   it('using a hint will decrease the score', function(){
-    expect($('button#hint').isDisplayed()).toBe(true);
     $('button#hint').click();
-    expect($('span#hint-message').isDisplayed()).toBe(true);
+    expect($('p#hint-message').isDisplayed()).toBe(true);
+    expect($('a#points').getText()).toMatch('Points: -10');
+    $('button#hint').click();
     expect($('a#points').getText()).toMatch('Points: -10');
   });
 
