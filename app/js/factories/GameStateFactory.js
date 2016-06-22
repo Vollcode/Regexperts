@@ -27,7 +27,7 @@ function GameStateFactory(){
   };
 
   GameState.prototype.displayHint = function () {
-    if (this.hintDisplayed === false) {
+    if(!this.hintDisplayed) {
       this.score -= 10;
       this.hintDisplayed = true;
     }

@@ -73,4 +73,16 @@ describe('GameStateFactory', function(){
       });
     });
   });
+  describe('#displayHint', function(){
+    it('reduces score by ten', function(){
+      gameState.displayHint();
+      expect(gameState.score).toEqual(-10);
+    });
+
+    it('can only be used once per level', function (){
+      gameState.displayHint();
+      gameState.displayHint();
+      expect(gameState.score).toEqual(-10);
+    });
+  });
 });

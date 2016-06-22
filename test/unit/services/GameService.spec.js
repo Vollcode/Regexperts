@@ -57,8 +57,8 @@ describe('GameService', function(){
 
   describe('#getCheckPoint', function(){
     it('returns the state of the last checkpoint',function(){
-      someState       = new GameStateFactory({level: 5, score: 50, checkpoint: 3, checkpointScore: 30});
-      getCheckPoint = new GameStateFactory({level: 3, score: 30, checkpoint: 3, checkpointScore: 30});
+      someState       = new GameStateFactory({level: 5, score: 50, checkpoint: 3, checkpointScore: 30, hintDisplayed: true});
+      getCheckPoint = new GameStateFactory({level: 3, score: 30, checkpoint: 3, checkpointScore: 30, hintDisplayed: false});
       GameService.saveGameState(someState);
       expect(GameService.getCheckPoint(GameService.getGameState())).toEqual(getCheckPoint);
     });

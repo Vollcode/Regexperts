@@ -43,7 +43,7 @@ function GameService(GameStateFactory){
       score: state.checkpointScore,
       checkpoint: state.checkpoint,
       checkpointScore: state.checkpointScore,
-      hintDisplayed: state.hintDisplayed
+      hintDisplayed: false
     });
   }
 

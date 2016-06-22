@@ -57,7 +57,7 @@ describe("regexpert", function(){
     expect($('a#keystrokes-remaining').getText()).toMatch('44');
   });
 
-  it('using a hint will decrease the score', function(){
+  it('using a hint will decrease the score once per level', function(){
     $('button#hint').click();
     expect($('p#hint-message').isDisplayed()).toBe(true);
     expect($('a#points').getText()).toMatch('Points: -10');
