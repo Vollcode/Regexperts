@@ -11,7 +11,7 @@ describe("regexpert", function(){
         method: 'GET'
         },
         response: {
-          data:{id: 1, number: 1, mission: "This is your mission", text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b", keystrokelimit: 50}
+          data:{id: 1, number: 1, mission: "This is your mission", text: "Horse brHeeding is reproduction in horses, and particularly the human-directed process of selective breeding of animals, particularly purebred horses of a given breed. Planned matings can be used to produce specifically desired characteristics in domesticated horses. Furthermore, modern breeding management and technologies can increase the rate of conception, a healthy pregnancy, and successful foaling.", target: "\\b[a-z]..\\b", keystrokelimit: 50, hint: 'Check your inner developer for answers'}
         }
       },
         {request: {
@@ -55,6 +55,13 @@ describe("regexpert", function(){
     expect($('a#keystrokes-remaining').getText()).toMatch('47');
     $('input#user-input').sendKeys('def');
     expect($('a#keystrokes-remaining').getText()).toMatch('44');
+  });
+
+  it('using a hint will decrease the score', function(){
+    expect($('button#hint').isDisplayed()).toBe(true);
+    $('button#hint').click();
+    expect($('span#hint-message').isDisplayed()).toBe(true);
+    expect($('a#points').getText()).toMatch('Points: -10');
   });
 
   it('a level can be beaten', function(){
