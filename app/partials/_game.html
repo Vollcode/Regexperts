@@ -4,7 +4,7 @@
       <ul id="nav-mobile" class="left">
         <li><a id="level-number">Mission: {{game.level.number}}</a></li>
         <li><a id="keystrokes-remaining">Keystrokes remaining: {{game.level.keystrokelimit}}</a></li>
-        <li><a id="points">Points: {{game.GameService.state().score}}</a></li>
+        <li><a id="points">Points: {{game.GameService.getGameState().score}}</a></li>
       </ul>
     </div>
   </nav>

@@ -1,8 +1,6 @@
 angular.module('regexpert')
       .factory('GameStateFactory', GameStateFactory);
 
-GameStateFactory.$inject = [];
-
 function GameStateFactory(){
   var GameState = function(gameProperties){
     this.level = gameProperties.level;

@@ -68,7 +68,7 @@ describe('GameController', function(){
       });
 
       it('updates the score', function() {
-        expect(GameService.state().score).toEqual(50);
+        expect(GameService.getGameState().score).toEqual(50);
       });
 
       it('goes to win screen after level 10', function(){
@@ -83,7 +83,7 @@ describe('GameController', function(){
         httpBackend.expectGET(url + '1').respond(level1);
         game.restart();
         httpBackend.flush();
-        expect(GameService.state()).toEqual(defaultState);
+        expect(GameService.getGameState()).toEqual(defaultState);
       });
     });
   });

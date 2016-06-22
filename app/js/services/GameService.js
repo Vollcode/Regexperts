@@ -9,13 +9,13 @@ function GameService(GameStateFactory, LevelService){
 
   var game = this;
 
-  game.state = state;
+  game.getGameState = getGameState;
   game.setGameState = setGameState;
   game.saveGameState = saveGameState;
-  game.nextLevelState = nextLevelState;
-  game.checkPointState = checkPointState;
+  game.getNextLevel = getNextLevel;
+  game.getCheckPoint = getCheckPoint;
 
-  function state() {
+  function getGameState() {
     return game.currentState;
   }
 
@@ -29,7 +29,7 @@ function GameService(GameStateFactory, LevelService){
     game.setGameState();
   }
 
-  function nextLevelState(state,score) {
+  function getNextLevel(state,score) {
     nextLevel =  new GameStateFactory(state);
     nextLevel.increaseLevel();
     nextLevel.updateScore(score);
@@ -37,7 +37,7 @@ function GameService(GameStateFactory, LevelService){
     return nextLevel;
   }
 
-  function checkPointState(state) {
+  function getCheckPoint(state) {
     return new GameStateFactory({
       level: state.checkpoint,
       score: state.checkpointScore,
