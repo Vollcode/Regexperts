@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col s5">
       <h5>
-        Save your score
+        You scored: <span> {{highScores.currentScore()}} </span>
       </h5>
       <div class="input-field">
         <label for="username">Username:</label>
         <input id="username" type="text" ng-model="username">
-        <a class="waves-effect waves-light btn" ng-click="highScores.add(highScores.currentScore(), username)">Save score</a>
+        <a id="input-score" class="{{highScores.canAdd ? 'waves-effect waves-light btn' : 'btn disabled'}}" ng-click="highScores.add(highScores.currentScore(), username)">Save score</a>
       </div>
     </div>
   </div>

@@ -29,6 +29,11 @@ $(document).ready(function(){
     }
   }
 
+  // $('#input-score').on('click', function(){
+  //   $(this).toggleClass("disabled");
+  //   console.log("on");
+  // });
+
   $(document).keypress(function(event){
     if(event.keyCode == 13 && $('#next-level').is(':visible')){
         $("#next-level").click();

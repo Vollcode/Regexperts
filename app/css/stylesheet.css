@@ -9,10 +9,6 @@ table {
 }
 
 h4 {
-  color: black;
-}
-
-table {
   color: white;
 }
 
@@ -20,9 +16,9 @@ p, input {
   color: lime;
 }
 
-/*i {
-font-size: 2rem;
-}*/
+thead {
+  border-color: #3f504f;
+}
 
 .terminal h6 {
   color: lime;
@@ -44,8 +40,10 @@ font-size: 2rem;
 }
 
 .score-board {
-  background-color: grey;
-  padding: 5px;
+  background-color: #3f504f;
+  border-radius: 2px;
+  color: white;
+  padding: 8px;
   padding-top: 2px;
 }
 
@@ -105,12 +103,13 @@ font-size: 2rem;
   animation: drop;
   animation-duration: 2s;
 }
+
 #crown {
   position: absolute;
   z-index: 1;
   height: 50%;
-  top: -12em;
-  left:50%;
+  top: -13em;
+  left:51%;
   -webkit-transform: rotate(-12deg);
   animation: crowndrop;
   animation-duration: 2s;
@@ -146,6 +145,12 @@ font-size: 2rem;
   color: black;
 }
 
+.modal-trigger {
+  font-size: 1.5rem;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
 @keyframes blink {
   to {
     opacity: .25;
@@ -171,9 +176,10 @@ font-size: 2rem;
   45%   {top:-20em;-webkit-transform: rotate(0deg);}
   50%   {top:-13em;-webkit-transform: rotate(0deg);}
   86%   {top:-13em;-webkit-transform: rotate(0deg);}
-  92%   {top:-12em;-webkit-transform: rotate(-14deg);}
-  100%  {top: -12em; -webkit-transform: rotate(-10deg);}
+  92%   {top:-13em;-webkit-transform: rotate(-14deg);}
+  100%  {top: -13em; -webkit-transform: rotate(-10deg);}
 }
+
 
 /*@-keyframes drop {
     0%   {top:-1000px;}
