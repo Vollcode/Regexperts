@@ -1,7 +1,9 @@
 <div ng-controller="WinnerController as winner">
-  <h3 id="win-msg">You Win</h3>
-  <!-- <button id="restart" ng-click="gameOver.restart()">RESTART</button> -->
+  <h3 id="win-msg">Congratulations! <br> You've successfully hacked the NSA</h3>
+  <br>
+  <h5>The generations to come will remember you <br>as a man of great Regular Expression knowledge</h5>
 </div>
+<a id="restart" class="waves-effect waves-light btn" ng-click="gameOver.restart(null)">RESTART</a>
 
 <div ng-include src="'partials/_highScores.html'"></div>
-<img id="crown" src="images/crown-bw.png" alt="bars" />
+<img id="crown" src="images/crown-bw.png" alt="crown" />
