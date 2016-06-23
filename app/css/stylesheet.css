@@ -1,6 +1,6 @@
 body{
   font-family: 'Courier';
-  background-color: black;
+  background-color: white;
 }
 
 table {
@@ -31,6 +31,25 @@ i {
   font-size: 2.rem;
 }
 
+h6 {
+  color: lime;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.header, h6{
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.terminal {
+  background-color: black;
+  border: solid 1px grey
+  margin-top: 15px;
+  padding: 15px;
+  height: 100%;
+  word-wrap: break-word;
+}
+
 .search {
   background: rgb(196,208,226);
   color: black;
@@ -42,7 +61,6 @@ i {
  }
 
 .target.search {
-  /*background: #86ff69;*/
   background: #FFFB00;
   color: black;
  }
@@ -57,7 +75,9 @@ i {
 
  .btn {
    color: lime;
-   padding: 0 14px;
+   position: relative;
+   padding-left: 1px;
+   /*padding: 0 14px;*/
    animation: blink 2s infinite;
  }
 

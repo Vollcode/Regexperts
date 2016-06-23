@@ -3,6 +3,7 @@
     <div ng-controller="GameOverController as gameOver">
       <h3 id="game-over">You Lose</h3>
       <button id="restart" ng-click="gameOver.restart(null)">RESTART</button>
+      <br>
       <button id="checkpoint" ng-click="gameOver.restart(gameOver.getCheckpoint())">Start from checkpoint</button>
     </div>
   </div>
