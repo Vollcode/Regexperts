@@ -4,10 +4,12 @@ body{
 
 table {
   color: white;
+  background-color: black;
 }
 
 table, h4 {
   color: white;
+  background-color: black;
 }
 
 .search {
