@@ -20,12 +20,13 @@
           <input id="user-input" type="text" ng-model="input" ng-keypress="game.level.reduceKeyLimit($event.code)" ng-change="game.evaluate()">
         </div>
         <p id="level-text" ng-bind-html="game.multiHighlight(game.level.text, game.level.target, input)"></p>
-        <button class="btn black" id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.completeLevel()">>Next Level</button>
+        <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.completeLevel()">>Next Level</button>
         <p id="hint-message" ng-show="show">{{game.level.hint}}Hint!</p>
         <!-- <p id="target">{{game.level.target}}</p> -->
       </section>
     </div>
   </div>
+
 </div>
 
 <!-- <div class="col s6 left">
