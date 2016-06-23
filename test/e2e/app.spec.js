@@ -58,21 +58,21 @@ describe("regexpert", function(){
   });
 
   it('using a hint will decrease the score once per level', function(){
-    $('button#hint').click();
+    $('a#hint').click();
     expect($('p#hint-message').isDisplayed()).toBe(true);
     expect($('a#points').getText()).toMatch('Points: -10');
-    $('button#hint').click();
+    $('a#hint').click();
     expect($('a#points').getText()).toMatch('Points: -10');
   });
 
   it('a level can be beaten', function(){
-    expect($('a#points').isDisplayed()).toBe(true);
-    expect($('p#mission-text').getText()).toMatch('This is your mission');
-    $('input#user-input').sendKeys('\\b[a-z]..\\b');
-    $('button#next-level').click();
-    expect($('a#points').getText()).toMatch('39');
-    expect($('a#level-number').getText()).toMatch('2');
-    expect($('button#next-level').isDisplayed()).toBe(false);
+    expect($('#points').isDisplayed()).toBe(true);
+    expect($('#mission-text').getText()).toMatch('This is your mission');
+    $('#user-input').sendKeys('\\b[a-z]..\\b');
+    $('#next-level').click();
+    expect($('#points').getText()).toMatch('39');
+    expect($('#level-number').getText()).toMatch('2');
+    expect($('#next-level').isDisplayed()).toBe(false);
   });
 
   it('when keylimit reaches 0 go to game over screen with restart button', function(){
@@ -80,7 +80,7 @@ describe("regexpert", function(){
     $('button#next-level').click();
     $('input#user-input').sendKeys('bcdefghijklmnop');
     expect(browser.getLocationAbsUrl()).toEqual('/gameOver');
-    $('button#restart').click();
+    $('#restart').click();
     expect(browser.getLocationAbsUrl()).toEqual('/');
   });
 

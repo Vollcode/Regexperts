@@ -1,10 +1,13 @@
 <div class="row">
   <div class="col s5 left">
     <div ng-controller="GameOverController as gameOver">
-      <h3 id="game-over">You Lose</h3>
-      <button id="restart" ng-click="gameOver.restart(null)">RESTART</button>
-      <button id="checkpoint" ng-click="gameOver.restart(gameOver.getCheckpoint())">Start from checkpoint</button>
+      <h3 id="game-over">Game Over</h3>
+      <h5 id="game-over">Only one place for you now snowden... unless you want to start again</h5>
+      <a id="restart" class="waves-effect waves-light btn" ng-click="gameOver.restart(null)">FROM START</a>
+      <a id="checkpoint" class="waves-effect waves-light btn" ng-click="gameOver.restart(gameOver.getCheckpoint())">FROM CHECKPOINT</a>
     </div>
   </div>
 </div>
+<br>
 <div ng-include src="'partials/_highScores.html'"></div>
+<img id="bars" src="images/bars2.png" alt="bars" />

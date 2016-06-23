@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  setInterval(moveSnowden, 10);
+  setInterval(moveSnowden, 50);
   var keys = {};
   var switcher;
 
@@ -28,6 +28,11 @@ $(document).ready(function(){
       }
     }
   }
+
+  // $('#input-score').on('click', function(){
+  //   $(this).toggleClass("disabled");
+  //   console.log("on");
+  // });
 
   $(document).keypress(function(event){
     if(event.keyCode == 13 && $('#next-level').is(':visible')){

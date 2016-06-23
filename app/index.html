@@ -10,6 +10,7 @@
     <script src="js/controllers/GameController.js"></script>
     <script src="js/controllers/GameOverController.js"></script>
     <script src="js/controllers/HighScoreController.js"></script>
+    <!-- <script src="js/controllers/WinnerController.js"></script> -->
     <script src="js/factories/LevelFactory.js"></script>
     <script src="js/factories/GameStateFactory.js"></script>
     <script src="js/factories/HighScoreFactory.js"></script>
@@ -24,13 +25,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="/css/stylesheet.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Snowden Files</title>
   </head>
   <body>
 
     <nav class="grey darken-4">
       <div class="nav-wrapper fixed grey darken-4">
-        <a class="brand-logo left">The Snowden Files</a>
+        <a class="brand-logo left header">The Snowden Files</a>
       </div>
     </nav>
 
@@ -40,7 +42,7 @@
     <img id="left-hand" src="images/milo-left-bw.png" alt="left" />
     <img id="right-hand" src="images/milo-right-bw.png" alt="right" />
 
-    <div class="bottom-bar">
+    <div class="bottom-bar grey darken-4">
       <a class="modal-trigger" href="#modal1">browse wiki leaks</a>
       <a class="modal-trigger right" href="#modal2">Top scores</a>
     </div>
@@ -53,7 +55,7 @@
     </div>
 
     <div id="modal2" class="modal" ng-controller="HighScoreController as highScores">
-      <div class="modal-content grey darken-4">
+      <div class="modal-content">
         <div ng-include src="'partials/_highScoreTable.html'"></div>
       </div>
     </div>
