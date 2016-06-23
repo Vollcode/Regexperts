@@ -1,0 +1,29 @@
+<div ng-controller="GameController as game">
+  <section class="demo-canvas">
+    <div class="row">
+      <div class="col s12 center">
+        <h1 class="demo-text">
+          welcome To Regex
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s4 centre offset-s4">
+        <div class="input-field">
+          <label for="user-input">input regexp here:</label>
+          <input id="user-input" class="demo-text" type="text" ng-model="input">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6 centre offset-s3">
+        <p class="demo-text center" ng-bind-html="game.multiHighlight('emilio@gmail.com', '', input)"></p>
+        <p class="demo-text center" ng-bind-html="game.multiHighlight('emmetFlimFlamJim@hotmail.com', '', input)"></p>
+        <p class="demo-text center" ng-bind-html="game.multiHighlight('Fergio@hotmail.com', '', input)"></p>
+        <p class="demo-text center" ng-bind-html="game.multiHighlight('Daniel_ortiz@googlemail.com', '', input)"></p>
+      </div>
+    </div>
+    
+  </section>
+</div>

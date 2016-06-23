@@ -17,5 +17,9 @@ function config($stateProvider, $urlRouterProvider){
     .state('winner', {
       url: "/winner",
       templateUrl: "partials/_winner.html",
+    })
+    .state('demo', {
+      url: "/demo",
+      templateUrl: "partials/_demo.html",
     });
 }

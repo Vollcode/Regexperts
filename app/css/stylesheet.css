@@ -84,6 +84,25 @@ thead {
   background-color: black;
 }
 
+.demo-canvas{
+  position:fixed;
+  background-color: #fbfbf9;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  padding-top: 8%;
+}
+
+.demo-text{
+  color: #587b78;
+  font-size: 1.5rem;
+}
+
+h1.demo-text{
+  font-size: 3.5rem;
+}
+
 #next-level {
   color: lime;
   position: relative;
