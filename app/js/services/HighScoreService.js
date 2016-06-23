@@ -12,7 +12,6 @@ function HighScoreService($http, HighScoreFactory) {
 
   function getHighScores() {
     return $http.get(url).then(function(response){
-      console.log(response.data);
       return response.data.map(function(highScoreData){
         return new HighScoreFactory(highScoreData);
       });
