@@ -1,5 +1,5 @@
 body{
-  font-family: 'Courier';
+  font-family: 'Fira Sans', sans-serif;
   background-color: white;
 }
 
@@ -21,33 +21,42 @@ input {
   color: lime;
 }
 
-button {
-  position: absolute;
-  left: 0%;
-  font-size: 1.25rem;
-}
-
 i {
   font-size: 2.rem;
 }
 
-h6 {
+.terminal h6 {
   color: lime;
   font-size: 1.25rem;
   margin-bottom: 2rem;
 }
 
-.header, h6{
-  font-family: 'Fira Sans', sans-serif;
+.btn-large {
+  text-decoration: none;
+  color: #fff;
+  background-color: #3f504f;
+  width: 200px;
+  text-align: center;
+  letter-spacing: .5px;
 }
 
+.btn-large:hover {
+    background-color: #587b78;
+}
+
+
 .terminal {
+  font-family: 'Courier';
   background-color: black;
   border: solid 1px grey
   margin-top: 15px;
   padding: 15px;
   height: 100%;
   word-wrap: break-word;
+}
+
+.header, h6{
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .search {
@@ -73,16 +82,34 @@ h6 {
    background-color: black;
  }
 
- .btn {
+ #next-level {
    color: lime;
    position: relative;
    padding-left: 1px;
-   /*padding: 0 14px;*/
+   background-color: black;
    animation: blink 2s infinite;
+   border: none;
+   font-size: 1.2rem;
  }
 
- .btn i {
-   font-size: 1.75rem;
+ #bars {
+   position: absolute;
+   z-index: 1;
+   top: 0;
+   height: 105%;
+   right: 10%;
+   animation: drop;
+   animation-duration: 2s;
+ }
+ #crown {
+   position: absolute;
+   z-index: 1;
+   height: 50%;
+   top: -12em;
+   left:50%;
+   -webkit-transform: rotate(-12deg);
+   animation: crowndrop;
+   animation-duration: 2s;
  }
 
  #nav-mobile {
@@ -108,8 +135,39 @@ h6 {
     left:82%;
 }
 
+
 @keyframes blink {
   to {
     opacity: .25;
   }
 }
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes drop {
+    0%    {top:-1000px;}
+    70%   {top:0px;}
+    74%   {top:10px;}
+    78%   {top:0px;}
+    82%   {top:8px;}
+    86%   {top:0px;}
+    92%   {top:6px;}
+    100%  {top:0px;}
+}
+
+@-webkit-keyframes crowndrop {
+    0%    {top:-35em; -webkit-transform: rotate(0deg);}
+    35%   {top:-30em;-webkit-transform: rotate(0deg);}
+    40%   {top:-25em;-webkit-transform: rotate(0deg);}
+    45%   {top:-20em;-webkit-transform: rotate(0deg);}
+    50%   {top:-13em;-webkit-transform: rotate(0deg);}
+    86%   {top:-13em;-webkit-transform: rotate(0deg);}
+    92%   {top:-12em;-webkit-transform: rotate(-14deg);}
+    100%  {top: -12em; -webkit-transform: rotate(-10deg);}
+}
+
+/*@-keyframes drop {
+    0%   {top:-1000px;}
+    94%   {top:0px;}
+    98%  {top:10px;}
+    100%  {top:0px;}
+}*/
