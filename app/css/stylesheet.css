@@ -8,21 +8,16 @@ table {
   background-color: black;
 }
 
-table, h4 {
+h4 {
   color: white;
-  background-color: black;
 }
 
-p {
+p, input {
   color: lime;
 }
 
-input {
-  color: lime;
-}
-
-i {
-  font-size: 2.rem;
+thead {
+  border-color: #3f504f;
 }
 
 td{
@@ -43,7 +38,7 @@ th{
   margin-bottom: 2rem;
 }
 
-.btn-large {
+.btn {
   text-decoration: none;
   color: #fff;
   background-color: #3f504f;
@@ -52,10 +47,17 @@ th{
   letter-spacing: .5px;
 }
 
-.btn-large:hover {
-    background-color: #587b78;
+.btn:hover {
+  background-color: #587b78;
 }
 
+.score-board {
+  background-color: #3f504f;
+  border-radius: 2px;
+  color: white;
+  padding: 8px;
+  padding-top: 2px;
+}
 
 .terminal {
   font-family: 'Courier';
@@ -74,86 +76,92 @@ th{
 .search {
   background: rgb(196,208,226);
   color: black;
- }
+}
 
 .target {
   background: black;
   color: white;
- }
+}
 
 .target.search {
   background: #FFFB00;
   color: black;
- }
-
- .bottom-bar{
-   position :absolute;
-   width: 100%;
-   height: 15%;
-   bottom: -10%;
-   background-color: black;
- }
-
- #next-level {
-   color: lime;
-   position: relative;
-   padding-left: 1px;
-   background-color: black;
-   animation: blink 2s infinite;
-   border: none;
-   font-size: 1.2rem;
- }
-
- #bars {
-   position: absolute;
-   z-index: 1;
-   top: 0;
-   height: 105%;
-   right: 10%;
-   animation: drop;
-   animation-duration: 2s;
- }
- #crown {
-   position: absolute;
-   z-index: 1;
-   height: 50%;
-   top: -12em;
-   left:50%;
-   -webkit-transform: rotate(-12deg);
-   animation: crowndrop;
-   animation-duration: 2s;
- }
-
- #nav-mobile {
-     right: 0;
-     left: inherit;
- }
- #snowden {
-    height: 100%;
-    position:absolute;
-    top:0%;
-    left:50%;
 }
+
+.bottom-bar{
+  position :absolute;
+  width: 100%;
+  height: 15%;
+  bottom: -10%;
+  background-color: black;
+}
+
+#next-level {
+  color: lime;
+  position: relative;
+  padding-left: 1px;
+  background-color: black;
+  animation: blink 2s infinite;
+  border: none;
+  font-size: 1.2rem;
+}
+
+#bars {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  height: 100%;
+  left: 45%;
+  animation: drop;
+  animation-duration: 2s;
+}
+
+#crown {
+  position: absolute;
+  z-index: 1;
+  height: 50%;
+  top: -13em;
+  left:51%;
+  -webkit-transform: rotate(-12deg);
+  animation: crowndrop;
+  animation-duration: 2s;
+}
+
+#nav-mobile {
+  right: 0;
+  left: inherit;
+}
+
+#snowden {
+  height: 100%;
+  position:absolute;
+  top:0%;
+  left:50%;
+}
+
 #left-hand {
-    height: 45%;
-    position:absolute;
-    bottom: -10%;
-    left:45%;
+  height: 45%;
+  position:absolute;
+  bottom: -10%;
+  left:45%;
 }
+
 #right-hand {
-    height: 48%;
-    position:absolute;
-    bottom: -10%;
-    left:82%;
+  height: 48%;
+  position:absolute;
+  bottom: -10%;
+  left:82%;
 }
 
-col:nth-child(2n+3) {
-  /*background-color: white;*/
-  border-left-style: solid;
-  border-left-width: 1px;
-  border-left-color: white;
+#username {
+  color: black;
 }
 
+.modal-trigger {
+  font-size: 1.5rem;
+  margin-left: 1%;
+  margin-right: 1%;
+}
 
 @keyframes blink {
   to {
@@ -163,26 +171,27 @@ col:nth-child(2n+3) {
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes drop {
-    0%    {top:-1000px;}
-    70%   {top:0px;}
-    74%   {top:10px;}
-    78%   {top:0px;}
-    82%   {top:8px;}
-    86%   {top:0px;}
-    92%   {top:6px;}
-    100%  {top:0px;}
+  0%    {top:-1000px;}
+  70%   {top:0px;}
+  74%   {top:10px;}
+  78%   {top:0px;}
+  82%   {top:8px;}
+  86%   {top:0px;}
+  92%   {top:6px;}
+  100%  {top:0px;}
 }
 
 @-webkit-keyframes crowndrop {
-    0%    {top:-35em; -webkit-transform: rotate(0deg);}
-    35%   {top:-30em;-webkit-transform: rotate(0deg);}
-    40%   {top:-25em;-webkit-transform: rotate(0deg);}
-    45%   {top:-20em;-webkit-transform: rotate(0deg);}
-    50%   {top:-13em;-webkit-transform: rotate(0deg);}
-    86%   {top:-13em;-webkit-transform: rotate(0deg);}
-    92%   {top:-12em;-webkit-transform: rotate(-14deg);}
-    100%  {top: -12em; -webkit-transform: rotate(-10deg);}
+  0%    {top:-35em; -webkit-transform: rotate(0deg);}
+  35%   {top:-30em;-webkit-transform: rotate(0deg);}
+  40%   {top:-25em;-webkit-transform: rotate(0deg);}
+  45%   {top:-20em;-webkit-transform: rotate(0deg);}
+  50%   {top:-13em;-webkit-transform: rotate(0deg);}
+  86%   {top:-13em;-webkit-transform: rotate(0deg);}
+  92%   {top:-13em;-webkit-transform: rotate(-14deg);}
+  100%  {top: -13em; -webkit-transform: rotate(-10deg);}
 }
+
 
 /*@-keyframes drop {
     0%   {top:-1000px;}
