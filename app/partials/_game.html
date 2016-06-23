@@ -5,7 +5,7 @@
         <li><a id="level-number" class="header">Mission: {{game.level.number}}</a></li>
         <li><a id="keystrokes-remaining" class="header">Keystrokes remaining: {{game.level.keystrokelimit}}</a></li>
         <li><a id="points" class="header">Points: {{game.GameService.getGameState().score}}</a></li>
-        <li><a id="hint" ng-click="show = !show; game.GameService.currentState.displayHint()" class="header">Hint</a></li>
+        <li><a id="hint" ng-click="game.GameService.currentState.displayHint()" class="header">Hint</a></li>
       </ul>
     </div>
   </nav>
@@ -17,22 +17,12 @@
         <h6 id="mission-text">{{game.level.mission}}</h6>
         <div class="input-field">
           <label for="user-input">snowman@nsa-hackbook-pro:</label>
-          <input id="user-input" type="text" ng-model="input" ng-keypress="game.level.reduceKeyLimit($event.code)" ng-change="game.evaluate()">
+          <input id="user-input" type="text" ng-model="input" length="150" ng-keypress="game.level.reduceKeyLimit($event.code)" ng-change="game.evaluate()">
         </div>
         <p id="level-text" ng-bind-html="game.multiHighlight(game.level.text, game.level.target, input)"></p>
         <button id="next-level" ng-show="game.level.isComplete(input)" ng-click="input=''; game.completeLevel()">>Next Level</button>
-        <p id="hint-message" ng-show="show">{{game.level.hint}}Hint!</p>
-        <!-- <p id="target">{{game.level.target}}</p> -->
+        <p id="hint-message" ng-if="game.GameService.currentState.hintDisplayed">{{game.level.hint}}Hint!</p>
       </section>
     </div>
   </div>
-
 </div>
-
-<!-- <div class="col s6 left">
-<p id="mission-text">{{game.level.mission}}</p>
-<input id="user-input" type="text" ng-model="input" ng-keypress="game.level.reduceKeyLimit($event.code)" ng-change="game.evaluate()">
-<p id="level-text" ng-bind-html="game.multiHighlight(game.level.text, game.level.target, input)"></p>
-<span id="win-message">{{game.level.isComplete(input) ? "WINNER" : ""}}</span>
-<button id="next-level" class="btn black"  ng-show="game.level.isComplete(input)" ng-click="input=''; game.completeLevel()"><i class="material-icons right">code</i>Next Level</button> -->
-<!-- <p id="target">{{game.level.target}}</p> -->

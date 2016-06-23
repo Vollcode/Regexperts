@@ -25,6 +25,18 @@ i {
   font-size: 2.rem;
 }
 
+td{
+  font-size: 1.2em;
+  max-width:100%;
+  white-space:nowrap;
+}
+
+th{
+  font-size: 1em;
+  max-width:50%;
+  white-space:nowrap;
+}
+
 .terminal h6 {
   color: lime;
   font-size: 1.25rem;
@@ -133,6 +145,13 @@ i {
     position:absolute;
     bottom: -10%;
     left:82%;
+}
+
+col:nth-child(2n+3) {
+  /*background-color: white;*/
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: white;
 }
 
 
