@@ -32,7 +32,7 @@ function GameController(HighlightService, LevelService, GameService, $state){
   }
 
   function completeLevel() {
-    if(vm.level.number === 10) {
+    if(vm.level.number === 4) {
       $state.go('winner');
     } else {
       GameService.saveGameState(GameService.getNextLevel(GameService.currentState, vm.level.keystrokelimit));

@@ -1,6 +1,8 @@
 body{
   font-family: 'Fira Sans', sans-serif;
   background-color: white;
+  overflow: hidden;
+  height: 100%;
 }
 
 table {

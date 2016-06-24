@@ -2,15 +2,13 @@
   <section class="demo-canvas">
     <div class="row">
       <div class="col s12 center">
-        <h1 class="demo-text">
-          welcome To Regex
-        </h1>
+        <h1 class="demo-text" ng-bind-html="game.multiHighlight('Welcome To Regex', '', input)"></h1>
       </div>
     </div>
     <div class="row">
       <div class="col s4 centre offset-s4">
         <div class="input-field">
-          <label for="user-input">input regexp here:</label>
+          <label for="user-input" ng-bind-html="game.multiHighlight('input regexp here:', '', input)"></label>
           <input id="user-input" class="demo-text" type="text" ng-model="input">
         </div>
       </div>
@@ -21,9 +19,12 @@
         <p class="demo-text center" ng-bind-html="game.multiHighlight('emilio@gmail.com', '', input)"></p>
         <p class="demo-text center" ng-bind-html="game.multiHighlight('emmetFlimFlamJim@hotmail.com', '', input)"></p>
         <p class="demo-text center" ng-bind-html="game.multiHighlight('Fergio@hotmail.com', '', input)"></p>
-        <p class="demo-text center" ng-bind-html="game.multiHighlight('Daniel_ortiz@googlemail.com', '', input)"></p>
+        <p class="demo-text center" ng-bind-html="game.multiHighlight('Daniel_ortiz68@googlemail.com', '', input)"></p>
+        <p class="demo-text center" ng-bind-html="game.multiHighlight('<Play the full game>', '', input)" ui-sref="game"></p>
       </div>
     </div>
-    
+
+
+
   </section>
 </div>
