@@ -1,31 +1,39 @@
-<table>
+<table class="centered">
   <h4>Snowden's tools</h4>
   <thead>
     <tr>
+      <th>Regex</th>
+      <th>Effect</th>
+      <th>Regex</th>
+      <th>Effect</th>
       <th>Regex</th>
       <th>Effect</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>\d</td>
-      <td>Selects numeric chararcters</td>
+      <td>.</td>
+      <td>Matches any character<br>except for line breaks.</td>
+      <td>*</td>
+      <td>Matches 0 or more<br>of the preceding character.</td>
+      <td>$</td>
+      <td>Matches the end of the string.</td>
     </tr>
     <tr>
-      <td>\s</td>
-      <td>Selects only white spaces</td>
-    </tr>
-    <tr>
+      <td>+</td>
+      <td>Matches 1 or more<br>of the preceding character.</td>
+      <td>?</td>
+      <td>Preceding character is optional.<br>Matches 0 or 1 occurrence.</td>
       <td>^</td>
-      <td>Start of string, or start of line in multi-line pattern</td>
+      <td>Matches the beginning of a string.</td>
     </tr>
     <tr>
-      <td>\Z</td>
-      <td>End of string</td>
-    </tr>
-    <tr>
-      <td>\b</td>
-      <td>Word boundary</td>
+      <td>\d</td>
+      <td>Matches any single digit</td>
+      <td>\w</td>
+      <td>Matches any word character<br>(alphanumeric & underscore).</td>
+      <td>[^a-z]</td>
+      <td>Inside of a character class,<br>means NOT.</td>
     </tr>
   </tbody>
 </table>
